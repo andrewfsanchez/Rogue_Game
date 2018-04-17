@@ -1,4 +1,6 @@
+
 #include "item.h"
+
 
 using namespace std;
 
@@ -36,4 +38,13 @@ int Item::getAttackMod()
 int Item::getRegenMod()
 {
 	return regenMod;
+}
+
+char Item::getSymbol()
+{
+	return 'I';
+}
+bool Item::isEnemy()
+{
+	return false;
 }

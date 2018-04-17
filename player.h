@@ -1,3 +1,6 @@
+#include "Object.h"
+
+
 #ifndef PLAYER_H
 #define PLAYER_H
 
@@ -5,9 +8,9 @@
 
 using namespace std;
 
-class Enemy;
 
-class Player 
+
+class Player : public Object
 {
 	public:
 		
@@ -30,8 +33,11 @@ class Player
 		void levelUp();
 		int getLevel();
 		Player getPlayer(); //Location? 
-		void Attack(Enemy& target);
+		//void Attack(Enemy& target);
 		void takeDamage(int damage);
+
+		char getSymbol();
+		bool isEnemy();
 	
 	private:
 	

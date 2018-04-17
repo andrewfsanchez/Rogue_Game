@@ -1,7 +1,10 @@
+
 #include "player.h"
-#include "enemy.h"
+
+
 
 using namespace std;
+
 
 Player::Player()
 {
@@ -66,7 +69,7 @@ void Player::setRegen(int x)
 	regen = x;
 }
 
-int Player::getItem()
+/*int Player::getItem()
 {
 	//Not sure here.
 }
@@ -84,7 +87,7 @@ void Player::dropItem()
 void Player::useItem()
 {
 	//Again, need to figure out how items work first
-}
+}*/
 
 void Player::regeneration()
 {
@@ -120,18 +123,26 @@ int Player::getLevel()
 	return level;
 }
 
-void Player::Attack(Enemy& target)
+/*void Player::Attack(Enemy& target)
 {
 	//Add the proper formula for damage, this was just a test.
 	
 	int enemyDef = target.getDefense();
 	int damage = attack - enemyDef;
 	target.takeDamage(damage);
-} 
+} */
 
 void Player::takeDamage(int damage)
 {
 	currentHealth = currentHealth - damage;
+}
+char Player::getSymbol()
+{
+	return '@';
+}
+bool Player::isEnemy()
+{
+	return false;
 }
 
 

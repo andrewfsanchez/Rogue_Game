@@ -1,5 +1,7 @@
+
 #include "enemy.h"
-#include "player.h"
+
+
 
 using namespace std;
 
@@ -7,28 +9,28 @@ using namespace std;
 NOTES:
 - Should enemy level be considered when creating an enemy?
 - If so, should they be based on stage in the game or player level?
-- Will there be different types of enemies? Should some have different starting stats than others? 
+- Will there be different types of enemies? Should some have different starting stats than others?
 
 - To accomplish this we could maybe pass "type" and "level" parameters when creating an enemy
 
 i.e.
 Enemy (string type, int level)
-	{
-		if type == bat
-		{
-			bat stats here
-		}
-		else if type == spider
-		{
-			spider stats here
-		}
-	}	
+{
+if type == bat
+{
+bat stats here
+}
+else if type == spider
+{
+spider stats here
+}
+}
 
-NOTE: I don't actually know if there will be different types of enemies or what they will be. 
+NOTE: I don't actually know if there will be different types of enemies or what they will be.
 */
 
 Enemy::Enemy()
-{	
+{
 	//Test values again
 	health = 15;
 	attack = 2;
@@ -67,17 +69,25 @@ int Enemy::getItem()
 	return item;
 }
 
-void Enemy::Attack(Player& target)
+/*void Enemy::Attack(Player& target)
 {
-	//Just a test, actual formula can be added later.
-	int playerDef = target.getDefense();
-	int damage = attack - playerDef;
-	target.takeDamage(damage);
-} 
+//Just a test, actual formula can be added later.
+int playerDef = target.getDefense();
+int damage = attack - playerDef;
+target.takeDamage(damage);
+} */
 
 void Enemy::takeDamage(int damage)
 {
 	health = health - damage;
 }
 
+char Enemy::getSymbol()
+{
+	return 'E';
+}
+bool Enemy::isEnemy()
+{
+	return true;
+}
 

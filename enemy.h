@@ -1,11 +1,12 @@
+#include "Object.h"
+
 #ifndef ENEMY_H
 #define ENEMY_H
 
 using namespace std;
 
-class Player;
 
-class Enemy
+class Enemy: public Object
 {
 	public:
 	
@@ -18,8 +19,11 @@ class Enemy
 		int getItem();
 		int getDefense();
 		
-		void Attack(Player& target);
+		//void Attack(Player& target);
 		void takeDamage(int damage);
+
+		char getSymbol();
+		bool isEnemy();
 		
 	private:
 		

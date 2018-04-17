@@ -1,9 +1,11 @@
+#include "Object.h"
 #ifndef ITEM_H
 #define ITEM_H
 
+
 using namespace std;
 
-class Item
+class Item: public Object
 {
 	public:
 		
@@ -13,6 +15,9 @@ class Item
 		int getDefenseMod();
 		int getAttackMod();
 		int getRegenMod();
+
+		char getSymbol();
+		bool isEnemy();
 		
 	private:
 		
