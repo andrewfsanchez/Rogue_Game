@@ -1,10 +1,8 @@
 #include "Object.h"
-
+#include "item.h" 
 
 #ifndef PLAYER_H
 #define PLAYER_H
-
-#include "item.h" 
 
 using namespace std;
 
@@ -38,6 +36,8 @@ class Player : public Object
 
 		char getSymbol();
 		bool isEnemy();
+		bool isWall();
+		bool isItem();
 	
 	private:
 	

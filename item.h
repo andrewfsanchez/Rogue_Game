@@ -18,6 +18,8 @@ class Item: public Object
 
 		char getSymbol();
 		bool isEnemy();
+		bool isWall();
+		bool isItem();
 		
 	private:
 		

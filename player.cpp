@@ -1,10 +1,6 @@
 
 #include "player.h"
-
-
-
 using namespace std;
-
 
 Player::Player()
 {
@@ -141,6 +137,15 @@ char Player::getSymbol()
 	return '@';
 }
 bool Player::isEnemy()
+{
+	return false;
+}
+bool Player::isWall()
+{
+	return false;
+}
+
+bool Player::isItem()
 {
 	return false;
 }

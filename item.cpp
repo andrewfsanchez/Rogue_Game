@@ -48,3 +48,11 @@ bool Item::isEnemy()
 {
 	return false;
 }
+bool Item::isWall()
+{
+	return false;
+}
+bool Item::isItem()
+{
+	return true;
+}

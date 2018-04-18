@@ -90,4 +90,12 @@ bool Enemy::isEnemy()
 {
 	return true;
 }
+bool Enemy::isWall()
+{
+	return false;
+}
+bool Enemy::isItem()
+{
+	return false;
+}
 
