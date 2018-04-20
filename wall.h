@@ -12,3 +12,4 @@ public:
 	bool isWall();
 	bool isItem();
 };
+#endif

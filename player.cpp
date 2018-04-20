@@ -1,4 +1,3 @@
-
 #include "player.h"
 using namespace std;
 
@@ -14,6 +13,7 @@ Player::Player()
 	level = 1;
 	turnsToRegen = 2; 
 }
+
 
 int Player::getHealth()
 {
@@ -65,25 +65,47 @@ void Player::setRegen(int x)
 	regen = x;
 }
 
-/*int Player::getItem()
+bool Player::isInvEmpty()
 {
-	//Not sure here.
+	return inventory.empty();
 }
 
-void Player::addItem(int x)
+bool Player::isInvFull()
 {
-	//Does this one add item to inventory? Should the parameter be an item?
+	return (inventory.size() == invMaxSize);
+}
+
+Item Player::getItem()
+{
+	return inventory[0];
+}
+
+Item Player::getItem(int x)
+{
+	 return inventory[x];
+}
+
+void Player::addItem(Item x)
+{
+	inventory.push_back(x);
 }
 
 void Player::dropItem()
 {
-	//Not sure what this does. Does the player discard items without using them?
+	inventory.erase(inventory.begin() + 0);
 }
 
+void Player::dropItem(int x)
+{
+	inventory.erase(inventory.begin() + x);
+}
+
+/*
 void Player::useItem()
 {
 	//Again, need to figure out how items work first
-}*/
+}
+*/
 
 void Player::regeneration()
 {

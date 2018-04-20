@@ -1,3 +1,4 @@
+#include <vector>
 #include "Object.h"
 #include "item.h" 
 
@@ -23,10 +24,16 @@ class Player : public Object
 		void setDefense(int x);
 		int getRegen();
 		void setRegen(int x);
-		int getItem();
-		void addItem(int x);
+		
+		bool isInvEmpty();
+		bool isInvFull();
+		Item getItem();
+		Item getItem(int x);
+		void addItem(Item x);
 		void dropItem();
-		void useItem();
+		void dropItem(int x);
+		//void useItem();
+		
 		void regeneration();
 		void levelUp();
 		int getLevel();
@@ -40,7 +47,7 @@ class Player : public Object
 		bool isItem();
 	
 	private:
-	
+		
 		int maxHealth;
 		int currentHealth;
 		int speed;
@@ -49,7 +56,8 @@ class Player : public Object
 		int regen;
 		int level;
 		int turnsToRegen;
-		Item inventory[20]; //Not used yet
+		int invMaxSize = 20;
+		vector<Item> inventory; //Not used yet
 };
 
 #endif
