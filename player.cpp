@@ -13,8 +13,6 @@ Player::Player()
 	level = 1;
 	turnsToRegen = 2; 
 }
-
-
 int Player::getHealth()
 {
 	return currentHealth;
@@ -80,14 +78,14 @@ Item Player::getItem()
 	return inventory[0];
 }
 
-Item Player::getItem(int x)
+Item Player::getItem(int itemIndex)
 {
-	 return inventory[x];
+	 return inventory[itemIndex];
 }
 
-void Player::addItem(Item x)
+void Player::addItem(Item item)
 {
-	inventory.push_back(x);
+	inventory.push_back(item);
 }
 
 void Player::dropItem()
@@ -95,9 +93,9 @@ void Player::dropItem()
 	inventory.erase(inventory.begin() + 0);
 }
 
-void Player::dropItem(int x)
+void Player::dropItem(int itemIndex)
 {
-	inventory.erase(inventory.begin() + x);
+	inventory.erase(inventory.begin() + itemIndex);
 }
 
 /*

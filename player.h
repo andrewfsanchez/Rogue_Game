@@ -28,10 +28,10 @@ class Player : public Object
 		bool isInvEmpty();
 		bool isInvFull();
 		Item getItem();
-		Item getItem(int x);
-		void addItem(Item x);
+		Item getItem(int);
+		void addItem(Item);
 		void dropItem();
-		void dropItem(int x);
+		void dropItem(int);
 		//void useItem();
 		
 		void regeneration();
