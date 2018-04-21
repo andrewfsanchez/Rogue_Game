@@ -2,7 +2,7 @@
 #include "item.h"
 
 
-Item::Item(string id, int h, int s, int d, int a, int r)
+Item::Item(string id, int h, int s, int d, int a, int r, bool weap, bool arm, bool consume)
 {
 	//Don't know what the default item values should be. Maybe there should be a constructor with a name parameter that sets stats for each type of item differently. 
 	
@@ -12,6 +12,10 @@ Item::Item(string id, int h, int s, int d, int a, int r)
 	defenseMod = d;
 	attackMod = a;
 	regenMod = r;
+
+	weapon = weap;
+	armor = arm;
+	consumable = consume;
 }
 
 int Item::getHealthMod()

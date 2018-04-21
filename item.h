@@ -10,13 +10,16 @@ class Item: public Object
 {
 	public:
 		
-		Item(string, int, int, int, int, int);
+		Item(string, int, int, int, int, int, bool, bool, bool);
 		int getHealthMod();
 		int getSpeedMod();
 		int getDefenseMod();
 		int getAttackMod();
 		int getRegenMod();
 		string getName();
+		bool isWeapon();
+		bool isArmor();
+		bool isConsumable();
 
 		string getSymbol();
 		bool isEnemy();
@@ -31,6 +34,10 @@ class Item: public Object
 		int defenseMod;
 		int attackMod;
 		int regenMod;
+
+		bool armor;
+		bool weapon;
+		bool consumable;
 };
 
 #endif

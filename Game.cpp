@@ -137,8 +137,26 @@ void Game::playerDrop()
 
 	for (int i = 0; i < inventory.size(); i++)
 	{
-		cout << i << ". " << inventory[i].getName();
+		cout << i << ". " << inventory[i].getName()<<"\n";
 	}
+
+	int index;
+	do {
+		cout << "Choose the number of the item you want to drop: ";
+		cin >> index;
+
+		if (!cin || index > inventory.size() - 1 || index < 0)
+		{
+			cout << "Invalid input. \n";
+		}
+	} while (!cin);
+
+	player.dropItem(index);
+}
+
+void Game::playerUseItem()
+{
+
 }
 
 
