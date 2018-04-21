@@ -1,10 +1,6 @@
 
 #include "enemy.h"
 
-
-
-using namespace std;
-
 /*
 NOTES:
 - Should enemy level be considered when creating an enemy?
@@ -82,9 +78,9 @@ void Enemy::takeDamage(int damage)
 	health = health - damage;
 }
 
-char Enemy::getSymbol()
+string Enemy::getSymbol()
 {
-	return 'E';
+	return " E ";
 }
 bool Enemy::isEnemy()
 {

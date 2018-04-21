@@ -7,7 +7,7 @@ class Wall: public Object
 {
 public:
 	Wall();
-	char getSymbol();
+	string getSymbol();
 	bool isEnemy();
 	bool isWall();
 	bool isItem();

@@ -2,17 +2,15 @@
 #include "item.h"
 
 
-using namespace std;
-
-Item::Item()
+Item::Item(int h, int s, int d, int a, int r)
 {
 	//Don't know what the default item values should be. Maybe there should be a constructor with a name parameter that sets stats for each type of item differently. 
 	
-	healthMod = 0;
-	speedMod = 0;
-	defenseMod = 0;
-	attackMod = 0;
-	regenMod = 0;
+	healthMod = h;
+	speedMod = s;
+	defenseMod = d;
+	attackMod = a;
+	regenMod = r;
 }
 
 int Item::getHealthMod()
@@ -40,9 +38,9 @@ int Item::getRegenMod()
 	return regenMod;
 }
 
-char Item::getSymbol()
+string Item::getSymbol()
 {
-	return 'I';
+	return " I ";
 }
 bool Item::isEnemy()
 {

@@ -8,6 +8,10 @@ Node::Node(Object* thing)
 {
 	space = thing;
 }
+Node::Node()
+{
+	space = NULL;
+}
 
 Object* Node::getObject()
 {
@@ -23,7 +27,7 @@ void Node::print()
 {
 	if (space == NULL)
 	{
-		cout << " ";
+		cout << " . ";
 		return;
 	}
 	cout << space->getSymbol();

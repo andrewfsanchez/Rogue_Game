@@ -1,6 +1,6 @@
 #include <vector>
 #include "Object.h"
-#include "item.h" 
+#include "item.cpp" 
 
 #ifndef PLAYER_H
 #define PLAYER_H
@@ -41,7 +41,7 @@ class Player : public Object
 		//void Attack(Enemy& target);
 		void takeDamage(int damage);
 
-		char getSymbol();
+		string getSymbol();
 		bool isEnemy();
 		bool isWall();
 		bool isItem();

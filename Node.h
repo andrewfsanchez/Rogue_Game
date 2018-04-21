@@ -1,6 +1,6 @@
 #include "Object.h"
 #include <iostream>
-#include "Object.h"
+
 
 #ifndef NODE
 #define NODE
@@ -9,6 +9,7 @@ class Node
 {
 public:
 	Node(Object* thing);
+	Node();
 	Object* getObject();
 	void setObject(Object* thing);
 	void print();

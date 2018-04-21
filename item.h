@@ -1,4 +1,5 @@
 #include "Object.h"
+
 #ifndef ITEM_H
 #define ITEM_H
 
@@ -9,14 +10,14 @@ class Item: public Object
 {
 	public:
 		
-		Item();
+		Item(int, int, int, int, int);
 		int getHealthMod();
 		int getSpeedMod();
 		int getDefenseMod();
 		int getAttackMod();
 		int getRegenMod();
 
-		char getSymbol();
+		string getSymbol();
 		bool isEnemy();
 		bool isWall();
 		bool isItem();

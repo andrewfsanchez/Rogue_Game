@@ -1,9 +1,9 @@
 #include "wall.h"
 
 Wall::Wall() {}
-char Wall::getSymbol()
+string Wall::getSymbol()
 {
-	return '|';
+	return " # ";
 }
 bool Wall::isEnemy()
 {

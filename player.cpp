@@ -1,5 +1,5 @@
 #include "player.h"
-using namespace std;
+
 
 Player::Player()
 {
@@ -152,9 +152,9 @@ void Player::takeDamage(int damage)
 {
 	currentHealth = currentHealth - damage;
 }
-char Player::getSymbol()
+string Player::getSymbol()
 {
-	return '@';
+	return " @ ";
 }
 bool Player::isEnemy()
 {

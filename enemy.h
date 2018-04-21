@@ -22,7 +22,7 @@ class Enemy: public Object
 		//void Attack(Player& target);
 		void takeDamage(int damage);
 
-		char getSymbol();
+		string getSymbol();
 		bool isEnemy();
 		bool isWall();
 		bool isItem();
