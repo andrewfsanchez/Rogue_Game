@@ -1,5 +1,6 @@
 #include "node.cpp"
 #include "player.cpp"
+#include "enemy.cpp"
 #include "Object.h"
 #include <iostream>
 
@@ -13,12 +14,19 @@ public:
 	Game(int);
 	void printGrid();
 	void playerAction();
+	void gameOver();
 	
 private:
-	void makeLevel();
+	//void makeNextFloor(int, int);
 	void updateGrid();
-	
 	void clearGrid();
+	void deleteGrid();
+
+	void playerMove();
+	void playerDrop();
+	void playerUseItem();
+	void moveEnemies();
+	
 
 
 

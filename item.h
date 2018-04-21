@@ -10,12 +10,13 @@ class Item: public Object
 {
 	public:
 		
-		Item(int, int, int, int, int);
+		Item(string, int, int, int, int, int);
 		int getHealthMod();
 		int getSpeedMod();
 		int getDefenseMod();
 		int getAttackMod();
 		int getRegenMod();
+		string getName();
 
 		string getSymbol();
 		bool isEnemy();
@@ -24,6 +25,7 @@ class Item: public Object
 		
 	private:
 		
+		string name;
 		int healthMod;
 		int speedMod;
 		int defenseMod;

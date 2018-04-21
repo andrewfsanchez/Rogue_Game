@@ -73,6 +73,11 @@ bool Player::isInvFull()
 	return (inventory.size() == invMaxSize);
 }
 
+vector<Item> Player::getInventory()
+{
+	return inventory;
+}
+
 Item Player::getItem()
 {
 	return inventory[0];

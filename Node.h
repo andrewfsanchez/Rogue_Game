@@ -13,6 +13,7 @@ public:
 	Object* getObject();
 	void setObject(Object* thing);
 	void print();
+	void deleteObject();
 
 private:
 	Object* space;

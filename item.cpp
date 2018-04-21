@@ -2,10 +2,11 @@
 #include "item.h"
 
 
-Item::Item(int h, int s, int d, int a, int r)
+Item::Item(string id, int h, int s, int d, int a, int r)
 {
 	//Don't know what the default item values should be. Maybe there should be a constructor with a name parameter that sets stats for each type of item differently. 
 	
+	name = id;
 	healthMod = h;
 	speedMod = s;
 	defenseMod = d;
@@ -36,6 +37,11 @@ int Item::getAttackMod()
 int Item::getRegenMod()
 {
 	return regenMod;
+}
+
+string Item::getName()
+{
+	return name;
 }
 
 string Item::getSymbol()

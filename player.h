@@ -25,8 +25,10 @@ class Player : public Object
 		int getRegen();
 		void setRegen(int x);
 		
+		
 		bool isInvEmpty();
 		bool isInvFull();
+		vector<Item> getInventory();
 		Item getItem();
 		Item getItem(int);
 		void addItem(Item);
