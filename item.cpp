@@ -5,8 +5,6 @@ Item::Item()
 {
 	name = "NONE";
 	healthMod = 0;
-	speedMod = 0;
-	speedMod = 0;
 	defenseMod = 0;
 	attackMod = 0;
 	regenMod = 0;
@@ -17,13 +15,12 @@ Item::Item()
 	equipped = false;
 }
 	
-Item::Item(string id, int h, int s, int d, int a, int r, bool weap, bool arm, bool consume)
+Item::Item(string id, int h, int d, int a, int r, bool weap, bool arm, bool consume)
 {
 	//Don't know what the default item values should be. Maybe there should be a constructor with a name parameter that sets stats for each type of item differently. 
 	
 	name = id;
 	healthMod = h;
-	speedMod = s;
 	defenseMod = d;
 	attackMod = a;
 	regenMod = r;
@@ -38,11 +35,6 @@ Item::Item(string id, int h, int s, int d, int a, int r, bool weap, bool arm, bo
 int Item::getHealthMod()
 {
 	return healthMod;
-}
-
-int Item::getSpeedMod()
-{
-	return speedMod;
 }
 
 int Item::getDefenseMod()

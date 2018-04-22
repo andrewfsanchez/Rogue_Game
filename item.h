@@ -11,9 +11,8 @@ class Item: public Object
 	public:
 		
 		Item();
-		Item(string, int, int, int, int, int, bool, bool, bool);
+		Item(string, int, int, int, int, bool, bool, bool);
 		int getHealthMod();
-		int getSpeedMod();
 		int getDefenseMod();
 		int getAttackMod();
 		int getRegenMod();
@@ -36,7 +35,6 @@ class Item: public Object
 		
 		string name;
 		int healthMod;
-		int speedMod;
 		int defenseMod;
 		int attackMod;
 		int regenMod;

@@ -18,6 +18,11 @@ public:
 	void playerAction();
 	void gameOver();
 	
+	void useItem(Item, Object*);
+	Item getWeapon();
+	Item getArmor();
+	void setWeapon(Item w, Object*);
+	void setArmor(Item a, Object*);
 	
 private:
 	//void makeNextFloor(int, int);
@@ -29,17 +34,19 @@ private:
 	void playerDrop();
 	void playerUseItem();
 	void moveEnemies();
-	
+
+	Item weapon;
+	Item armor;
 
 
-
-	Player player;
+	Object* player;
 	Node grid[30][30];
 	int difficulty;
 	int floor;
 	
 	//Vector for test items
 	vector<Item> items;
+	vector<Item> inventory;
 
 };
 

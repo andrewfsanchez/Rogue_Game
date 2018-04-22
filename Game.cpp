@@ -13,19 +13,25 @@ Game::Game(int diff)
 	}
 	difficulty = diff;
 	floor = 0;
-	player = Player();
+	player= new Player();
 	
 	//Create some generic items
-	Item potion = Item("Potion", 5, 0, 0, 0, 0, false, false, true);
-	Item katana = Item("Katana", 0, 0, 0, 7, 0, true, false, false);
-	Item leftShoe = Item("Left Shoe", 0, 3, 0, 0, 0, false, true, false);
-	Item oldShirt = Item("Old Shirt", 0, 0, 2, 0, 0, false, true, false);
+	Item potion = Item("Potion", 5,  0, 0, 0, false, false, true);
+	Item katana = Item("Katana", 0, 0, 7, 0, true, false, false);
+	Item oldShirt = Item("Old Shirt", 0, 2, 0, 0, false, true, false);
 	
 	//Add to item vector
 	items.push_back(potion);
 	items.push_back(katana);
-	items.push_back(leftShoe);
 	items.push_back(oldShirt);
+
+	inventory.push_back(potion);
+	inventory.push_back(katana);
+	inventory.push_back(oldShirt);
+
+	weapon = katana;
+	armor = oldShirt;
+
 }
 
 /*void Game::makeLevel()
@@ -53,7 +59,7 @@ void Game::playerAction()
 		}
 		else if (input.compare("D")==0 || input.compare("d") == 0)
 		{
-			if (!player.isInvEmpty())
+			if (!inventory.empty())
 			{
 				check = false;
 				playerDrop();
@@ -63,7 +69,7 @@ void Game::playerAction()
 		}
 		else if (input.compare("U") == 0 || input.compare("u") == 0)
 		{
-			if (!player.isInvEmpty())
+			if (!inventory.empty())
 			{
 				check = false;
 				playerUseItem();
@@ -105,13 +111,13 @@ void Game::updateGrid()
 
 	//moveEnemies();
 
-	if (player.getHealth()<1) 
+	if (player->getHealth()<1) 
 	{
 		gameOver();
 	}
 	else
 	{
-		player.regeneration();
+		player->regeneration();
 		playerAction();
 	}
 
@@ -148,7 +154,6 @@ void Game::deleteGrid()
 
 void Game::playerDrop()
 {
-	vector<Item> inventory= player.getInventory();
 
 	for (int i = 0; i < inventory.size(); i++)
 	{
@@ -166,7 +171,7 @@ void Game::playerDrop()
 		}
 	} while (!cin);
 
-	player.dropItem(index);
+	inventory.erase(inventory.begin() + index);
 
 	updateGrid();
 }
@@ -174,7 +179,6 @@ void Game::playerDrop()
 void Game::playerUseItem()
 {
 
-	vector<Item> inventory = player.getInventory();
 
 	for (int i = 0; i < inventory.size(); i++)
 	{
@@ -192,16 +196,51 @@ void Game::playerUseItem()
 		}
 	} while (!cin);
 
-	Item x = player.getItem(index);
+	Item x = inventory[index];
 
 	if (x.isWeapon())
-		player.setWeapon(x);
+		setWeapon(x, player);
 	else if (x.isArmor())
-		player.setArmor(x);
+		setArmor(x, player);
 	else if (x.isConsumable())
-		player.useItem(x);
+		useItem(x, player);
 
 	updateGrid();
+}
+void Game::useItem(Item x, Object* p)
+{
+	p->setAttack(p->getAttack() + x.getAttackMod());
+	p->setDefense( p->getDefense() + x.getDefenseMod());
+	p->setHealth( p->getHealth() + x.getHealthMod());
+	if (p->getHealth() > p->getMaxHealth())
+		p->setHealth( p->getMaxHealth());
+	p->setRegen( p->getRegen() + x.getRegenMod());
+}
+
+void Game::setWeapon(Item x, Object* p)
+{
+	p->setAttack(p->getAttack() - weapon.getAttackMod());
+	p->setDefense(p->getDefense() - weapon.getDefenseMod());
+	p->setHealth(p->getHealth() - weapon.getHealthMod());
+	p->setRegen(p->getRegen() - weapon.getRegenMod());
+
+	p->setAttack(p->getAttack() + x.getAttackMod());
+	p->setDefense(p->getDefense() + x.getDefenseMod());
+	p->setMaxHealth(p->getMaxHealth() + x.getMaxHealth());
+	p->setRegen(p->getRegen() + x.getRegenMod());
+}
+
+void Game::setArmor(Item x, Object* p)
+{
+	p->setAttack(p->getAttack() - armor.getAttackMod());
+	p->setDefense(p->getDefense() - armor.getDefenseMod());
+	p->setHealth(p->getHealth() - armor.getHealthMod());
+	p->setRegen(p->getRegen() - armor.getRegenMod());
+
+	p->setAttack(p->getAttack() + x.getAttackMod());
+	p->setDefense(p->getDefense() + x.getDefenseMod());
+	p->setMaxHealth(p->getMaxHealth() + x.getMaxHealth());
+	p->setRegen(p->getRegen() + x.getRegenMod());
 }
 
 void Game::playerMove()
@@ -215,30 +254,60 @@ void Game::playerMove()
 		if (input.compare("U") == 0 || input.compare("u") == 0)
 		{
 			check = false;
-			//grid[player.getX()][player.getY()]= Node();
-			//player.setY(player.getY()-1);
-			//grid[player.getY()][player.getX()].setObject(player);
+			
+			
+			Node target=grid[player->getX()][player->getY()-1];
+			if (target.getObject() == NULL)
+			{
+				grid[player->getX()][player->getY()]= Node();
+				player->setY(player->getY()-1);
+				Object* tempPlayer = static_cast<Object*>(player);
+				grid[player->getY()][player->getX()].setObject(tempPlayer);
+				target.deleteObject();
+			}
+			else if(target.getObject()->isEnemy())
+			{
+				target.getObject()->takeDamage(player->getAttack());
+			}
+			
 		}
 		else if (input.compare("D") == 0 || input.compare("d") == 0)
 		{
 			check = false;
-			//grid[player.getX()][player.getY()]= Node();
-			//player.setY(player.getY()+1);
-			//grid[player.getY()][player.getX()].setObject(player);
+			//Node target= player.setY(player.getY()+1);
+			/*if (target.getObject() == NULL)
+			{
+			grid[player.getX()][player.getY()]= Node();
+			player.setY(player.getY()+1);
+			grid[player.getY()][player.getX()].setObject(player);
+			}
+			target.deleteObject();
+			*/
 		}
 		else if (input.compare("L") == 0 || input.compare("l") == 0)
 		{
 			check = false;
-			//grid[player.getX()][player.getY()]= Node();
-			//player.setY(player.getX()-1);
-			//grid[player.getY()][player.getX()].setObject(player);
+			//Node target= player.setY(player.getX()-1);
+			/*if (target.getObject() == NULL)
+			{
+			grid[player.getX()][player.getY()]= Node();
+			player.setY(player.getX()-1);
+			grid[player.getY()][player.getX()].setObject(player);
+			target.deleteObject();
+			}*/
 		}
 		else if (input.compare("R") == 0 || input.compare("r") == 0)
 		{
 			check = false;
-			//grid[player.getX()][player.getY()]= Node();
-			//player.setY(player.getX()+1);
-			//grid[player.getY()][player.getX()].setObject(player);
+			//Node target= player.setY(player.getX() + 1);
+
+			/*if (target.getObject() == NULL)
+			{
+			grid[player.getX()][player.getY()]= Node();
+			player.setY(player.getX()+1);
+			grid[player.getY()][player.getX()].setObject(player);
+			target.deleteObject();
+			}*/
 		}
 		else
 			cout << "Invalid Direction. \n";
@@ -292,7 +361,7 @@ void Game::gameOver()
 		else if (a.compare("y") == 0 || a.compare("Y") == 0)
 		{
 			floor = 0;
-			player = Player();
+			player = new Player();
 			clearGrid();
 			int diff;
 			do

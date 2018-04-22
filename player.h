@@ -17,8 +17,6 @@ class Player : public Object
 		Player();
 		int getHealth();
 		void setHealth(int x);
-		int getSpeed();
-		void setSpeed(int x);
 		int getAttack();
 		void setAttack(int x);
 		int getDefense();
@@ -26,6 +24,12 @@ class Player : public Object
 		int getRegen();
 		void setRegen(int x);
 		
+		int getMaxHealth();
+
+		int getX();
+		void setX(int);
+		int getY();
+		void setY(int);
 		
 		bool isInvEmpty();
 		bool isInvFull();
@@ -51,6 +55,7 @@ class Player : public Object
 		//void Attack(Enemy& target);
 		void takeDamage(int damage);
 		void addExp(int);
+		
 
 		string getSymbol();
 		bool isEnemy();
@@ -59,10 +64,13 @@ class Player : public Object
 		bool isDoor();
 	
 	private:
+
+		int x;
+		int y;
 		
 		int maxHealth;
 		int currentHealth;
-		int speed;
+
 		int attack;
 		int defense;
 		int regen;
