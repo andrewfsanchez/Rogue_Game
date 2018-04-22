@@ -20,6 +20,10 @@ class Item: public Object
 		bool isWeapon();
 		bool isArmor();
 		bool isConsumable();
+		bool isEquipped();
+		void equip();
+		void unequip();
+
 
 		string getSymbol();
 		bool isEnemy();
@@ -38,6 +42,8 @@ class Item: public Object
 		bool armor;
 		bool weapon;
 		bool consumable;
+
+		bool equiped;
 };
 
 #endif

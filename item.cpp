@@ -16,6 +16,8 @@ Item::Item(string id, int h, int s, int d, int a, int r, bool weap, bool arm, bo
 	weapon = weap;
 	armor = arm;
 	consumable = consume;
+	equiped = false;
+	
 }
 
 int Item::getHealthMod()
@@ -41,6 +43,36 @@ int Item::getAttackMod()
 int Item::getRegenMod()
 {
 	return regenMod;
+}
+
+bool Item::isArmor()
+{
+	return armor;
+}
+
+bool Item::isWeapon()
+{
+	return weapon;
+}
+
+bool Item::isConsumable()
+{
+	return consumable;
+}
+
+bool Item::isEquipped()
+{
+	return equiped;
+}
+
+void Item::equip()
+{
+	equiped = true;
+}
+
+void Item::unequip()
+{
+	equiped = false;
 }
 
 string Item::getName()
