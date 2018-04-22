@@ -14,6 +14,9 @@ Player::Player()
 	turnsToRegen = 2; 
 	weapon;
 	armor;
+
+	currentExp = 0;
+	levelUpExp = 15;
 }
 int Player::getHealth()
 {
@@ -194,7 +197,7 @@ void Player::regeneration()
 {
 	turnsToRegen--;
 	
-	while (turnsToRegen == 0)
+	if (turnsToRegen == 0)
 	{
 		if(currentHealth == maxHealth)
 			turnsToRegen = 2; 
@@ -207,6 +210,12 @@ void Player::regeneration()
 	}
 }
 		
+void Player::addExp(int add)
+{
+	currentExp += add;
+	if (currentExp >= levelUpExp)
+		levelUp();
+}
 
 void Player::levelUp()
 {
@@ -217,6 +226,8 @@ void Player::levelUp()
 	defense = defense + 1;
 	attack = attack + 1;
 	level++;
+
+	levelUpExp *= 2;
 }
 
 int Player::getLevel()

@@ -111,8 +111,11 @@ void Game::updateGrid()
 	}
 	else
 	{
+		player.regeneration();
 		playerAction();
 	}
+
+	
 }
 
 void Game::printGrid()

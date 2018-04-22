@@ -50,6 +50,7 @@ class Player : public Object
 		Player getPlayer(); //Location? 
 		//void Attack(Enemy& target);
 		void takeDamage(int damage);
+		void addExp(int);
 
 		string getSymbol();
 		bool isEnemy();
@@ -66,6 +67,8 @@ class Player : public Object
 		int defense;
 		int regen;
 		int level;
+		int levelUpExp;
+		int currentExp;
 		int turnsToRegen;
 		int invMaxSize = 20;
 		vector<Item> inventory; //Not used yet
