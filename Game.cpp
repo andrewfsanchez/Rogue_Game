@@ -14,6 +14,18 @@ Game::Game(int diff)
 	difficulty = diff;
 	floor = 0;
 	player = Player();
+	
+	//Create some generic items and add them to item vector.
+	Item potion = Item("Potion", 5, 0, 0, 0, 0, false, false, true);
+	Item katana = Item("Katana", 0, 0, 0, 7, 0, true, false, false);
+	Item leftShoe = Item("Left Shoe", 0, 3, 0, 0, 0, false, true, false);
+	Item oldShirt = Item("Old Shirt", 0, 0, 2, 0, 0, false, true, false);
+	
+	
+	items.push_back(potion);
+	items.push_back(katana);
+	items.push_back(leftShoe);
+	items.push_back(oldShirt);
 }
 
 /*void Game::makeLevel()
@@ -242,7 +254,7 @@ void Game::gameOver()
 
 		}
 		else
-			cout << "Invalid Opiton.\n";
+			cout << "Invalid Option.\n";
 	}
 
 }

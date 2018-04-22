@@ -2,7 +2,9 @@
 #include "player.cpp"
 #include "enemy.cpp"
 #include "Object.h"
+#include "item.h"
 #include <iostream>
+#include <vector>
 
 
 #ifndef GAME_H
@@ -34,7 +36,7 @@ private:
 	Node grid[30][30];
 	int difficulty;
 	int floor;
-
+	vector<Item> items;
 
 };
 
