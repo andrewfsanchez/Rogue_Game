@@ -26,7 +26,7 @@ private:
 
 	void playerMove();
 	void playerDrop();
-	void playerUseItem();
+	void playerUseItem(Item x);
 	void moveEnemies();
 	
 

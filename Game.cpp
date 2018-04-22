@@ -166,12 +166,17 @@ void Game::playerDrop()
 	player.dropItem(index);
 }
 
-void Game::playerUseItem()
+void Game::playerUseItem(Item x)
 {
-
+	if(x.isWeapon())
+		player.setWeapon(x);
+	
+	else if(x.isArmor())
+		player.setArmor(x);
+				
+	else if(x.isConsumable())
+		player.useItem(x);
 }
-
-
 
 void Game::gameOver()
 {

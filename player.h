@@ -1,5 +1,6 @@
 #include <vector>
 #include "Object.h"
+#include "item.h"
 #include "item.cpp" 
 
 #ifndef PLAYER_H
@@ -34,7 +35,14 @@ class Player : public Object
 		void addItem(Item);
 		void dropItem();
 		void dropItem(int);
-		//void useItem();
+		
+		void useItem(Item x);
+		Item getWeapon();
+		Item getArmor();
+		void setWeapon(Item w);
+		void setArmor(Item a);
+		void unequipWeapon();
+		void unequipArmor();
 		
 		void regeneration();
 		void levelUp();
@@ -60,6 +68,8 @@ class Player : public Object
 		int turnsToRegen;
 		int invMaxSize = 20;
 		vector<Item> inventory; //Not used yet
+		Item weapon;
+		Item armor;
 };
 
 #endif

@@ -10,6 +10,7 @@ class Item: public Object
 {
 	public:
 		
+		Item();
 		Item(string, int, int, int, int, int, bool, bool, bool);
 		int getHealthMod();
 		int getSpeedMod();
@@ -43,7 +44,7 @@ class Item: public Object
 		bool weapon;
 		bool consumable;
 
-		bool equiped;
+		bool equipped;
 };
 
 #endif
