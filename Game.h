@@ -36,6 +36,8 @@ private:
 	Node grid[30][30];
 	int difficulty;
 	int floor;
+	
+	//Vector for test items
 	vector<Item> items;
 
 };

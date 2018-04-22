@@ -15,13 +15,13 @@ Game::Game(int diff)
 	floor = 0;
 	player = Player();
 	
-	//Create some generic items and add them to item vector.
+	//Create some generic items
 	Item potion = Item("Potion", 5, 0, 0, 0, 0, false, false, true);
 	Item katana = Item("Katana", 0, 0, 0, 7, 0, true, false, false);
 	Item leftShoe = Item("Left Shoe", 0, 3, 0, 0, 0, false, true, false);
 	Item oldShirt = Item("Old Shirt", 0, 0, 2, 0, 0, false, true, false);
 	
-	
+	//Add to item vector
 	items.push_back(potion);
 	items.push_back(katana);
 	items.push_back(leftShoe);
