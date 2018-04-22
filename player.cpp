@@ -255,6 +255,11 @@ bool Player::isItem()
 	return false;
 }
 
+bool Player::isDoor()
+{
+	return false;
+}
+
 
 /*
 Player::getPlayer()

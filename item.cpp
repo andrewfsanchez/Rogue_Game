@@ -111,3 +111,7 @@ bool Item::isItem()
 {
 	return true;
 }
+bool Item::isDoor()
+{
+	return false;
+}

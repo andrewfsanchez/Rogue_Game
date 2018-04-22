@@ -55,6 +55,7 @@ class Player : public Object
 		bool isEnemy();
 		bool isWall();
 		bool isItem();
+		bool isDoor();
 	
 	private:
 		

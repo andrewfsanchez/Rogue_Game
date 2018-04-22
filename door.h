@@ -1,16 +1,23 @@
 #include "Object.h"
 
-#ifndef WALL_H
-#define WALL_H
+#ifndef DOOR_H
+#define DOOR_H
 
-class Wall: public Object
+class Door: public Object
 {
 public:
-	Wall();
 	string getSymbol();
 	bool isEnemy();
 	bool isWall();
 	bool isItem();
 	bool isDoor();
+
+	bool isOpen();
+	void open();
+	
+	
+private:
+	bool open;
 };
+
 #endif

@@ -18,6 +18,7 @@ public:
 	void playerAction();
 	void gameOver();
 	
+	
 private:
 	//void makeNextFloor(int, int);
 	void updateGrid();
@@ -26,7 +27,7 @@ private:
 
 	void playerMove();
 	void playerDrop();
-	void playerUseItem(Item x);
+	void playerUseItem();
 	void moveEnemies();
 	
 
