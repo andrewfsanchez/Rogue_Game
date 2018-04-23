@@ -11,7 +11,7 @@
 #include "player.h"
 #include "enemy.h"
 #include "item.h"
-#include "node.h"
+#include "Node.h"
 #include "wall.h"
 #include "door.h"
 
@@ -23,6 +23,7 @@ public:
 	int randRoomLength(int numRooms);
 	int numRoomsGenerator();
 	int randDirectionGenerator();
+	int randWallGenerator();
     void makeRoom(int numRooms, int width, int length, Node grid[30][30]);
 	void makeStartRoom(int width, int length, Node grid[30][30], Object*);
 	void printRoom(int direction, int width, int length, int row, int col, Node grid[30][30]);
@@ -31,6 +32,7 @@ public:
 	bool roomMadeHere();
 	void dungeonBuild(Node grid[30][30], Object*);
 	void addEnemiesToMap(Node grid[30][30], int difficulty, vector<Enemy>&, int floor);
+	void checkerify(Node grid[30][30], int numWalls, int width, int length);
 
 	
 

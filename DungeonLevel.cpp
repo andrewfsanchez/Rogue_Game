@@ -39,7 +39,7 @@ int Dungeon::randWallGenerator()
 
 void Dungeon::checkerify(Node grid[30][30],int numWalls, int width, int length)
 {
-    Object* wall = new wall();
+    Object* wall = new Wall();
     int currentWalls =0;
 
     for (int i = 0; i <= length;i++ )
@@ -453,8 +453,9 @@ void Dungeon::dungeonBuild(Node grid[30][30], Object* p)                     //W
 	int i = 0;                                                //starting from 1 because the 0th room has already been made.
    // makeRoom(numRooms, roomWidth[i], roomLength[i], grid);
     int numWalls = randWallGenerator();
-    checkerify(grid,numWalls,roomWidth[0],length[0]);
+    checkerify(grid,numWalls,roomWidth[0],roomlength[0]);
 
+    grid[15][15].setObject(p);
     grid[15][16].setObject(NULL);
     grid[16][16].setObject(NULL);
     grid[16][17].setObject(NULL);
