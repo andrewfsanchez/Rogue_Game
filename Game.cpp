@@ -161,8 +161,9 @@ void Game::moveEnemies()
 			  if (abs(17 - enemies[i].getX()) > abs(17 - enemies[i].getY()))
 			  {
 				  Node target=grid[enemies[i].getX() + 1][enemies[i].getY()];
-				  
+			
 
+				if (target.getObject() != NULL){
 				  if(target.getObject()->isItem()||target.getObject()->isWall())
 				  {
 
@@ -176,6 +177,7 @@ void Game::moveEnemies()
 					  target.getObject()->takeDamage(enemies[i].getAttack());
 
 				  	}
+					}
 					else 
 					{
 					
@@ -188,6 +190,8 @@ void Game::moveEnemies()
 			  {
 				  Node target=grid[enemies[i].getX()][enemies[i].getY() + 1];
 				  
+				  if (target.getObject() != NULL)
+				  {
 				  if(target.getObject()->isItem()||target.getObject()->isWall())
 				  {
 
@@ -201,6 +205,7 @@ void Game::moveEnemies()
 
 					  target.getObject()->takeDamage(enemies[i].getAttack());
 
+				  }
 				  }
 
 				  else
@@ -223,6 +228,9 @@ void Game::moveEnemies()
 				 
 				  Node target=grid[enemies[i].getX() - 1][enemies[i].getY()];
 
+					if (target.getObject() != NULL)
+					
+				{
 				  if(target.getObject()->isItem()||target.getObject()->isWall())
 				  {
 
@@ -236,6 +244,7 @@ void Game::moveEnemies()
 
 					  target.getObject()->takeDamage(enemies[i].getAttack());
 					
+				  }
 				  }
 
 				  else	
@@ -251,6 +260,9 @@ void Game::moveEnemies()
 			  {
 				  Node target=grid[enemies[i].getX()][enemies[i].getY() + 1];
 
+				  if (target.getObject() != NULL)
+				  {
+
 				  if(target.getObject()->isItem()||target.getObject()->isWall())
 				  {
 
@@ -264,6 +276,7 @@ void Game::moveEnemies()
 
 					  target.getObject()->takeDamage(enemies[i].getAttack());
 
+				  }
 				  }
 
 				  else
@@ -284,6 +297,8 @@ void Game::moveEnemies()
 			
 				Node target=grid[enemies[i].getX() + 1][enemies[i].getY()];
 			
+			if (target.getObject() != NULL)
+			{
 			if(target.getObject()->isItem()||target.getObject()->isWall())
 				  
 				  {
@@ -299,6 +314,7 @@ void Game::moveEnemies()
 
 				target.getObject()->takeDamage(enemies[i].getAttack());
 
+			}
 			}
 
 
@@ -317,6 +333,9 @@ void Game::moveEnemies()
 
 				Node target=grid[enemies[i].getX()][enemies[i].getY() - 1];
 
+				if (target.getObject() != NULL)
+				{
+
 				if(target.getObject()->isItem()||target.getObject()->isWall())
 				  {
 
@@ -331,6 +350,7 @@ void Game::moveEnemies()
 
 				target.getObject()->takeDamage(enemies[i].getAttack());
 
+			}
 			}
 
 			else
@@ -354,6 +374,9 @@ void Game::moveEnemies()
 			{
 			
 				Node target=grid[enemies[i].getX() - 1][enemies[i].getY()];
+
+				if (target.getObject() != NULL)
+				{
 				
 				if(target.getObject()->isItem()||target.getObject()->isWall())
 				  {
@@ -370,7 +393,7 @@ void Game::moveEnemies()
 				target.getObject()->takeDamage(enemies[i].getAttack());
 
 			}
-
+			}
 
 			else
 			{
@@ -386,6 +409,9 @@ void Game::moveEnemies()
 			{
 
 				Node target=grid[enemies[i].getX()][enemies[i].getY() - 1];
+
+				if (target.getObject() != NULL)
+				{
 				
 				if(target.getObject()->isItem()||target.getObject()->isWall())
 				  {
@@ -401,6 +427,7 @@ void Game::moveEnemies()
 
 				target.getObject()->takeDamage(enemies[i].getAttack());
 
+			}
 			}
 
 			else
