@@ -88,18 +88,9 @@ int Enemy::getDefense()
 	return defense;
 }
 
-
-/*void Enemy::Attack(Player& target)
+void Enemy::takeDamage(int playerAtk)
 {
-//Just a test, actual formula can be added later.
-int playerDef = target.getDefense();
-int damage = (attack*10)/(playerDef + 10);
-target.takeDamage(damage);
-} */
-
-void Enemy::takeDamage(int damage)
-{
-	health = health - damage;
+	health = health - (playerAtk*10)/(10 + defense);
 }
 
 string Enemy::getSymbol()

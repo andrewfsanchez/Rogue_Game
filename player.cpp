@@ -131,9 +131,9 @@ int Player::getLevel()
 	target.takeDamage(damage);
 } */
 
-void Player::takeDamage(int damage)
+void Player::takeDamage(int enemyAtk)
 {
-	currentHealth = currentHealth - (damage/defense);
+	currentHealth = currentHealth - (10*enemyAtk)/(10 + defense);
 }
 string Player::getSymbol()
 {
