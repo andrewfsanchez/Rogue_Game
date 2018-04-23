@@ -12,7 +12,7 @@ Game::Game(int diff)
 			}
 	}
 	difficulty = diff;
-	floor = 0;
+	floor = 1;
 	player= new Player();
 	
 	//Create some generic items
@@ -91,10 +91,10 @@ void Game::moveEnemies()
 	
 }
 
-void Game::eraseEnemies()
+/*void Game::eraseEnemies()
 {
 	for (int i = enemies.size() - 1; i >= 0; i--) enemies.erase(enemies.begin() + i);
-}
+}*/
 
 void Game::playerAction() 
 {
@@ -142,7 +142,6 @@ void Game::playerAction()
 			cin >> a;
 			if (a.compare("Y")==0||a.compare("y")==0)
 			{
-				deleteGrid();
 				check = false;
 				cout << "Successfully quit game.";
 			}
@@ -154,25 +153,17 @@ void Game::playerAction()
 
 void Game::updateGrid()
 {
-	/*if(player->getX()==exitX || player->getY()==exitY)
-	{
-		makeNextFloor(floor, diff, player);
-		eraseEnemies();
-		playerAction();
-		return;
-	}
-	*/
 
 
 	//moveEnemies();
 
-	if (player->getHealth()<1) 
+	if (player->getHealth()<1) //if player is dead, game over
 	{
 		gameOver();
 	}
 	else
 	{
-		player->regeneration();
+		player->regeneration();       //keeps going until
 		printGrid();
 		playerAction();
 	}
@@ -322,14 +313,36 @@ void Game::playerMove()
 			Node target=grid[player->getX()][player->getY()-1];
 			if (target.getObject() == NULL)
 			{
+				target.deleteObject();
 				grid[player->getX()][player->getY()]= Node();
 				player->setY(player->getY()-1);
 				grid[player->getY()][player->getX()].setObject(player);
-				target.deleteObject();
+				
 			}
 			else if(target.getObject()->isEnemy())
 			{
+
 				target.getObject()->takeDamage(player->getAttack());
+				if (target.getObject()->getHealth() <= 0)
+				{
+					//player->addExp(target.getObject()->getExp());
+					grid[player->getX()][player->getY() - 1].deleteObject();
+				}
+			}
+			else if (target.getObject()->isExit())
+			{
+				floor++;
+				startGame();
+			}
+			else if (target.getObject()->isItem())
+			{
+				Item x = Item(target.getObject()->getName(), target.getObject()->getHealthMod(), target.getObject()->getDefenseMod(), target.getObject()->getAttackMod(), target.getObject()->getRegenMod(), target.getObject()->isWeapon(), target.getObject()->isArmor(), target.getObject()->isConsumable());
+				inventory.push_back(x);
+
+				grid[player->getX()][player->getY()] = Node();
+				player->setY(player->getY() - 1);
+				grid[player->getY()][player->getX()].setObject(player);
+
 			}
 			
 		}
@@ -343,8 +356,32 @@ void Game::playerMove()
 			player->setY(player->getY()+1);
 			grid[player->getY()][player->getX()].setObject(player);
 			}
-			target.deleteObject();
+			else if (target.getObject()->isEnemy())
+			{
+				target.getObject()->takeDamage(player->getAttack());
+				if (target.getObject()->getHealth() <= 0)
+				{
+					//player->addExp(target.getObject()->getExp());
+					grid[player->getX()][player->getY() - 1].deleteObject();
+				}
+			}
+			else if (target.getObject()->isExit())
+			{
+				floor++;
+				startGame();
+			}
+			else if (target.getObject()->isItem())
+			{
+				Item x = Item(target.getObject()->getName(), target.getObject()->getHealthMod(), target.getObject()->getDefenseMod(), target.getObject()->getAttackMod(), target.getObject()->getRegenMod(), target.getObject()->isWeapon(), target.getObject()->isArmor(), target.getObject()->isConsumable());
+				inventory.push_back(x);
+
+				grid[player->getX()][player->getY()] = Node();
+				player->setY(player->getY() + 1);
+				grid[player->getY()][player->getX()].setObject(player);
+
+			}
 			
+
 		}
 		else if (input.compare("L") == 0 || input.compare("l") == 0)
 		{
@@ -353,10 +390,34 @@ void Game::playerMove()
 			if (target.getObject() == NULL)
 			{
 			grid[player->getX()][player->getY()]= Node();
-			player->setY(player->getX()-1);
+			player->setX(player->getX()-1);
 			grid[player->getY()][player->getX()].setObject(player);
-			target.deleteObject();
 			}
+			else if (target.getObject()->isEnemy())
+			{
+
+				target.getObject()->takeDamage(player->getAttack());
+				if (target.getObject()->getHealth() <= 0)
+				{
+					//player->addExp(target.getObject()->getExp());
+					grid[player->getX()][player->getY() - 1].deleteObject();
+				}
+			}
+			else if (target.getObject()->isExit())
+			{
+				floor++;
+				startGame();
+			}
+			else if (target.getObject()->isItem())
+			{
+				Item x = Item(target.getObject()->getName(), target.getObject()->getHealthMod(), target.getObject()->getDefenseMod(), target.getObject()->getAttackMod(), target.getObject()->getRegenMod(), target.getObject()->isWeapon(), target.getObject()->isArmor(), target.getObject()->isConsumable());
+				inventory.push_back(x);
+
+				grid[player->getX()][player->getY()] = Node();
+				player->setX(player->getX() - 1);
+				grid[player->getY()][player->getX()].setObject(player);
+			}
+
 		}
 		else if (input.compare("R") == 0 || input.compare("r") == 0)
 		{
@@ -365,9 +426,32 @@ void Game::playerMove()
 			if (target.getObject() == NULL)
 			{
 				grid[player->getX()][player->getY()] = Node();
-				player->setY(player->getX() - 1);
+				player->setX(player->getX() + 1);
 				grid[player->getY()][player->getX()].setObject(player);
-				target.deleteObject();
+			}
+			else if (target.getObject()->isEnemy())
+			{
+
+				target.getObject()->takeDamage(player->getAttack());
+				if (target.getObject()->getHealth() <= 0)
+				{
+					//player->addExp(target.getObject()->getExp());
+					grid[player->getX()][player->getY() - 1].deleteObject();
+				}
+			}
+			else if (target.getObject()->isExit())
+			{
+				floor++;
+				startGame();
+			}
+			else if (target.getObject()->isItem())
+			{
+				Item x = Item(target.getObject()->getName(), target.getObject()->getHealthMod(), target.getObject()->getDefenseMod(), target.getObject()->getAttackMod(), target.getObject()->getRegenMod(), target.getObject()->isWeapon(), target.getObject()->isArmor(), target.getObject()->isConsumable());
+				inventory.push_back(x);
+
+				grid[player->getX()][player->getY()] = Node();
+				player->setX(player->getX() - 1);
+				grid[player->getY()][player->getX()].setObject(player);
 			}
 		}
 		else

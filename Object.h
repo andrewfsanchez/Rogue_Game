@@ -8,13 +8,13 @@ using namespace std;
 class Object
 {
 public:
-	virtual string getSymbol()=0;
-	virtual bool isEnemy()=0;
+	virtual string getSymbol() = 0;
+	virtual bool isEnemy() = 0;
 	virtual bool isWall() = 0;
 	virtual bool isItem() = 0;
 	virtual bool isDoor() = 0;
 	virtual bool isExit() = 0;
-	
+
 	virtual int getHealth()
 	{
 		return 0;
@@ -47,7 +47,7 @@ public:
 	{
 		return 0;
 	}
-	
+
 	virtual void setMaxHealth(int)
 	{
 		return;
@@ -83,6 +83,42 @@ public:
 	virtual int getType()
 	{
 		return 0;
+	}
+	virtual void setType(int)
+	{
+		return;
+	}
+	virtual string getName()
+	{
+		return "";
+	}
+	virtual int getHealthMod()
+	{
+		return 0;
+	}
+	virtual int getDefenseMod()
+	{
+		return 0;
+	}
+	virtual int getAttackMod()
+	{
+		return 0;
+	}
+	virtual int getRegenMod()
+	{
+		return 0;
+	}
+	virtual bool isWeapon()
+	{
+		return false;
+	}
+	virtual bool isArmor()
+	{
+		return false;
+	}
+	virtual bool isConsumable()
+	{
+		return false;
 	}
 
 
