@@ -28,7 +28,7 @@ class Enemy: public Object
 
 		string getSymbol();
 		void setExp(int exp);
-		int getExp();
+		int getExperience();
 		bool isEnemy();
 		bool isWall();
 		bool isItem();

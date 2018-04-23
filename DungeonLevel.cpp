@@ -120,18 +120,18 @@ bool Dungeon::isValidDirection(int direction, int width, int length, int row, in
 	Object* wall = new Wall();
 	switch (direction)
 	{
-	case 1:
+	case 1:         //check up
 	{
 		for (int i = 0; i <= length; i++)
 		{
 			if (row - length >= 0) {
-				if (grid[row - i][col].getObject() == wall)
+				if (grid[row - i][col].getObject()->getSymbol().compare(" # "))
 				{
 					for (int k = 0; k <= width; k++)
 					{
 						if (col + width <= 30)
 						{
-							if (grid[row - i][col + k].getObject() == wall)
+							if (grid[row - i][col + k].getObject()->getSymbol().compare(" # "))
 							{
 								continue;
 							}
@@ -151,18 +151,18 @@ bool Dungeon::isValidDirection(int direction, int width, int length, int row, in
 		}
 		return true;
 	}
-	case 2:
+	case 2:    //check down
 	{
 		for (int i = 0; i <= length; i++)
 		{
 			if (row + length <= 30) {
-				if (grid[row + i][col].getObject() == wall)
+				if (grid[row + i][col].getObject()->getSymbol().compare(" # "))
 				{
 					for (int k = 0; k <= width; k++)
 					{
 						if (col + width <= 30)
 						{
-							if (grid[row + i][col + k].getObject() == wall)
+							if (grid[row + i][col + k].getObject()->getSymbol().compare(" # "))
 							{
 								continue;
 							}
@@ -182,18 +182,18 @@ bool Dungeon::isValidDirection(int direction, int width, int length, int row, in
 		}
 		return true;
 	}
-	case 3:
+	case 3:     //check left
 	{
 		for (int i = 0; i <= width; i++)
 		{
 			if (col - width >= 0) {
-				if (grid[row][col - i].getObject() == wall)
+				if (grid[row][col - i].getObject()->getSymbol().compare(" # "))
 				{
 					for (int k = 0; k <= length; k++)
 					{
 						if (length + row <= 30)
 						{
-							if (grid[row + i][col - k].getObject() == wall)
+							if (grid[row + i][col - k].getObject()->getSymbol().compare(" # "))
 							{
 								continue;
 							}
@@ -213,18 +213,18 @@ bool Dungeon::isValidDirection(int direction, int width, int length, int row, in
 		}
 		return true;
 	}
-	case 4:
+	case 4:             //check right
 	{
 		for (int i = 0; i <= width; i++)
 		{
 			if (col + width <= 30) {
-				if (grid[row][col + i].getObject() == wall)
+				if (grid[row][col + i].getObject()->getSymbol().compare(" # "))
 				{
 					for (int k = 0; k <= length; k++)
 					{
 						if (length + row <= 30)
 						{
-							if (grid[row + i][col + k].getObject() == wall)
+							if (grid[row + i][col + k].getObject()->getSymbol().compare(" # "))
 							{
 								continue;
 							}
@@ -385,14 +385,6 @@ void Dungeon::makeRoom(int numRooms, int width, int length, Node grid[30][30])
 		}
 	}
 
-	/* for (int i = 0; i < 30; i++)
-	{
-		for (int k = 0; k < 30; k++)                               //todo this is where I left off
-		{
-			grid[i][k] = Node();                                   //todo look into this error later
-		}
-	}*/
-
 }
 
 void Dungeon::dungeonBuild(Node grid[30][30], Object* p)                     //We pass in the original grid created which is filled with Nodes that point to nothing. Here we will begin
@@ -436,16 +428,15 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty)
     {
         for (int k = 0; k < 30; k++)
         {
-            if (grid[i][k].getObject == NULL)
+            if (grid[i][k].getObject() == NULL)
             {
                 int chance = randomNumberGenerator(100,0);
+
                 int whatEnemy = randomNumberGenerator(100,0);
 
                 if (chance >= 99-difficulty)                    //This assumes difficult is something like 3 for hard. 2 for med. 1 for easy
                 {
-                    switch (whatEnemy)
-                    {
-                        case 0 ... 40:
+                        if (whatEnemy <= 40)
                         {
                             Enemy* Bat = new Enemy(i,k);
 							Bat->setType(1);
@@ -457,22 +448,9 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty)
                             Bat->setHealth(10); //multiplied by floor
                             Bat->setExp(2); //add by floor# multiplied by 1 
                             enemies.push_back (Bat);
-
                         }
-                        case 66 ... 86:
-                        {
-                            Enemy* Spider = new Enemy(i,k);
-                            Spider->setType(3);
-                            grid[i][k].setObject(Spider);
-                            Spider->setX(i);
-                            Spider->setY(k);
-                            Spider->setAttack(8); //multiplied by floor
-                            Spider->setDefense(5); //keep constant
-                            Spider->setHealth(20); //multiplied by floor
-                            Spider->setExp(4); //add by floor# multiplied by 1
-                            enemies.push_back (Spider);
-                        }
-                        case 41 ... 65:
+                        
+                        else if (whatEnemy <=65 && whatEnemy >= 41)
                         {
                             Enemy* Rat = new Enemy(i,k);
                             Rat->setType(2);
@@ -485,7 +463,21 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty)
                             Rat->setExp(3); //add by floor# multiplied by 1
                             enemies.push_back (Rat);
                         }
-						case 87 ... 100:
+                        else if (whatEnemy <=86 && whatEnemy >= 66) 
+                        {
+                            Enemy* Spider = new Enemy(i,k);
+                            Spider->setType(3);
+                            grid[i][k].setObject(Spider);
+                            Spider->setX(i);
+                            Spider->setY(k);
+                            Spider->setAttack(8); //multiplied by floor
+                            Spider->setDefense(5); //keep constant
+                            Spider->setHealth(20); //multiplied by floor
+                            Spider->setExp(4); //add by floor# multiplied by 1
+                            enemies.push_back (Spider);
+                        }
+                        
+                        else if (whatEnemy <=100 && whatEnemy >= 87)
 						{
                             Enemy* Zombie = new Enemy(i,k);
                             Zombie->setType(4);
@@ -498,7 +490,7 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty)
                             Zombie->setExp(5); //add by floor# multiplied by 1
                             enemies.push_back (Zombie);
 						}
-						default:
+                        else
 						{
                             Enemy* Bat = new Enemy(i,k);
                             Bat->setType(1);
@@ -511,7 +503,6 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty)
                             Bat->setExp(2); //add by floor# multiplied by 1
                             enemies.push_back (Bat);
 						}
-                    }
 
                 }
 

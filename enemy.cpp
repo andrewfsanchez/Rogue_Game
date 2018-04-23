@@ -113,13 +113,13 @@ string Enemy::getSymbol()
 	else if (type == 2)
 	{
 
-		return " L ";     //Lizard
+		return " S ";     //Spider
 
 	}
 	else if (type == 3)
 	{
 
-		return " S ";     //Spider
+		return " R ";     //Rat
 		
 	}
 	else if (type == 4)
@@ -145,7 +145,7 @@ void Enemy::setExp(int x)
 
 }
 
-int Enemy::getExp()
+int Enemy::getExperience()
 {
 	
 	return exp;
