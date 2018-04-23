@@ -32,7 +32,7 @@ Enemy::Enemy()
 	attack = 2;
 	speed = 2;
 	defense = 0;
-	type = 'c';
+	type = 0;
 }
 
 int Enemy::getHealth()
@@ -43,6 +43,16 @@ int Enemy::getHealth()
 void Enemy::setHealth(int x)
 {
 	health = x;
+}
+
+void Enemy::setType(int x)
+{
+	type = x;
+}
+
+int Enemy::getType()
+{
+	return type;
 }
 
 int Enemy::getSpeed()

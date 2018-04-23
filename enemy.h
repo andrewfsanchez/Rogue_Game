@@ -14,11 +14,12 @@ class Enemy: public Object
 		
 		int getHealth();
 		void setHealth(int x);
+		void setType(int x);
 		int getSpeed();
 		int getAttack();
 		int getItem();
 		int getDefense();
-		string getType();
+		int getType();
 		
 		//void Attack(Player& target);
 		void takeDamage(int damage);
@@ -35,7 +36,7 @@ class Enemy: public Object
 		int defense;
 		int speed;
 		int item;
-		string type;
+		int type;
 };
 
 #endif
