@@ -3,12 +3,7 @@
 //
 
 #include "DungeonLevel.h"
-#include "node.cpp"
-#include "wall.cpp"
-#include <random>
-#include <iostream>
-#include <random>
-#include <vector>
+
 
 
 
@@ -260,7 +255,7 @@ bool Dungeon::isEdge(Node grid[30][30], int i, int k)              //This functi
 																		//rooms will be added
 {
 	int numFloor = 0;
-	//checks the spot above, below, left or right of the original point
+	                                                              //checks the spot above, below, left or right of the original point
 	if (grid[i + 1][k].getObject() == NULL)
 	{
 		numFloor++;
@@ -306,8 +301,8 @@ bool Dungeon::roomMadeHere()
 
 void Dungeon::makeRoom(int numRooms, int width, int length, Node grid[30][30])
 {
-	//This next piece of the method chooses a random direction, places a corridor of random length,
-	//then attempts to put a room at the end of that corridor on a random direction.
+	                                                                                  //This next piece of the method chooses a random direction, places a corridor of random length,
+	                                                                                  //then attempts to put a room at the end of that corridor on a random direction.
 
 	for (int r = 0; r <= numRooms;)
 	{
@@ -393,7 +388,7 @@ void Dungeon::makeRoom(int numRooms, int width, int length, Node grid[30][30])
 			grid[i][k] = Node();                                   //todo look into this error later
 		}
 	}
-};
+}
 
 void Dungeon::dungeonBuild(Node grid[30][30])                     //We pass in the original grid created which is filled with Nodes that point to nothing. Here we will begin
 {                                                              //to populate the grid with rooms. I start by filling it with walls because it is easier to delete walls
@@ -426,7 +421,7 @@ void Dungeon::dungeonBuild(Node grid[30][30])                     //We pass in t
 	numRooms = numRooms - 1;
 
 	int i = 1;                                                //starting from 1 because the 0th room has already been made.
-	makeRoom(numRooms, roomWidth[i], roomLength[i], grid);
+    makeRoom(numRooms, roomWidth[i], roomLength[i], grid);
 
 
 
