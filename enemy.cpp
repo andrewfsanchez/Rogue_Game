@@ -88,15 +88,6 @@ int Enemy::getDefense()
 	return defense;
 }
 
-
-void Enemy::Attack(Player& target)
-{
-//Just a test, actual formula can be added later.
-int playerDef = target.getDefense();
-int damage = attack;
-target.takeDamage(damage);
-} 
-
 void Enemy::takeDamage(int damage)
 {
 	health = health - (damage*10)/(10 + defense);
