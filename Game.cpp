@@ -90,7 +90,7 @@ void Game::moveEnemies()
 		else if (enemies[i].getType() == 2)
 		{
 
-			//movement pattern for Spider
+
 
 		}
 
