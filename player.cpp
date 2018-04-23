@@ -6,7 +6,7 @@ Player::Player()
 	//Test values
 	maxHealth = 15;
 	currentHealth = maxHealth;
-	defense = 0;
+	defense = 2;
 	attack = 4;
 	regen = 1;
 	level = 1;
@@ -108,13 +108,13 @@ void Player::addExp(int add)
 
 void Player::levelUp()
 {
-	maxHealth = maxHealth + 5;
-	defense = defense + 1;
-	attack = attack + 1;
+	//Haven't discussed how this will work yet, so just a test.
+	
+	maxHealth = maxHealth + 8;
+	attack = attack + 5;
 	level++;
 
-	currentExp = currentExp - levelUpExp;
-	levelUpExp += 15;
+	levelUpExp = level*15;
 }
 
 int Player::getLevel()
@@ -133,7 +133,7 @@ int Player::getLevel()
 
 void Player::takeDamage(int damage)
 {
-	currentHealth = currentHealth - damage;
+	currentHealth = currentHealth - (damage/defense);
 }
 string Player::getSymbol()
 {
@@ -162,6 +162,13 @@ bool Player::isExit()
 	return false;
 }
 
+
+/*
+Player::getPlayer()
+{
+	//Assuming this should return the player location. Not sure how this will be done yet.
+}
+*/
 	
 	
 
