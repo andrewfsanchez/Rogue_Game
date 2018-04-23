@@ -10,16 +10,19 @@ class Enemy: public Object
 {
 	public:
 	
-		Enemy();
+		Enemy(int, int);
 		
 		int getHealth();
 		void setHealth(int x);
 		void setType(int x);
-		int getSpeed();
 		int getAttack();
 		int getDefense();
 		int getType();
 		
+		int getX();
+		void setX(int);
+		int getY();
+		void setY(int);
 		//void Attack(Player& target);
 		void takeDamage(int damage);
 
@@ -37,10 +40,10 @@ class Enemy: public Object
 		int health;
 		int attack;
 		int defense;
-		int speed;
 		int item;
 		int type;
 		int exp;
+		int posX, posY;
 };
 
 #endif

@@ -447,31 +447,31 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty)
                     {
                         case 0 ... 40:
                         {
-                            Enemy* Bat = new Enemy();
+                            Enemy* Bat = new Enemy(i,k);
 							Bat->setType(1);
                             grid[i][k].setObject(Bat);
                         }
                         case 41 ... 65:
                         {
-                            Enemy* Spider = new Enemy();
+                            Enemy* Spider = new Enemy(i,k);
                             Spider->setType(2);
                             grid[i][k].setObject(Spider);
                         }
                         case 66 ... 86:
                         {
-                            Enemy* Lizard = new Enemy();
+                            Enemy* Lizard = new Enemy(i,k);
                             Lizard->setType(3);
                             grid[i][k].setObject(Lizard);
                         }
 						case 87 ... 100:
 						{
-                            Enemy* Zombie = new Enemy();
+                            Enemy* Zombie = new Enemy(i,k);
                             Zombie->setType(4);
                             grid[i][k].setObject(Zombie);
 						}
 						default:
 						{
-                            Enemy* Bat = new Enemy();
+                            Enemy* Bat = new Enemy(i,k);
                             Bat->setType(1);
                             grid[i][k].setObject(Bat);
 						}
