@@ -150,7 +150,7 @@ void Game::moveEnemies()
 					enemies[i].reverseDirection();	
 			}
 		}
-
+		/*
 		else if (enemies[i].getType() == 2)
 		{
 
@@ -419,7 +419,7 @@ void Game::moveEnemies()
 		}
 
 		}
-	
+		*/
 		else if (enemies[i].getType() == 3)
 		{
 			int direction = enemies[i].getDirection();
