@@ -114,18 +114,20 @@ string Enemy::getSymbol()
 	else if (type == 2)
 	{
 
-		return " S ";     //Spider
+		return " L ";     //Lizard
 
 	}
 	else if (type == 3)
 	{
 
-		return " L ";     //Lizard
+		return " S ";     //Spider
 		
 	}
 	else if (type == 4)
 	{
+		
 		return " Z ";     //Zombie
+
 	}
 	
 }

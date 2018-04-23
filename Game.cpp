@@ -57,8 +57,35 @@ void Game::startGame()
 
 void Game::moveEnemies()
 {
-	for (std::vector<Enemy>::iterator it = enemies.begin(); it != enemies.end(); ++it)
-	{if
+	for (std::vector<Enemy>::size_type i = 0; i != enemies.size(); i++)
+	{
+		if(enemies[i].getType() == 1)
+		{
+
+			//movement pattern for Spider
+
+		}
+
+		else if (enemies[i].getType() == 2)
+		{
+
+			//movement pattern for Lizard
+
+		}
+
+		else if (enemies[i].getType() == 3)
+		{
+
+			//movement pattern for Spider
+
+		}
+
+		else if (enemies[i].getType() == 4)
+		{
+
+			//movement pattern for Zombie
+
+		}
 
 	}
 	
