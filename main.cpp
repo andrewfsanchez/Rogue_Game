@@ -32,7 +32,7 @@ int main()
 	{
 		cin >> nothing;
 
-		if (noting.compare("go") == 0)
+		if (nothing.compare("go") == 0)
 		{
 			check = false;
 		}
