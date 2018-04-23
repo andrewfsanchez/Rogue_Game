@@ -25,15 +25,16 @@ spider stats here
 NOTE: I don't actually know if there will be different types of enemies or what they will be.
 */
 
-Enemy::Enemy()
+Enemy::Enemy(int x, int y)
 {
 	//Test values again
 	health = 15;
 	attack = 0;
-	speed = 0;
 	defense = 0;
 	type = 0;
 	exp = 0;
+	posX = x;
+	posY = y;
 	
 }
 
@@ -57,9 +58,24 @@ int Enemy::getType()
 	return type;
 }
 
-int Enemy::getSpeed()
+int Enemy::getX()
 {
-	return speed;
+	return posX;
+}
+
+void Enemy::setX(int x)
+{
+	posX = x;
+}
+
+int Enemy::getY()
+{
+	return posY;
+}
+
+void Enemy::setY(int y)
+{
+	posY = y;
 }
 
 int Enemy::getAttack()
@@ -97,7 +113,7 @@ string Enemy::getSymbol()
 	else if (type == 2)
 	{
 
-		return " L ";     //Rat
+		return " L ";     //Lizard
 
 	}
 	else if (type == 3)

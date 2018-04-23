@@ -62,16 +62,15 @@ void Game::moveEnemies()
 		if(enemies[i].getType() == 1)
 		{
 
-			//movement pattern for Bat
-			//set new x and y coordinate accordingly
+			//movement pattern for Spider
+
 
 		}
 
 		else if (enemies[i].getType() == 2)
 		{
 
-			//movement pattern for Rat
-			//set new x and y coordinate accordingly
+			//movement pattern for Lizard
 
 		}
 
@@ -321,16 +320,17 @@ void Game::playerMove()
 		cout << "Where do you want to move? (U= up, D= down, R= right, L= left): ";
 		string input = "";
 		cin >> input;
+		
+
 		if (input.compare("U") == 0 || input.compare("u") == 0)
 		{
 			check = false;
 			
 			
-			Node target=grid[player->getX()][player->getY()-1];
+			Node target=grid[player->getY()][player->getX()-1];
 			if (target.getObject() == NULL)
 			{
-				target.deleteObject();
-				grid[player->getX()][player->getY()]= Node();
+				grid[player->getY()][player->getX()].deleteObject();
 				player->setY(player->getY()-1);
 				grid[player->getY()][player->getX()].setObject(player);
 				
@@ -341,8 +341,8 @@ void Game::playerMove()
 				target.getObject()->takeDamage(player->getAttack());
 				if (target.getObject()->getHealth() <= 0)
 				{
-					//player->addExp(target.getObject()->getExp());
-					grid[player->getX()][player->getY() - 1].deleteObject();
+					player->addExp(target.getObject()->getExperience());
+					grid[player->getX()][player->getY() - 1]=Node();
 				}
 			}
 			else if (target.getObject()->isExit())
@@ -355,20 +355,25 @@ void Game::playerMove()
 				Item x = Item(target.getObject()->getName(), target.getObject()->getHealthMod(), target.getObject()->getDefenseMod(), target.getObject()->getAttackMod(), target.getObject()->getRegenMod(), target.getObject()->isWeapon(), target.getObject()->isArmor(), target.getObject()->isConsumable());
 				inventory.push_back(x);
 
-				grid[player->getX()][player->getY()] = Node();
+				grid[player->getY()][player->getX()] = Node();
 				player->setY(player->getY() - 1);
 				grid[player->getY()][player->getX()].setObject(player);
 
+			}
+			else if (target.getObject()->isWall())
+			{
+				check = false;
+				cout << "You hit a wall.\n";
 			}
 			
 		}
 		else if (input.compare("D") == 0 || input.compare("d") == 0)
 		{
 			check = false;
-			Node target = grid[player->getX()][player->getY() + 1];
+			Node target = grid[player->getY()][player->getX() + 1];
 			if (target.getObject() == NULL)
 			{
-			grid[player->getX()][player->getY()]= Node();
+			grid[player->getY()][player->getX()]= Node();
 			player->setY(player->getY()+1);
 			grid[player->getY()][player->getX()].setObject(player);
 			}
@@ -377,8 +382,8 @@ void Game::playerMove()
 				target.getObject()->takeDamage(player->getAttack());
 				if (target.getObject()->getHealth() <= 0)
 				{
-					//player->addExp(target.getObject()->getExp());
-					grid[player->getX()][player->getY() - 1].deleteObject();
+					player->addExp(target.getObject()->getExperience());
+					grid[player->getX()][player->getY() - 1] = Node();
 				}
 			}
 			else if (target.getObject()->isExit())
@@ -391,10 +396,15 @@ void Game::playerMove()
 				Item x = Item(target.getObject()->getName(), target.getObject()->getHealthMod(), target.getObject()->getDefenseMod(), target.getObject()->getAttackMod(), target.getObject()->getRegenMod(), target.getObject()->isWeapon(), target.getObject()->isArmor(), target.getObject()->isConsumable());
 				inventory.push_back(x);
 
-				grid[player->getX()][player->getY()] = Node();
+				grid[player->getY()][player->getX()] = Node();
 				player->setY(player->getY() + 1);
 				grid[player->getY()][player->getX()].setObject(player);
 
+			}
+			else if (target.getObject()->isWall())
+			{
+				check = false;
+				cout << "You hit a wall.\n";
 			}
 			
 
@@ -402,10 +412,10 @@ void Game::playerMove()
 		else if (input.compare("L") == 0 || input.compare("l") == 0)
 		{
 			check = false;
-			Node target = grid[player->getX()-1][player->getY()];
+			Node target = grid[player->getY()-1][player->getX()];
 			if (target.getObject() == NULL)
 			{
-			grid[player->getX()][player->getY()]= Node();
+			grid[player->getY()][player->getX()]= Node();
 			player->setX(player->getX()-1);
 			grid[player->getY()][player->getX()].setObject(player);
 			}
@@ -415,8 +425,8 @@ void Game::playerMove()
 				target.getObject()->takeDamage(player->getAttack());
 				if (target.getObject()->getHealth() <= 0)
 				{
-					//player->addExp(target.getObject()->getExp());
-					grid[player->getX()][player->getY() - 1].deleteObject();
+					player->addExp(target.getObject()->getExperience());
+					grid[player->getX()][player->getY() - 1] = Node();
 				}
 			}
 			else if (target.getObject()->isExit())
@@ -429,19 +439,24 @@ void Game::playerMove()
 				Item x = Item(target.getObject()->getName(), target.getObject()->getHealthMod(), target.getObject()->getDefenseMod(), target.getObject()->getAttackMod(), target.getObject()->getRegenMod(), target.getObject()->isWeapon(), target.getObject()->isArmor(), target.getObject()->isConsumable());
 				inventory.push_back(x);
 
-				grid[player->getX()][player->getY()] = Node();
+				grid[player->getY()][player->getX()] = Node();
 				player->setX(player->getX() - 1);
 				grid[player->getY()][player->getX()].setObject(player);
+			}
+			else if (target.getObject()->isWall())
+			{
+				check = false;
+				cout << "You hit a wall.\n";
 			}
 
 		}
 		else if (input.compare("R") == 0 || input.compare("r") == 0)
 		{
 			check = false;
-			Node target = grid[player->getX() + 1][player->getY()];
+			Node target = grid[player->getY() + 1][player->getX()];
 			if (target.getObject() == NULL)
 			{
-				grid[player->getX()][player->getY()] = Node();
+				grid[player->getY()][player->getX()] = Node();
 				player->setX(player->getX() + 1);
 				grid[player->getY()][player->getX()].setObject(player);
 			}
@@ -451,8 +466,8 @@ void Game::playerMove()
 				target.getObject()->takeDamage(player->getAttack());
 				if (target.getObject()->getHealth() <= 0)
 				{
-					//player->addExp(target.getObject()->getExp());
-					grid[player->getX()][player->getY() - 1].deleteObject();
+					player->addExp(target.getObject()->getExperience());
+					grid[player->getX()][player->getY() - 1] = Node();
 				}
 			}
 			else if (target.getObject()->isExit())
@@ -465,9 +480,14 @@ void Game::playerMove()
 				Item x = Item(target.getObject()->getName(), target.getObject()->getHealthMod(), target.getObject()->getDefenseMod(), target.getObject()->getAttackMod(), target.getObject()->getRegenMod(), target.getObject()->isWeapon(), target.getObject()->isArmor(), target.getObject()->isConsumable());
 				inventory.push_back(x);
 
-				grid[player->getX()][player->getY()] = Node();
+				grid[player->getY()][player->getX()] = Node();
 				player->setX(player->getX() - 1);
 				grid[player->getY()][player->getX()].setObject(player);
+			}
+			else if (target.getObject()->isWall())
+			{
+				check = false;
+				cout << "You hit a wall.\n";
 			}
 		}
 		else
@@ -553,7 +573,7 @@ void Game::gameOver()
 			string nothing;
 			cin >> nothing;
 
-			//makeNextFloor(floor, difficulty, player);
+			startGame();
 
 
 		}
