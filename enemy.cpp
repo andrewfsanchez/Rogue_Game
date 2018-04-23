@@ -164,3 +164,10 @@ bool Enemy::isExit()
 {
 	return false;
 }
+
+bool Enemy::isPlayer()
+{
+	return false;
+}
+
+

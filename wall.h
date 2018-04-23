@@ -13,6 +13,7 @@ public:
 	bool isItem();
 	bool isDoor();
 	bool isExit();
+	bool isPlayer();
 
 };
 #endif

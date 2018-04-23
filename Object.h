@@ -14,6 +14,7 @@ public:
 	virtual bool isItem() = 0;
 	virtual bool isDoor() = 0;
 	virtual bool isExit() = 0;
+	virtual bool isPlayer() = 0;
 
 	virtual int getHealth()
 	{
