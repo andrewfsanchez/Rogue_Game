@@ -50,7 +50,7 @@ void Dungeon::makeStartRoom(int width, int length, Node grid[30][30])
 void Dungeon::printRoom(int direction, int width, int length, int row, int col, Node grid[30][30])
 {
 
-	Object* door = new door();
+	Object* door = new Door();
 	switch (direction)
 	{
 	case 1:           //up
@@ -115,7 +115,7 @@ void Dungeon::printRoom(int direction, int width, int length, int row, int col, 
 
 bool Dungeon::isValidDirection(int direction, int width, int length, int row, int col, Node grid[30][30])                        //1 = up, 2 = down, 3 = left, 4 = right.
 {
-	Object* wall = new wall();
+	Object* wall = new Wall();
 	switch (direction)
 	{
 	case 1:
@@ -397,13 +397,13 @@ void Dungeon::dungeonBuild(Node grid[30][30])                     //We pass in t
 	int numRooms = numRoomsGenerator();                       //Here we will randomly decide how many rooms this dungeon level will have
 	int roomLength[numRooms];
 	int roomWidth[numRooms];
-	Object* wall = new wall();
+	Object* wall = new Wall();
 
 	for (int i = 0; i < 30; i++)
 	{
 		for (int k = 0; k < 30; k++)
 		{
-			grid[i][k] = Node.setObject(wall);                     //todo look into this error later
+			grid[i][k] = Node(wall);                     //todo look into this error later
 		}
 	}
 
