@@ -96,7 +96,12 @@ void Game::moveEnemies()
 
 /*void Game::eraseEnemies()
 {
-	for (int i = enemies.size() - 1; i >= 0; i--) enemies.erase(enemies.begin() + i);
+
+	for (int i = enemies.size() - 1; i >= 0; i--)
+	{
+	delete &enemies[i];                    // Unsure if this line is necessary based on how we implemented the Vector
+	enemies.erase(enemies.begin() + i);
+	}
 }*/
 
 void Game::playerAction() 
@@ -164,6 +169,7 @@ void Game::updateGrid()
 
 		if (enemies[i].getHealth() == 0)
 		{
+			// delete &enemies[i];  Unsure if this line is necessary based on how we implemented the Vector
 			enemies.erase (enemies.begin()+i);
 		}
 

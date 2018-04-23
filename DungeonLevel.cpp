@@ -447,7 +447,7 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty,vector<Enemy> &e
                             Bat->setDefense(0); //keep 0
                             Bat->setHealth(10); //multiplied by floor
                             Bat->setExp(2); //add by floor# multiplied by 1 
-                            enemies.push_back (Bat);
+                            enemies.push_back (*Bat);
                         }
                         
                         else if (whatEnemy <=65 && whatEnemy >= 41)
@@ -461,7 +461,7 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty,vector<Enemy> &e
                             Rat->setDefense(2); //keep constant
                             Rat->setHealth(10); //multiplied by floor
                             Rat->setExp(3); //add by floor# multiplied by 1
-                            enemies.push_back (Rat);
+                            enemies.push_back (*Rat);
                         }
                         else if (whatEnemy <=86 && whatEnemy >= 66) 
                         {
@@ -474,7 +474,7 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty,vector<Enemy> &e
                             Spider->setDefense(5); //keep constant
                             Spider->setHealth(20); //multiplied by floor
                             Spider->setExp(4); //add by floor# multiplied by 1
-                            enemies.push_back (Spider);
+                            enemies.push_back (*Spider);
                         }
                         
                         else if (whatEnemy <=100 && whatEnemy >= 87)
@@ -488,7 +488,7 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty,vector<Enemy> &e
                             Zombie->setDefense(10); //keep constant
                             Zombie->setHealth(25); //multiplied by floor
                             Zombie->setExp(5); //add by floor# multiplied by 1
-                            enemies.push_back (Zombie);
+                            enemies.push_back (*Zombie);
 						}
                         else
 						{
@@ -501,7 +501,7 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty,vector<Enemy> &e
                             Bat->setDefense(0); //keep constant
                             Bat->setHealth(10); //multiplied by floor
                             Bat->setExp(2); //add by floor# multiplied by 1
-                            enemies.push_back (Bat);
+                            enemies.push_back (*Bat);
 						}
 
                 }
