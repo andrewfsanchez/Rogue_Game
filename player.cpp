@@ -167,13 +167,6 @@ bool Player::isPlayer()
 	return true;
 }
 
-
-/*
-Player::getPlayer()
-{
-	//Assuming this should return the player location. Not sure how this will be done yet.
-}
-*/
 	
 	
 
