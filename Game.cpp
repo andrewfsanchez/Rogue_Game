@@ -81,10 +81,69 @@ void Game::moveEnemies()
 	{
 		if(enemies[i].getType() == 1)
 		{
+			int direction = enemies[i].getDirection();
+			switch (direction)
+			{
+			case 0:   // up
+				Node target = grid[enemies[i].getY() - 1][enemies[i].getX()];
+				if (target.getObject()->isPlayer())
+				{
+					//attack player
+				}
+				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy || target.getObject()->isExit)
+					enemies[i].reverseDirection();
+				else if (target.getObject() == NULL)
+				{
+					grid[enemies[i].getY()][enemies[i].getX()].deleteObject();
+					enemies[i].setY(enemies[i].getY() - 1);
+					grid[enemies[i].getY()][enemies[i].getX].setObject(enemies[i]);
+				}
 
-			//movement pattern for Bat
+			case 1:   //right
+				Node target = grid[enemies[i].getY()][enemies[i].getX() + 1];
+				if (target.getObject()->isPlayer())
+				{
+					//attack player
+				}
+				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy || target.getObject()->isExit)
+					enemies[i].reverseDirection();
+				else if (target.getObject() == NULL)
+				{
+					grid[enemies[i].getY()][enemies[i].getX()].deleteObject();
+					enemies[i].setX(enemies[i].getX() + 1);
+					grid[enemies[i].getY()][enemies[i].getX].setObject(enemies[i]);
+				}
 
+			case 2:  // down
+				Node target = grid[enemies[i].getY() + 1][enemies[i].getX()];
+				if (target.getObject()->isPlayer())
+				{
+					//attack player
+				}
+				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy || target.getObject()->isExit)
+					enemies[i].reverseDirection();
+				else if (target.getObject() == NULL)
+				{
+					grid[enemies[i].getY()][enemies[i].getX()].deleteObject();
+					enemies[i].setY(enemies[i].getY() + 1);
+					grid[enemies[i].getY()][enemies[i].getX].setObject(enemies[i]);
+				}
 
+			case 3: // left
+				Node target = grid[enemies[i].getY()][enemies[i].getX() - 1];
+				if (target.getObject()->isPlayer())
+				{
+					//attack player
+				}
+				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy || target.getObject()->isExit)
+					enemies[i].reverseDirection();
+				else if (target.getObject() == NULL)
+				{
+					grid[enemies[i].getY()][enemies[i].getX()].deleteObject();
+					enemies[i].setX(enemies[i].getX() - 1);
+					grid[enemies[i].getY()][enemies[i].getX].setObject(enemies[i]);
+				}
+			}
 		}
 
 		else if (enemies[i].getType() == 2)
