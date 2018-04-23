@@ -111,6 +111,7 @@ void Game::updateGrid()
 	/*if(player.getX()==exitX || player.getY()==exitY)
 	{
 		makeNextFloor(floor, diff, player);
+		delete vector list 
 		return;
 	}
 	*/
