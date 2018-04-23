@@ -49,14 +49,14 @@ void Game::playerAction()
 		if (input.compare("M") == 0 || input.compare("m")==0)
 		{
 			check = false;
-			//playerMove();
+			playerMove();
 		}
 		else if (input.compare("D")==0 || input.compare("d") == 0)
 		{
 			if (!player.isInvEmpty())
 			{
 				check = false;
-				//playerDrop();
+				playerDrop();
 			}
 			else
 				cout << "Your inventory is empty.\n";
@@ -66,7 +66,7 @@ void Game::playerAction()
 			if (!player.isInvEmpty())
 			{
 				check = false;
-				//playerUseItem();
+				playerUseItem();
 			}
 			else
 				cout << "Your inventory is empty.\n";
@@ -111,8 +111,11 @@ void Game::updateGrid()
 	}
 	else
 	{
+		player.regeneration();
 		playerAction();
 	}
+
+	
 }
 
 void Game::printGrid()
@@ -164,14 +167,85 @@ void Game::playerDrop()
 	} while (!cin);
 
 	player.dropItem(index);
+
+	updateGrid();
 }
 
 void Game::playerUseItem()
 {
 
+	vector<Item> inventory = player.getInventory();
+
+	for (int i = 0; i < inventory.size(); i++)
+	{
+		cout << i << ". " << inventory[i].getName() << "\n";
+	}
+
+	int index;
+	do {
+		cout << "Choose the number of the item you want to use/equip: ";
+		cin >> index;
+
+		if (!cin || index > inventory.size() - 1 || index < 0)
+		{
+			cout << "Invalid input. \n";
+		}
+	} while (!cin);
+
+	Item x = player.getItem(index);
+
+	if (x.isWeapon())
+		player.setWeapon(x);
+	else if (x.isArmor())
+		player.setArmor(x);
+	else if (x.isConsumable())
+		player.useItem(x);
+
+	updateGrid();
 }
 
+void Game::playerMove()
+{
+	//Node currentLoc = grid[player.getX()][player.getY()];
+	bool check = true;
+	while (check)
+	{
+		cout << "Where do you want to move? (U= up, D= down, R= right, L= left): ";
+		string input = "";
+		if (input.compare("U") == 0 || input.compare("u") == 0)
+		{
+			check = false;
+			//grid[player.getX()][player.getY()]= Node();
+			//player.setY(player.getY()-1);
+			//grid[player.getY()][player.getX()].setObject(player);
+		}
+		else if (input.compare("D") == 0 || input.compare("d") == 0)
+		{
+			check = false;
+			//grid[player.getX()][player.getY()]= Node();
+			//player.setY(player.getY()+1);
+			//grid[player.getY()][player.getX()].setObject(player);
+		}
+		else if (input.compare("L") == 0 || input.compare("l") == 0)
+		{
+			check = false;
+			//grid[player.getX()][player.getY()]= Node();
+			//player.setY(player.getX()-1);
+			//grid[player.getY()][player.getX()].setObject(player);
+		}
+		else if (input.compare("R") == 0 || input.compare("r") == 0)
+		{
+			check = false;
+			//grid[player.getX()][player.getY()]= Node();
+			//player.setY(player.getX()+1);
+			//grid[player.getY()][player.getX()].setObject(player);
+		}
+		else
+			cout << "Invalid Direction. \n";
+	}
+	updateGrid();
 
+}
 
 void Game::gameOver()
 {
