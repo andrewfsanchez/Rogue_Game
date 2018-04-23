@@ -13,7 +13,6 @@
 #include "item.h"
 #include "Node.h"
 #include "wall.h"
-#include "door.h"
 
 class Dungeon
 {
