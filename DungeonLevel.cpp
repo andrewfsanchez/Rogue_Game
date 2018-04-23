@@ -438,35 +438,35 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty)
                 {
                         if (whatEnemy <= 40)
                         {
-                            Enemy* Bat = new Enemy();
+                            Enemy* Bat = new Enemy(i,k);
 							Bat->setType(1);
                             grid[i][k].setObject(Bat);
                             break;
                         }
                         if (whatEnemy <=65 && whatEnemy >= 41)
                         {
-                            Enemy* Spider = new Enemy();
+                            Enemy* Spider = new Enemy(i,k);
                             Spider->setType(2);
                             grid[i][k].setObject(Spider);
                             break;
                         }
                         if (whatEnemy <=86 && whatEnemy >= 66)
                         {
-                            Enemy* Lizard = new Enemy();
+                            Enemy* Lizard = new Enemy(i,k);
                             Lizard->setType(3);
                             grid[i][k].setObject(Lizard);
                             break;
                         }
                         if (whatEnemy <=100 && whatEnemy >= 87)
 						{
-                            Enemy* Zombie = new Enemy();
+                            Enemy* Zombie = new Enemy(i,k);
                             Zombie->setType(4);
                             grid[i][k].setObject(Zombie);
                             break;
 						}
                         else 
 						{
-                            Enemy* Bat = new Enemy();
+                            Enemy* Bat = new Enemy(i,k);
                             Bat->setType(1);
                             grid[i][k].setObject(Bat);
 						}
