@@ -63,6 +63,7 @@ void Game::moveEnemies()
 		{
 
 			//movement pattern for Bat
+			//set new x and y coordinate accordingly
 
 		}
 
@@ -70,6 +71,7 @@ void Game::moveEnemies()
 		{
 
 			//movement pattern for Rat
+			//set new x and y coordinate accordingly
 
 		}
 
@@ -77,6 +79,7 @@ void Game::moveEnemies()
 		{
 
 			//movement pattern for Spider
+			//set new x and y coordinate accordingly
 
 		}
 
@@ -84,6 +87,7 @@ void Game::moveEnemies()
 		{
 
 			//movement pattern for Zombie
+			//set new x and y coordinate accordingly
 
 		}
 
@@ -153,6 +157,18 @@ void Game::playerAction()
 
 void Game::updateGrid()
 {
+
+	//deletes dead enemies from vector<enemy>
+
+	for (std::vector<Enemy>::size_type i = 0; i != enemies.size(); i++)
+	{
+
+		if (enemies[i].getHealth() == 0)
+		{
+			enemies.erase (enemies.begin()+i);
+		}
+
+	}
 
 
 	//moveEnemies();
