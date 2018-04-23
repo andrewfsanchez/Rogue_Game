@@ -44,6 +44,7 @@ void Game::startGame()
 
 
 	level.dungeonBuild(grid, player);
+
 	level.addEnemiesToMap(grid, difficulty, enemies, floor);
 
 	grid[17][17]=Node(x);
@@ -345,7 +346,7 @@ void Game::playerMove()
 			check = false;
 			
 			
-			Node target=grid[player->getY()][player->getX()-1];
+			Node target=grid[player->getY() - 1][player->getX()];
 			if (target.getObject() == NULL)
 			{
 				grid[player->getY()][player->getX()].deleteObject();
@@ -360,7 +361,7 @@ void Game::playerMove()
 				if (target.getObject()->getHealth() <= 0)
 				{
 					player->addExp(target.getObject()->getExperience());
-					grid[player->getX()][player->getY() - 1]=Node();
+					grid[player->getY() - 1][player->getX()]=Node();
 				}
 			}
 			else if (target.getObject()->isExit())
@@ -379,17 +380,16 @@ void Game::playerMove()
 				grid[player->getY()][player->getX()].setObject(player);
 
 			}
-			else if (target.getObject()->isWall())
+			else if (target.getObject()->getSymbol().compare(" # ") == 0)
 			{
 				check = false;
-				cout << "You hit a wall.\n";
 			}
 			
 		}
 		else if (input.compare("D") == 0 || input.compare("d") == 0)
 		{
 			check = false;
-			Node target = grid[player->getY()][player->getX() + 1];
+			Node target = grid[player->getY() + 1][player->getX()];
 			if (target.getObject() == NULL)
 			{
 			grid[player->getY()][player->getX()]= Node();
@@ -402,7 +402,7 @@ void Game::playerMove()
 				if (target.getObject()->getHealth() <= 0)
 				{
 					player->addExp(target.getObject()->getExperience());
-					grid[player->getX()][player->getY() - 1] = Node();
+					grid[player->getY() + 1][player->getX()] = Node();
 				}
 			}
 			else if (target.getObject()->isExit())
@@ -420,7 +420,7 @@ void Game::playerMove()
 				grid[player->getY()][player->getX()].setObject(player);
 
 			}
-			else if (target.getObject()->isWall())
+			else if (target.getObject()->getSymbol().compare(" # ")==0)
 			{
 				check = false;
 				cout << "You hit a wall.\n";
@@ -431,7 +431,7 @@ void Game::playerMove()
 		else if (input.compare("L") == 0 || input.compare("l") == 0)
 		{
 			check = false;
-			Node target = grid[player->getY()-1][player->getX()];
+			Node target = grid[player->getY()][player->getX()-1];
 			if (target.getObject() == NULL)
 			{
 			grid[player->getY()][player->getX()]= Node();
@@ -445,7 +445,7 @@ void Game::playerMove()
 				if (target.getObject()->getHealth() <= 0)
 				{
 					player->addExp(target.getObject()->getExperience());
-					grid[player->getX()][player->getY() - 1] = Node();
+					grid[player->getY()][player->getX() - 1] = Node();
 				}
 			}
 			else if (target.getObject()->isExit())
@@ -462,7 +462,7 @@ void Game::playerMove()
 				player->setX(player->getX() - 1);
 				grid[player->getY()][player->getX()].setObject(player);
 			}
-			else if (target.getObject()->isWall())
+			else if (target.getObject()->getSymbol().compare(" # ") == 0)
 			{
 				check = false;
 				cout << "You hit a wall.\n";
@@ -472,7 +472,7 @@ void Game::playerMove()
 		else if (input.compare("R") == 0 || input.compare("r") == 0)
 		{
 			check = false;
-			Node target = grid[player->getY() + 1][player->getX()];
+			Node target = grid[player->getY()][player->getX() + 1];
 			if (target.getObject() == NULL)
 			{
 				grid[player->getY()][player->getX()] = Node();
@@ -486,7 +486,7 @@ void Game::playerMove()
 				if (target.getObject()->getHealth() <= 0)
 				{
 					player->addExp(target.getObject()->getExperience());
-					grid[player->getX()][player->getY() - 1] = Node();
+					grid[player->getY()][player->getX() + 1] = Node();
 				}
 			}
 			else if (target.getObject()->isExit())
@@ -503,7 +503,7 @@ void Game::playerMove()
 				player->setX(player->getX() - 1);
 				grid[player->getY()][player->getX()].setObject(player);
 			}
-			else if (target.getObject()->isWall())
+			else if (target.getObject()->getSymbol().compare(" # ") == 0)
 			{
 				check = false;
 				cout << "You hit a wall.\n";
