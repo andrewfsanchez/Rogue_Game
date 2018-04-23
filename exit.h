@@ -6,11 +6,12 @@
 class Exit : public Object
 {
 public:
+	Exit();
 	bool isExit();
 	string getSymbol();
 	bool isEnemy();
 	bool isWall();
 	bool isItem();
 	bool isDoor();
-
+};
 #endif

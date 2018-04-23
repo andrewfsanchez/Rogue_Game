@@ -422,7 +422,7 @@ void Dungeon::dungeonBuild(Node grid[30][30], Object* p)                     //W
 
 }
 
-void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty)
+void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty, int floor)
 {
     for (int i = 0; i < 30; i++)
     {
