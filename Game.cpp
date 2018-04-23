@@ -190,14 +190,7 @@ void Game::moveEnemies()
 			  }
 
 		  }
-		   case 2: (17 > enemies[i].getX() && 17 < enemies[i].getY())
-		  {
-			  
-		  }
-		   case 3: (17 < enemies[i].getX() && 17 < enemies[i].getY())
-		  {
-			  
-		  }
+
 		  else 
 		  {
 
