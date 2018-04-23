@@ -32,6 +32,7 @@ Enemy::Enemy()
 	attack = 2;
 	speed = 2;
 	defense = 0;
+	type = 'c';
 }
 
 int Enemy::getHealth()

@@ -39,6 +39,7 @@ private:
 	
 	//Vector for test items
 	vector<Item> items;
+	vector<Enemy> Enemy;
 
 };
 

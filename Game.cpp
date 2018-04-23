@@ -37,6 +37,11 @@ Game::Game(int diff)
 }
 */
 
+void Game::moveEnemies()
+{
+	
+}
+
 void Game::playerAction() 
 {
 	bool check = true;
