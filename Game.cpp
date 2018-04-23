@@ -79,7 +79,7 @@ void Game::moveEnemies()
 {
 	for (std::vector<Enemy>::size_type i = 0; i != enemies.size(); i++)
 	{
-		if(enemies[i].getType() == 1)
+		if (enemies[i].getType() == 1)
 		{
 			int direction = enemies[i].getDirection();
 			Node target = grid[enemies[i].getY()][enemies[i].getX()];
@@ -87,63 +87,67 @@ void Game::moveEnemies()
 			{
 			case 0:   // up
 				target = grid[enemies[i].getY() - 1][enemies[i].getX()];
-				if (target.getObject()->isPlayer())
-				{
-					//attack player
-				}
-				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy() || target.getObject()->isExit())
-					enemies[i].reverseDirection();
-				else if (target.getObject() == NULL)
+
+				if (target.getObject() == NULL)
 				{
 					grid[enemies[i].getY()][enemies[i].getX()].deleteObject();
 					enemies[i].setY(enemies[i].getY() - 1);
 					grid[enemies[i].getY()][enemies[i].getX()].setObject(&enemies[i]);
 				}
-
-			case 1:   //right
-				target = grid[enemies[i].getY()][enemies[i].getX() + 1];
-				if (target.getObject()->isPlayer())
+				else if (target.getObject()->isPlayer())
 				{
 					//attack player
 				}
 				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy() || target.getObject()->isExit())
 					enemies[i].reverseDirection();
-				else if (target.getObject() == NULL)
+				
+
+			case 1:   //right
+				target = grid[enemies[i].getY()][enemies[i].getX() + 1];
+				if (target.getObject() == NULL)
 				{
 					grid[enemies[i].getY()][enemies[i].getX()].deleteObject();
 					enemies[i].setX(enemies[i].getX() + 1);
 					grid[enemies[i].getY()][enemies[i].getX()].setObject(&enemies[i]);
 				}
-
-			case 2:  // down
-				target = grid[enemies[i].getY() + 1][enemies[i].getX()];
-				if (target.getObject()->isPlayer())
+				else if (target.getObject()->isPlayer())
 				{
 					//attack player
 				}
 				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy() || target.getObject()->isExit())
 					enemies[i].reverseDirection();
-				else if (target.getObject() == NULL)
+				
+
+			case 2:  // down
+				target = grid[enemies[i].getY() + 1][enemies[i].getX()];
+				if (target.getObject() == NULL)
 				{
 					grid[enemies[i].getY()][enemies[i].getX()].deleteObject();
 					enemies[i].setY(enemies[i].getY() + 1);
 					grid[enemies[i].getY()][enemies[i].getX()].setObject(&enemies[i]);
 				}
-
-			case 3: // left
-				target = grid[enemies[i].getY()][enemies[i].getX() - 1];
-				if (target.getObject()->isPlayer())
+				else if (target.getObject()->isPlayer())
 				{
 					//attack player
 				}
 				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy() || target.getObject()->isExit())
 					enemies[i].reverseDirection();
-				else if (target.getObject() == NULL)
+				
+
+			case 3: // left
+				target = grid[enemies[i].getY()][enemies[i].getX() - 1];
+				if (target.getObject() == NULL)
 				{
 					grid[enemies[i].getY()][enemies[i].getX()].deleteObject();
 					enemies[i].setX(enemies[i].getX() - 1);
 					grid[enemies[i].getY()][enemies[i].getX()].setObject(&enemies[i]);
 				}
+				else if (target.getObject()->isPlayer())
+				{
+					//attack player
+				}
+				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy() || target.getObject()->isExit())
+					enemies[i].reverseDirection();	
 			}
 		}
 
@@ -151,11 +155,9 @@ void Game::moveEnemies()
 		{
 
 			
-		  if (17 > enemies[i].getX() && 17 > enemies[i].getY())
-		  
-		{
-			
-			  
+		  if (17 > enemies[i].getX() && 17 > enemies[i].getY())  
+		{		
+
 			  if (abs(17 - enemies[i].getX()) > abs(17 - enemies[i].getY()))
 			  {
 				  Node target=grid[enemies[i].getX() + 1][enemies[i].getY()];
@@ -190,10 +192,7 @@ void Game::moveEnemies()
 
 				  enemies[i].setY(enemies[i].getY() + 1);
 				  break;
-				  
-				  }
-			  }
-			  
+			  }		  
 		 }
 			
 			
@@ -240,7 +239,6 @@ void Game::moveEnemies()
 				  
 				  }
 			  }
-
 		  }
 
 		else if (17 > enemies[i].getX() && 17 < enemies[i].getY())
@@ -353,18 +351,13 @@ void Game::moveEnemies()
 		}
 
 		}
-
 		else if (enemies[i].getType() == 3)
 		{
-
 			//movement pattern for Zombie
 			//set new x and y coordinate accordingly
-
 		}
-
-	
-	}
-	
+		}
+		}
 }
 
 /*void Game::eraseEnemies()
@@ -497,12 +490,12 @@ void Game::deleteGrid()
 void Game::playerDrop()
 {
 
-	for (int i = 0; i < inventory.size(); i++)
+	for (unsigned int i = 0; i < inventory.size(); i++)
 	{
 		cout << i << ". " << inventory[i].getName()<<"\n";
 	}
 
-	int index;
+	unsigned int index;
 	do {
 		cout << "Choose the number of the item you want to drop: ";
 		cin >> index;
@@ -522,12 +515,12 @@ void Game::playerUseItem()
 {
 
 
-	for (int i = 0; i < inventory.size(); i++)
+	for (unsigned int i = 0; i < inventory.size(); i++)
 	{
 		cout << i << ". " << inventory[i].getName() << "\n";
 	}
 
-	int index;
+	unsigned int index;
 	do {
 		cout << "Choose the number of the item you want to use/equip: ";
 		cin >> index;
@@ -597,7 +590,7 @@ void Game::playerMove()
 	bool check = true;
 	while (check)
 	{
-		cout << "Where do you want to move? (U= up, D= down, R= right, L= left): ";
+		cout << "Where do you want to move? (U= up, D= down, R= right, L= left, A= ai move): ";
 		string input = "";
 		cin >> input;
 		
@@ -655,9 +648,9 @@ void Game::playerMove()
 			Node target = grid[player->getY() + 1][player->getX()];
 			if (target.getObject() == NULL)
 			{
-			grid[player->getY()][player->getX()]= Node();
-			player->setY(player->getY()+1);
-			grid[player->getY()][player->getX()].setObject(player);
+				grid[player->getY()][player->getX()]= Node();
+				player->setY(player->getY()+1);
+				grid[player->getY()][player->getX()].setObject(player);
 			}
 			else if (target.getObject()->isEnemy())
 			{
@@ -765,6 +758,8 @@ void Game::playerMove()
 			}
 			else if (target.getObject()->isItem())
 			{
+				
+
 				Item x = Item(target.getObject()->getName(), target.getObject()->getHealthMod(), target.getObject()->getDefenseMod(), target.getObject()->getAttackMod(), target.getObject()->getRegenMod(), target.getObject()->isWeapon(), target.getObject()->isArmor(), target.getObject()->isConsumable());
 				inventory.push_back(x);
 
@@ -778,6 +773,33 @@ void Game::playerMove()
 				cout << "You hit a wall.\n";
 			}
 		}
+		else if (input.compare("A") == 0 || input.compare("a") == 0)
+		{
+			check = false;
+			int lengthX = 17 - player->getX();
+			int lengthY = 17 - player->getY();
+
+			if (lengthY<=lengthX)
+			{
+				grid[player->getY()][player->getX()] = Node();
+				player->setX(player->getX() + 1);
+				grid[player->getY()][player->getX()].setObject(player);
+			}
+			else if (lengthY == 1)
+			{
+				floor++;
+				player->setX(15);
+				player->setY(15);
+				makeNextLevel();
+			}
+			else
+			{
+				grid[player->getY()][player->getX()] = Node();
+				player->setY(player->getY() + 1);
+				grid[player->getY()][player->getX()].setObject(player);
+			}
+		}
+
 		else
 			cout << "Invalid Direction. \n";
 	}
