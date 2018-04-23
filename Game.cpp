@@ -159,44 +159,198 @@ void Game::moveEnemies()
 			  if (abs(17 - enemies[i].getX()) > abs(17 - enemies[i].getY()))
 			  {
 				  Node target=grid[enemies[i].getX() + 1][enemies[i].getY()];
+				  
 				  if(target.getObject()->isPlayer())
-				  {
+				  	{
 
-					  target.getObject()->takeDamage(enemies[i].getAttack());;
+					  target.getObject()->takeDamage(enemies[i].getAttack());
 
-				  }
-				else
-				enemies[i].setX(enemies[i].getX() + 1);
-				break;
+				  	}
+					else 
+					{
+					
+					enemies[i].setX(enemies[i].getX() + 1);
+					break;
+
+					}
 			  }
 			  else if (abs(17 - enemies[i].getX()) < abs(17 - enemies[i].getY()))
 			  {
+				  Node target=grid[enemies[i].getX()][enemies[i].getY() + 1];
+				  
+				  if (target.getObject()->isPlayer())
+				  {
+
+					  target.getObject()->takeDamage(enemies[i].getAttack());
+
+				  }
+
+				  else
+				  {
+
 				  enemies[i].setY(enemies[i].getY() + 1);
 				  break;
+				  
+				  }
 			  }
 			  
 		 }
-			else if (17 < enemies[i].getX() && 17 > enemies[i].getY())
+			
+			
+		else if (17 < enemies[i].getX() && 17 > enemies[i].getY())
+		  
+		  
 		  {
 			  if (abs(17 - enemies[i].getX()) > abs(17 - enemies[i].getY()))
 			  {
-				  enemies[i].setX(enemies[i].getX() - 1);
-				  break;
+				  Node target=grid[enemies[i].getX() - 1][enemies[i].getY()];
+
+				  if (target.getObject()->isPlayer()) 
+				  {
+
+					  target.getObject()->takeDamage(enemies[i].getAttack());
+					
+				  }
+
+				  else	
+					{
+					
+					enemies[i].setX(enemies[i].getX() - 1);
+					break;
+				  
+					}
 			  }
+			  
 			  else if (abs(17 - enemies[i].getX()) < abs(17 - enemies[i].getY()))
 			  {
+				  Node target=grid[enemies[i].getX()][enemies[i].getY() + 1];
+				  
+				  if(target.getObject()->isPlayer())
+				  {
+
+					  target.getObject()->takeDamage(enemies[i].getAttack());
+
+				  }
+
+				  else
+				  {
+				 
 				  enemies[i].setY(enemies[i].getY() + 1);
 				  break;
+				  
+				  }
 			  }
 
 		  }
 
-		  else 
-		  {
+		else if (17 > enemies[i].getX() && 17 < enemies[i].getY())
+		{
+			if (abs(17 - enemies[i].getX()) > abs(17 - enemies[i].getY()))
+			
+			{
+			
+				Node target=grid[enemies[i].getX() + 1][enemies[i].getY()];
 
-			  return;
+			if(target.getObject()->isPlayer())
+			
+			{
 
-		  }
+				target.getObject()->takeDamage(enemies[i].getAttack());
+
+			}
+
+
+			else
+			{
+
+				enemies[i].setX(enemies[i].getX() + 1);
+				break;
+
+			}
+			}
+
+			else if (abs(17 - enemies[i].getX()) < abs(17 - enemies[i].getY()))
+			
+			{
+
+				Node target=grid[enemies[i].getX()][enemies[i].getY() - 1];
+
+			if(target.getObject()->isPlayer())
+			
+			{
+
+				target.getObject()->takeDamage(enemies[i].getAttack());
+
+			}
+
+			else
+			{
+
+				enemies[i].setY(enemies[i].getY() - 1);
+				break;
+
+			}
+
+			}
+
+
+
+
+		}
+		else if (17 < enemies[i].getX() && 17 < enemies[i].getY())
+		{
+			if (abs(17 - enemies[i].getX()) > abs(17 - enemies[i].getY()))
+			
+			{
+			
+				Node target=grid[enemies[i].getX() - 1][enemies[i].getY()];
+
+			if(target.getObject()->isPlayer())
+			
+			{
+
+				target.getObject()->takeDamage(enemies[i].getAttack());
+
+			}
+
+
+			else
+			{
+
+				enemies[i].setX(enemies[i].getX() - 1);
+				break;
+
+			}
+			}
+
+			else if (abs(17 - enemies[i].getX()) < abs(17 - enemies[i].getY()))
+			
+			{
+
+				Node target=grid[enemies[i].getX()][enemies[i].getY() - 1];
+
+			if(target.getObject()->isPlayer())
+			
+			{
+
+				target.getObject()->takeDamage(enemies[i].getAttack());
+
+			}
+
+			else
+			{
+
+				enemies[i].setY(enemies[i].getY() - 1);
+				break;
+
+			}
+
+			}
+
+
+
+
+		}
 
 		}
 
