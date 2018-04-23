@@ -70,7 +70,6 @@ void Game::moveEnemies()
 		else if (enemies[i].getType() == 2)
 		{
 
-<<<<<<< HEAD
 			//movement pattern for Lizard
 
 		}
@@ -361,6 +360,11 @@ void Game::playerMove()
 				grid[player->getY()][player->getX()].setObject(player);
 
 			}
+			else if (target.getObject()->isWall())
+			{
+				check = false;
+				cout << "You hit a wall.\n";
+			}
 			
 		}
 		else if (input.compare("D") == 0 || input.compare("d") == 0)
@@ -396,6 +400,11 @@ void Game::playerMove()
 				player->setY(player->getY() + 1);
 				grid[player->getY()][player->getX()].setObject(player);
 
+			}
+			else if (target.getObject()->isWall())
+			{
+				check = false;
+				cout << "You hit a wall.\n";
 			}
 			
 
@@ -434,6 +443,11 @@ void Game::playerMove()
 				player->setX(player->getX() - 1);
 				grid[player->getY()][player->getX()].setObject(player);
 			}
+			else if (target.getObject()->isWall())
+			{
+				check = false;
+				cout << "You hit a wall.\n";
+			}
 
 		}
 		else if (input.compare("R") == 0 || input.compare("r") == 0)
@@ -469,6 +483,11 @@ void Game::playerMove()
 				grid[player->getY()][player->getX()] = Node();
 				player->setX(player->getX() - 1);
 				grid[player->getY()][player->getX()].setObject(player);
+			}
+			else if (target.getObject()->isWall())
+			{
+				check = false;
+				cout << "You hit a wall.\n";
 			}
 		}
 		else
