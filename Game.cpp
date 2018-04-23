@@ -8,7 +8,7 @@ Game::Game(int diff)
 	{
 		for (int k = 0; k < 30; k++)
 			{
-				grid[i][k] = Node();
+			grid[i][k] = Node();
 			}
 	}
 	difficulty = diff;
@@ -40,7 +40,13 @@ Game::Game(int diff)
 
 void Game::startGame()
 {
+	Object* x = new Exit();
+
+
 	level.dungeonBuild(grid, player);
+	level.addEnemiesToMap(grid, difficulty, floor);
+
+	grid[17][17]=Node(x);
 	printGrid();
 	playerAction();
 }
@@ -358,6 +364,7 @@ void Game::playerMove()
 			}
 			else if (target.getObject()->isItem())
 			{
+				cout << "Found an item.\n";
 				Item x = Item(target.getObject()->getName(), target.getObject()->getHealthMod(), target.getObject()->getDefenseMod(), target.getObject()->getAttackMod(), target.getObject()->getRegenMod(), target.getObject()->isWeapon(), target.getObject()->isArmor(), target.getObject()->isConsumable());
 				inventory.push_back(x);
 

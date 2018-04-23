@@ -1,7 +1,6 @@
 #include "Object.h"
 #include <iostream>
 
-
 #ifndef NODE
 #define NODE
 
