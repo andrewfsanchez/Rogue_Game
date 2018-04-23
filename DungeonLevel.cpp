@@ -461,6 +461,16 @@ void Dungeon::dungeonBuild(Node grid[30][30], Object* p)                     //W
     grid[16][17].setObject(NULL);
 }
 
+void Dungeon::addOneItem(int length, int width, Node grid[30][30], vector<item> itemList)
+{
+    int item = randomNumberGenerator(itemList.size(),0);
+    int itemY = randomNumberGenerator(15+(length/2),15-(length/2));
+    int itemX = randomNumberGenerator(15+(width/2),15-(width/2));
+
+
+    grid[itemY][itemX].setObject();
+}
+
 
 void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty, vector<Enemy> &enemies, int floor)
 {
