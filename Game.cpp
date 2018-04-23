@@ -90,16 +90,30 @@ void Game::moveEnemies()
 		else if (enemies[i].getType() == 2)
 		{
 
-			//movement pattern for Spider
+			//movement pattern for Rat
 
 		}
 
 		else if (enemies[i].getType() == 3)
 		{
 
+			//movement pattern for Spider
+			//set new x and y coordinate accordingly
+
+		}
+
+		else if (enemies[i].getType() == 4)
+		{
+
 			//movement pattern for Zombie
 			//set new x and y coordinate accordingly
 
+		}
+		else if (enemies[i].getType() == 5)
+		{
+
+			//movement pattern for Zombie
+			
 		}
 
 	}
@@ -592,7 +606,7 @@ void Game::gameOver()
 
 			if (difficulty == 1)
 				cout << "Easy Difficulty. Enter anything to continue: ";
-			else if (difficulty == 1)
+			else if (difficulty == 2)
 				cout << "Normal Difficulty. Enter anything to continue: ";
 			else
 				cout << "Hard Difficulty. Enter anything to continue: ";
