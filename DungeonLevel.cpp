@@ -125,13 +125,13 @@ bool Dungeon::isValidDirection(int direction, int width, int length, int row, in
 		for (int i = 0; i <= length; i++)
 		{
 			if (row - length >= 0) {
-				if (grid[row - i][col].getObject() == wall)
+				if (grid[row - i][col].getObject()->getSymbol().compare(" # "))
 				{
 					for (int k = 0; k <= width; k++)
 					{
 						if (col + width <= 30)
 						{
-							if (grid[row - i][col + k].getObject() == wall)
+							if (grid[row - i][col + k].getObject()->getSymbol().compare(" # "))
 							{
 								continue;
 							}
@@ -156,13 +156,13 @@ bool Dungeon::isValidDirection(int direction, int width, int length, int row, in
 		for (int i = 0; i <= length; i++)
 		{
 			if (row + length <= 30) {
-				if (grid[row + i][col].getObject() == wall)
+				if (grid[row + i][col].getObject()->getSymbol().compare(" # "))
 				{
 					for (int k = 0; k <= width; k++)
 					{
 						if (col + width <= 30)
 						{
-							if (grid[row + i][col + k].getObject() == wall)
+							if (grid[row + i][col + k].getObject()->getSymbol().compare(" # "))
 							{
 								continue;
 							}
@@ -187,13 +187,13 @@ bool Dungeon::isValidDirection(int direction, int width, int length, int row, in
 		for (int i = 0; i <= width; i++)
 		{
 			if (col - width >= 0) {
-				if (grid[row][col - i].getObject() == wall)
+				if (grid[row][col - i].getObject()->getSymbol().compare(" # "))
 				{
 					for (int k = 0; k <= length; k++)
 					{
 						if (length + row <= 30)
 						{
-							if (grid[row + i][col - k].getObject() == wall)
+							if (grid[row + i][col - k].getObject()->getSymbol().compare(" # "))
 							{
 								continue;
 							}
@@ -464,7 +464,7 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty)
                             grid[i][k].setObject(Zombie);
                             break;
 						}
-                        else 
+                        else
 						{
                             Enemy* Bat = new Enemy(i,k);
                             Bat->setType(1);
