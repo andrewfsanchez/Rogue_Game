@@ -12,8 +12,8 @@ Player::Player()
 	level = 1;
 	turnsToRegen = 2;
 
-	x = 0;
-	y = 0;
+	x = 15;
+	y = 15;
 
 	currentExp = 0;
 	levelUpExp = 15;

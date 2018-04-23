@@ -23,12 +23,12 @@ public:
 	int numRoomsGenerator();
 	int randDirectionGenerator();
     void makeRoom(int numRooms, int width, int length, Node grid[30][30]);
-	void makeStartRoom(int width, int length, Node grid[30][30]);
+	void makeStartRoom(int width, int length, Node grid[30][30], Object*);
 	void printRoom(int direction, int width, int length, int row, int col, Node grid[30][30]);
 	bool isValidDirection(int direction, int width, int length, int row, int col, Node grid[30][30]);
 	bool isEdge(Node grid[30][30], int i, int k);
 	bool roomMadeHere();
-	void dungeonBuild(Node grid[30][30]);
+	void dungeonBuild(Node grid[30][30], Object*);
 
 private:
 

@@ -40,8 +40,9 @@ Game::Game(int diff)
 
 void Game::startGame()
 {
-	level.dungeonBuild(grid);
+	level.dungeonBuild(grid, player);
 	printGrid();
+	playerAction();
 }
 
 
@@ -145,6 +146,7 @@ void Game::updateGrid()
 	else
 	{
 		player->regeneration();
+		printGrid();
 		playerAction();
 	}
 
@@ -230,7 +232,11 @@ void Game::playerUseItem()
 	else if (x.isArmor())
 		setArmor(x, player);
 	else if (x.isConsumable())
+	{
 		useItem(x, player);
+		inventory.erase(inventory.begin() + index);
+	}
+
 
 	updateGrid();
 }
@@ -242,6 +248,8 @@ void Game::useItem(Item x, Object* p)
 	if (p->getHealth() > p->getMaxHealth())
 		p->setHealth( p->getMaxHealth());
 	p->setRegen( p->getRegen() + x.getRegenMod());
+
+
 }
 
 void Game::setWeapon(Item x, Object* p)
@@ -278,6 +286,7 @@ void Game::playerMove()
 	{
 		cout << "Where do you want to move? (U= up, D= down, R= right, L= left): ";
 		string input = "";
+		cin >> input;
 		if (input.compare("U") == 0 || input.compare("u") == 0)
 		{
 			check = false;

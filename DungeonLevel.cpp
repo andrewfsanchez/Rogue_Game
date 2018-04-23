@@ -36,15 +36,17 @@ int Dungeon::randDirectionGenerator()
 }
 
 
-void Dungeon::makeStartRoom(int width, int length, Node grid[30][30])
+void Dungeon::makeStartRoom(int width, int length, Node grid[30][30], Object* p)
 {
 	for (int i = 0; i <= width; i++)                                //Because the grid should be filled with walls at this point this starting piece will go to the middle
 	{                                                               //of the 30 by 30 grid and begin filling in the first room with the random length and width given
 		for (int k = 0; k <= length; k++)                           //By creating a static starting position it will be easier to create logic to randomly add
 		{                                                           //rooms and corridors in different given directions.
-			grid[i + 15][k + 15] = Node();
+			grid[15-(width/2)+i ][15 - (length / 2)+k] = Node();
 		}
 	}
+
+	grid[15][15].setObject(p);
 }
 
 void Dungeon::printRoom(int direction, int width, int length, int row, int col, Node grid[30][30])
@@ -297,6 +299,8 @@ bool Dungeon::roomMadeHere()
 	{
 		return false;
 	}
+
+	
 }
 
 void Dungeon::makeRoom(int numRooms, int width, int length, Node grid[30][30])
@@ -304,11 +308,11 @@ void Dungeon::makeRoom(int numRooms, int width, int length, Node grid[30][30])
 	                                                                                  //This next piece of the method chooses a random direction, places a corridor of random length,
 	                                                                                  //then attempts to put a room at the end of that corridor on a random direction.
 
-	for (int r = 0; r <= numRooms;r++)
+	for (int r = 0; r < numRooms;r++)
 	{
-		for (int i = 0; i <= 30; i++)
+		for (int i = 0; i < 30; i++)
 		{
-			for (int k = 0; k <= 30; k++)
+			for (int k = 0; k < 30; k++)
 			{
 				if (isEdge(grid, i, k))
 				{
@@ -381,16 +385,17 @@ void Dungeon::makeRoom(int numRooms, int width, int length, Node grid[30][30])
 		}
 	}
 
-	for (int i = 0; i < 30; i++)
+	/* for (int i = 0; i < 30; i++)
 	{
 		for (int k = 0; k < 30; k++)                               //todo this is where I left off
 		{
 			grid[i][k] = Node();                                   //todo look into this error later
 		}
-	}
+	}*/
+
 }
 
-void Dungeon::dungeonBuild(Node grid[30][30])                     //We pass in the original grid created which is filled with Nodes that point to nothing. Here we will begin
+void Dungeon::dungeonBuild(Node grid[30][30], Object* p)                     //We pass in the original grid created which is filled with Nodes that point to nothing. Here we will begin
 {                                                              //to populate the grid with rooms. I start by filling it with walls because it is easier to delete walls
 															   //delete walls to build a room and it will help with the algorithm later used to place more rooms.
 
@@ -416,13 +421,11 @@ void Dungeon::dungeonBuild(Node grid[30][30])                     //We pass in t
 
 	}
 
-	makeStartRoom(roomWidth[0], roomLength[0], grid);           //First room is made so others can build off it. The center is always chosen but size is random
-
+	makeStartRoom(roomWidth[0], roomLength[0], grid, p);           //First room is made so others can build off it. The center is always chosen but size is random
 	numRooms = numRooms - 1;
 
 	int i = 1;                                                //starting from 1 because the 0th room has already been made.
     makeRoom(numRooms, roomWidth[i], roomLength[i], grid);
-
-
+	
 
 }
