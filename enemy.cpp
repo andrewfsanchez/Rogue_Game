@@ -30,7 +30,6 @@ Enemy::Enemy()
 	//Test values again
 	health = 15;
 	attack = 2;
-	speed = 2;
 	defense = 0;
 	type = 0;
 }
@@ -55,10 +54,6 @@ int Enemy::getType()
 	return type;
 }
 
-int Enemy::getSpeed()
-{
-	return speed;
-}
 
 int Enemy::getAttack()
 {

@@ -15,7 +15,6 @@ class Enemy: public Object
 		int getHealth();
 		void setHealth(int x);
 		void setType(int x);
-		int getSpeed();
 		int getAttack();
 		int getDefense();
 		int getType();
@@ -34,7 +33,6 @@ class Enemy: public Object
 		int health;
 		int attack;
 		int defense;
-		int speed;
 		int item;
 		int type;
 };
