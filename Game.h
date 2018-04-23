@@ -35,6 +35,7 @@ private:
 	void playerDrop();
 	void playerUseItem();
 	void moveEnemies();
+	void generateEnemies();
 
 	Item weapon;
 	Item armor;
