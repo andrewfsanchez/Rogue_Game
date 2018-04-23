@@ -39,6 +39,7 @@ Enemy::Enemy()
 	spiderExp = 9;
 	lizardExp = 11;
 	zombieExp = 15;
+	kingExp = 0; //must make a method that adds all rats consumed for exp
 }
 
 int Enemy::getHealth()
@@ -114,6 +115,14 @@ string Enemy::getSymbol()
 	{
 
 		return " Z ";      //Zombie
+	
+	}
+
+	else if (type == 5)
+	{
+
+		return " K ";      //Rat King
+
 	}
 	
 }

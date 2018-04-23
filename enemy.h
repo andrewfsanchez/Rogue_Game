@@ -44,6 +44,7 @@ class Enemy: public Object
 		int spiderExp;
 		int lizardExp;
 		int zombieExp;
+		int kingExp;
 };
 
 #endif
