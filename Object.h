@@ -78,6 +78,10 @@ public:
 	{
 		return;
 	}
+	virtual string getType()
+	{
+		return "";
+	}
 
 
 

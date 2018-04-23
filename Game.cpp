@@ -261,8 +261,7 @@ void Game::playerMove()
 			{
 				grid[player->getX()][player->getY()]= Node();
 				player->setY(player->getY()-1);
-				Object* tempPlayer = static_cast<Object*>(player);
-				grid[player->getY()][player->getX()].setObject(tempPlayer);
+				grid[player->getY()][player->getX()].setObject(player);
 				target.deleteObject();
 			}
 			else if(target.getObject()->isEnemy())
@@ -274,40 +273,39 @@ void Game::playerMove()
 		else if (input.compare("D") == 0 || input.compare("d") == 0)
 		{
 			check = false;
-			//Node target= player.setY(player.getY()+1);
-			/*if (target.getObject() == NULL)
+			Node target = grid[player->getX()][player->getY() + 1];
+			if (target.getObject() == NULL)
 			{
-			grid[player.getX()][player.getY()]= Node();
-			player.setY(player.getY()+1);
-			grid[player.getY()][player.getX()].setObject(player);
+			grid[player->getX()][player->getY()]= Node();
+			player->setY(player->getY()+1);
+			grid[player->getY()][player->getX()].setObject(player);
 			}
 			target.deleteObject();
-			*/
+			
 		}
 		else if (input.compare("L") == 0 || input.compare("l") == 0)
 		{
 			check = false;
-			//Node target= player.setY(player.getX()-1);
-			/*if (target.getObject() == NULL)
+			Node target = grid[player->getX()-1][player->getY()];
+			if (target.getObject() == NULL)
 			{
-			grid[player.getX()][player.getY()]= Node();
-			player.setY(player.getX()-1);
-			grid[player.getY()][player.getX()].setObject(player);
+			grid[player->getX()][player->getY()]= Node();
+			player->setY(player->getX()-1);
+			grid[player->getY()][player->getX()].setObject(player);
 			target.deleteObject();
-			}*/
+			}
 		}
 		else if (input.compare("R") == 0 || input.compare("r") == 0)
 		{
 			check = false;
-			//Node target= player.setY(player.getX() + 1);
-
-			/*if (target.getObject() == NULL)
+			Node target = grid[player->getX() + 1][player->getY()];
+			if (target.getObject() == NULL)
 			{
-			grid[player.getX()][player.getY()]= Node();
-			player.setY(player.getX()+1);
-			grid[player.getY()][player.getX()].setObject(player);
-			target.deleteObject();
-			}*/
+				grid[player->getX()][player->getY()] = Node();
+				player->setY(player->getX() - 1);
+				grid[player->getY()][player->getX()].setObject(player);
+				target.deleteObject();
+			}
 		}
 		else
 			cout << "Invalid Direction. \n";

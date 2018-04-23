@@ -2,7 +2,8 @@
 #include "player.cpp"
 #include "enemy.cpp"
 #include "Object.h"
-#include "item.h"
+#include "item.cpp"
+#include "DungeonLevel.cpp"
 #include <iostream>
 #include <vector>
 
