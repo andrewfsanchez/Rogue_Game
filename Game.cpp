@@ -150,8 +150,54 @@ void Game::moveEnemies()
 
 		else if (enemies[i].getType() == 2)
 		{
-			//movement pattern for Spider
-			//set new x and y coordinate accordingly
+
+			
+		  if (17 > enemies[i].getX() && 17 > enemies[i].getY())
+		  
+		{
+			
+			  
+			  if (abs(17 - enemies[i].getX()) > abs(17 - enemies[i].getY()))
+			  {
+				  Node target=grid[enemies[i].getX() + 1][enemies[i].getY()];
+				  if(target.getObject()->isPlayer())
+				  {
+
+					  target.getObject()->takeDamage(enemies[i].getAttack());;
+
+				  }
+				else
+				enemies[i].setX(enemies[i].getX() + 1);
+				break;
+			  }
+			  else if (abs(17 - enemies[i].getX()) < abs(17 - enemies[i].getY()))
+			  {
+				  enemies[i].setY(enemies[i].getY() + 1);
+				  break;
+			  }
+			  
+		 }
+			else if (17 < enemies[i].getX() && 17 > enemies[i].getY())
+		  {
+			  if (abs(17 - enemies[i].getX()) > abs(17 - enemies[i].getY()))
+			  {
+				  enemies[i].setX(enemies[i].getX() - 1);
+				  break;
+			  }
+			  else if (abs(17 - enemies[i].getX()) < abs(17 - enemies[i].getY()))
+			  {
+				  enemies[i].setY(enemies[i].getY() + 1);
+				  break;
+			  }
+
+		  }
+
+		  else 
+		  {
+
+			  return;
+
+		  }
 
 		}
 
@@ -298,12 +344,12 @@ void Game::deleteGrid()
 void Game::playerDrop()
 {
 
-	for (int i = 0; i < inventory.size(); i++)
+	for (unsigned int i = 0; i < inventory.size(); i++)
 	{
 		cout << i << ". " << inventory[i].getName()<<"\n";
 	}
 
-	int index;
+	unsigned int index;
 	do {
 		cout << "Choose the number of the item you want to drop: ";
 		cin >> index;
@@ -323,12 +369,12 @@ void Game::playerUseItem()
 {
 
 
-	for (int i = 0; i < inventory.size(); i++)
+	for (unsigned int i = 0; i < inventory.size(); i++)
 	{
 		cout << i << ". " << inventory[i].getName() << "\n";
 	}
 
-	int index;
+	unsigned int index;
 	do {
 		cout << "Choose the number of the item you want to use/equip: ";
 		cin >> index;
