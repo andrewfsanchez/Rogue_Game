@@ -622,9 +622,23 @@ void Game::playerMove()
 
 			if (lengthY<=lengthX)
 			{
-				grid[player->getY()][player->getX()] = Node();
-				player->setX(player->getX() + 1);
-				grid[player->getY()][player->getX()].setObject(player);
+				if (grid[player->getY()][player->getX()+1].getObject()->isEnemy())
+				{
+					Node target = grid[player->getY()][player->getX() + 1];
+
+					target.getObject()->takeDamage(player->getAttack());
+					if (target.getObject()->getHealth() <= 0)
+					{
+						player->addExp(target.getObject()->getExperience());
+						grid[player->getY()][player->getX() + 1] = Node();
+					}
+				}
+				else
+				{
+					grid[player->getY()][player->getX()] = Node();
+					player->setX(player->getX() + 1);
+					grid[player->getY()][player->getX()].setObject(player);
+				}
 			}
 			else if (lengthY == 1)
 			{
@@ -635,9 +649,26 @@ void Game::playerMove()
 			}
 			else
 			{
-				grid[player->getY()][player->getX()] = Node();
-				player->setY(player->getY() + 1);
-				grid[player->getY()][player->getX()].setObject(player);
+				if (lengthY <= lengthX)
+				{
+					if (grid[player->getY() + 1][player->getX()].getObject()->isEnemy())
+					{
+						Node target = grid[player->getY()][player->getX() + 1];
+
+						target.getObject()->takeDamage(player->getAttack());
+						if (target.getObject()->getHealth() <= 0)
+						{
+							player->addExp(target.getObject()->getExperience());
+							grid[player->getY()][player->getX() + 1] = Node();
+						}
+					}
+					else
+					{
+						grid[player->getY()][player->getX()] = Node();
+						player->setY(player->getY() + 1);
+						grid[player->getY()][player->getX()].setObject(player);
+					}
+				}
 			}
 		}
 
