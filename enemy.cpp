@@ -29,8 +29,8 @@ Enemy::Enemy()
 {
 	//Test values again
 	health = 15;
-	attack = 2;
-	speed = 2;
+	attack = 0;
+	speed = 0;
 	defense = 0;
 	type = 0;
 }
