@@ -68,7 +68,7 @@ void Game::moveEnemies()
 		if(enemies[i].getType() == 1)
 		{
 
-			//movement pattern for Spider
+			//movement pattern for Bat
 
 
 		}
@@ -76,7 +76,7 @@ void Game::moveEnemies()
 		else if (enemies[i].getType() == 2)
 		{
 
-			//movement pattern for Lizard
+			//movement pattern for Rat
 
 		}
 
@@ -94,6 +94,12 @@ void Game::moveEnemies()
 			//movement pattern for Zombie
 			//set new x and y coordinate accordingly
 
+		}
+		else if (enemies[i].getType() == 5)
+		{
+
+			//movement pattern for Zombie
+			
 		}
 
 	}
