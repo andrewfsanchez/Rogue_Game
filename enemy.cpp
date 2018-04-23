@@ -145,7 +145,7 @@ void Enemy::setExp(int x)
 
 }
 
-int Enemy::getExp()
+int Enemy::getExperience()
 {
 	
 	return exp;
