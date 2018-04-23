@@ -93,7 +93,7 @@ int Enemy::getDefense()
 {
 //Just a test, actual formula can be added later.
 int playerDef = target.getDefense();
-int damage = attack - playerDef;
+int damage = (attack*10)/(playerDef + 10);
 target.takeDamage(damage);
 } */
 
