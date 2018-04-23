@@ -8,7 +8,7 @@ Game::Game(int diff)
 	{
 		for (int k = 0; k < 30; k++)
 			{
-				grid[i][k] = Node();
+			grid[i][k] = Node();
 			}
 	}
 	difficulty = diff;
@@ -40,7 +40,13 @@ Game::Game(int diff)
 
 void Game::startGame()
 {
+	Object* x = new Exit();
+
+
 	level.dungeonBuild(grid, player);
+	level.addEnemiesToMap(grid, difficulty, enemies, floor);
+
+	grid[17][17]=Node(x);
 	printGrid();
 	playerAction();
 }
@@ -96,7 +102,12 @@ void Game::moveEnemies()
 
 /*void Game::eraseEnemies()
 {
-	for (int i = enemies.size() - 1; i >= 0; i--) enemies.erase(enemies.begin() + i);
+
+	for (int i = enemies.size() - 1; i >= 0; i--)
+	{
+	delete &enemies[i];                    // Unsure if this line is necessary based on how we implemented the Vector
+	enemies.erase(enemies.begin() + i);
+	}
 }*/
 
 void Game::playerAction() 
@@ -164,6 +175,7 @@ void Game::updateGrid()
 
 		if (enemies[i].getHealth() == 0)
 		{
+			// delete &enemies[i];  Unsure if this line is necessary based on how we implemented the Vector
 			enemies.erase (enemies.begin()+i);
 		}
 
@@ -352,6 +364,7 @@ void Game::playerMove()
 			}
 			else if (target.getObject()->isItem())
 			{
+				cout << "Found an item.\n";
 				Item x = Item(target.getObject()->getName(), target.getObject()->getHealthMod(), target.getObject()->getDefenseMod(), target.getObject()->getAttackMod(), target.getObject()->getRegenMod(), target.getObject()->isWeapon(), target.getObject()->isArmor(), target.getObject()->isConsumable());
 				inventory.push_back(x);
 

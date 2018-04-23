@@ -7,6 +7,7 @@
 #include <random>
 #include <vector>
 #include <iostream>
+#include "exit.cpp"
 #include "player.cpp"
 #include "enemy.cpp"
 #include "item.cpp"
@@ -29,7 +30,8 @@ public:
 	bool isEdge(Node grid[30][30], int i, int k);
 	bool roomMadeHere();
 	void dungeonBuild(Node grid[30][30], Object*);
-	void addEnemiesToMap(Node grid[30][30], int difficulty, vector<Enemy>&);
+	void addEnemiesToMap(Node grid[30][30], int difficulty, vector<Enemy>&, int floor);
+
 	
 
 private:
