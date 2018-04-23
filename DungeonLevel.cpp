@@ -203,7 +203,10 @@ void Dungeon::addOneItem(int length, int width, Node grid[30][30])
     int itemX = randomNumberGenerator(15+(width/2),15-(width/2));
 
 
-    grid[itemY][itemX].setObject(potion);
+    if(item == 1)
+    {
+        grid[itemY][itemX].setObject(potion);
+    }
 }
 
 
