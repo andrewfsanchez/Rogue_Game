@@ -113,7 +113,7 @@ void Dungeon::dungeonBuild(Node grid[30][30], Object* p)                     //W
 	makeStartRoom(roomWidth[0], roomLength[0], grid, p);           //First room is made so others can build off it. The center is always chosen but size is random
 	numRooms = numRooms - 1;
 
-	int i = 0;                                                //starting from 1 because the 0th room has already been made.
+	                                                              //starting from 1 because the 0th room has already been made.
    // makeRoom(numRooms, roomWidth[i], roomLength[i], grid);
     int numWalls = randWallGenerator();
     checkerify(grid,numWalls,roomWidth[0],roomLength[0]);
