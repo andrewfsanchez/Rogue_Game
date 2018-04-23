@@ -33,6 +33,7 @@ public:
 	void dungeonBuild(Node grid[30][30], Object*);
 	void addEnemiesToMap(Node grid[30][30], int difficulty, vector<Enemy>&, int floor);
 	void checkerify(Node grid[30][30], int numWalls, int width, int length);
+	void addOneItem(int length, int width, Node grid[30][30], vector<item> itemList);
 
 	
 
