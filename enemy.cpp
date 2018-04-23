@@ -99,7 +99,7 @@ target.takeDamage(damage);
 
 void Enemy::takeDamage(int damage)
 {
-	health = health - damage;
+	health = health - (damage*10)/(10 + defense);
 }
 
 string Enemy::getSymbol()
