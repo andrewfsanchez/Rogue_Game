@@ -184,21 +184,26 @@ void Dungeon::dungeonBuild(Node grid[30][30], Object* p)                     //W
     int numWalls = randWallGenerator();
     checkerify(grid,numWalls,roomWidth[0],roomLength[0]);
 
+    addOneItem(roomLength[0],roomWidth[0],grid);
+
     grid[15][15].setObject(p);
     grid[15][16].setObject(NULL);
     grid[16][16].setObject(NULL);
     grid[16][17].setObject(NULL);
 }
 
-void Dungeon::addOneItem(int length, int width, Node grid[30][30], vector<item> itemList)
+void Dungeon::addOneItem(int length, int width, Node grid[30][30])
 {
-    int item = randomNumberGenerator(itemList.size(),0);
-    
+    int item = randomNumberGenerator(0,1);
+
+    Item potion = Item("Potion", 5,  0, 0, 0, false, false,true);
+
+
     int itemY = randomNumberGenerator(15+(length/2),15-(length/2));
     int itemX = randomNumberGenerator(15+(width/2),15-(width/2));
 
 
-    grid[itemY][itemX].setObject();
+    grid[itemY][itemX].setObject(potion);
 }
 
 
