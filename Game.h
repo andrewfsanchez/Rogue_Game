@@ -1,4 +1,4 @@
-#include "DungeonLevel.cpp"
+#include "DungeonLevel.h"
 #include <iostream>
 #include <vector>
 
@@ -30,6 +30,7 @@ private:
 	void playerDrop();
 	void playerUseItem();
 	void moveEnemies();
+	void eraseEnemies();
 
 	Item weapon;
 	Item armor;
@@ -41,9 +42,9 @@ private:
 	int difficulty;
 	int floor;
 	
-	//Vector for test items
-	vector<Item> items;
-	vector<Enemy> Enemy;
+
+	vector<Item> items; 	//Vector for test items
+	vector<Enemy> enemies;
 	vector<Item> inventory;
 
 };
