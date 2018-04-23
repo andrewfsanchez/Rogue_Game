@@ -88,9 +88,9 @@ int Enemy::getDefense()
 	return defense;
 }
 
-void Enemy::takeDamage(int damage)
+void Enemy::takeDamage(int playerAtk)
 {
-	health = health - (damage*10)/(10 + defense);
+	health = health - (playerAtk*10)/(10 + defense);
 }
 
 string Enemy::getSymbol()
