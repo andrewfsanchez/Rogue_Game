@@ -1,4 +1,4 @@
-#include "DungeonLevel.h"
+#include "DungeonLevel.cpp"
 
 #include <iostream>
 #include <vector>
@@ -15,6 +15,7 @@ public:
 	void playerAction();
 	void gameOver();
 	void startGame();
+	void makeNextLevel();
 
 	void useItem(Item, Object*);
 	void setWeapon(Item w, Object*);

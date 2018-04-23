@@ -42,6 +42,7 @@ void Game::startGame()
 {
 	Object* x = new Exit();
 
+	clearGrid();
 
 	level.dungeonBuild(grid, player);
 
@@ -50,6 +51,19 @@ void Game::startGame()
 	grid[17][17]=Node(x);
 	printGrid();
 	playerAction();
+}
+
+void Game::makeNextLevel()
+{
+	Object* x = new Exit();
+
+	clearGrid();
+
+	level.dungeonBuild(grid, player);
+
+	level.addEnemiesToMap(grid, difficulty, enemies, floor);
+
+	grid[17][17] = Node(x);
 }
 
 
@@ -164,7 +178,7 @@ void Game::playerAction()
 			if (a.compare("Y")==0||a.compare("y")==0)
 			{
 				check = false;
-				cout << "Successfully quit game.";
+				cout << "Successfully quit game.\n";
 			}
 		}
 		else
@@ -367,7 +381,9 @@ void Game::playerMove()
 			else if (target.getObject()->isExit())
 			{
 				floor++;
-				startGame();
+				player->setX(15);
+				player->setY(15);
+				makeNextLevel();
 			}
 			else if (target.getObject()->isItem())
 			{
@@ -408,7 +424,9 @@ void Game::playerMove()
 			else if (target.getObject()->isExit())
 			{
 				floor++;
-				startGame();
+				player->setX(15);
+				player->setY(15);
+				makeNextLevel();
 			}
 			else if (target.getObject()->isItem())
 			{
@@ -451,7 +469,9 @@ void Game::playerMove()
 			else if (target.getObject()->isExit())
 			{
 				floor++;
-				startGame();
+				player->setX(15);
+				player->setY(15);
+				makeNextLevel();
 			}
 			else if (target.getObject()->isItem())
 			{
@@ -492,7 +512,9 @@ void Game::playerMove()
 			else if (target.getObject()->isExit())
 			{
 				floor++;
-				startGame();
+				player->setX(15);
+				player->setY(15);
+				makeNextLevel();
 			}
 			else if (target.getObject()->isItem())
 			{
