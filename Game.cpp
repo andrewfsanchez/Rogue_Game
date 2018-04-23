@@ -58,7 +58,7 @@ void Game::startGame()
 void Game::moveEnemies()
 {
 	for (std::vector<Enemy>::iterator it = enemies.begin(); it != enemies.end(); ++it)
-	{
+	{if
 
 	}
 	

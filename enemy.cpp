@@ -33,6 +33,8 @@ Enemy::Enemy()
 	speed = 0;
 	defense = 0;
 	type = 0;
+	int x;
+	int y;
 }
 
 int Enemy::getHealth()
@@ -70,6 +72,23 @@ int Enemy::getDefense()
 	return defense;
 }
 
+int Enemy::getX()
+{
+	return x;
+}
+void Enemy::setX(int x)
+{
+	x = x;
+}
+int Enemy::getY()
+{
+	return y;
+}
+void Enemy::setY(int y)
+{
+	y = y;
+}
+
 
 /*void Enemy::Attack(Player& target)
 {
@@ -103,6 +122,10 @@ string Enemy::getSymbol()
 
 		return " L ";     //Lizard
 		
+	}
+	else if (type == 4)
+	{
+		return " Z ";     //Zombie
 	}
 	
 }

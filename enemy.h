@@ -19,6 +19,10 @@ class Enemy: public Object
 		int getAttack();
 		int getDefense();
 		int getType();
+		int getX();
+		void setX(int x);
+		int getY();
+		void setY(int y);
 		
 		//void Attack(Player& target);
 		void takeDamage(int damage);
@@ -38,6 +42,8 @@ class Enemy: public Object
 		int speed;
 		int item;
 		int type;
+		int x;
+		int y;
 };
 
 #endif
