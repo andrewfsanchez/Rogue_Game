@@ -62,14 +62,14 @@ void Game::moveEnemies()
 		if(enemies[i].getType() == 1)
 		{
 
-			//movement pattern for Spider
+			//movement pattern for Bat
 
 		}
 
 		else if (enemies[i].getType() == 2)
 		{
 
-			//movement pattern for Lizard
+			//movement pattern for Rat
 
 		}
 
