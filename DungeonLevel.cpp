@@ -64,6 +64,14 @@ void Dungeon::checkerify(Node grid[30][30],int numWalls, int width, int length)
 
 void Dungeon::makeStartRoom(int width, int length, Node grid[30][30], Object* p)
 {
+    if (length<5)
+    {
+        length =5;
+    }
+    if (width<5)
+    {
+        width=5;
+    }
 	for (int i = 0; i <= length; i++)                                //Because the grid should be filled with walls at this point this starting piece will go to the middle
 	{                                                               //of the 30 by 30 grid and begin filling in the first room with the random length and width given
 		for (int k = 0; k <= width; k++)                           //By creating a static starting position it will be easier to create logic to randomly add
@@ -445,9 +453,11 @@ void Dungeon::dungeonBuild(Node grid[30][30], Object* p)                     //W
 	int i = 0;                                                //starting from 1 because the 0th room has already been made.
    // makeRoom(numRooms, roomWidth[i], roomLength[i], grid);
     int numWalls = randWallGenerator();
-    checkerify(grid,numWalls,width,length);
+    checkerify(grid,numWalls,roomWidth[0],length[0]);
 
-
+    grid[15][16].setObject(NULL);
+    grid[16][16].setObject(NULL);
+    grid[16][17].setObject(NULL);
 }
 
 
@@ -465,7 +475,7 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty, vector<Enemy> &
                 if (chance >= 99-difficulty)                    //This assumes difficult is something like 3 for hard. 2 for med. 1 for easy
                 {
                     int direction = randomNumberGenerator(3,0);
-                    
+
                         if (whatEnemy <= 40)
                         {
                             Enemy* Bat = new Enemy(i,k,direction);
