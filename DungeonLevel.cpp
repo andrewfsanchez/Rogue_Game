@@ -9,10 +9,7 @@
 
 int Dungeon::randomNumberGenerator(int max, int min)                        //This generator is used to give us a random number so we can keep up constant new levels
 {
-
-	std::default_random_engine generator;
-	std::uniform_int_distribution<int> distribution(min, max);
-	return distribution(generator);
+	return rand() % max + min;
 };
 
 int Dungeon::randRoomWidth(int numRooms)                                  //We use two methods to give us the random width and length of each room so we can get varying sizes.
@@ -38,11 +35,11 @@ int Dungeon::randDirectionGenerator()
 
 void Dungeon::makeStartRoom(int width, int length, Node grid[30][30], Object* p)
 {
-	for (int i = 1; i < 30; i++)                                //Because the grid should be filled with walls at this point this starting piece will go to the middle
+	for (int i = 0; i <= length; i++)                                //Because the grid should be filled with walls at this point this starting piece will go to the middle
 	{                                                               //of the 30 by 30 grid and begin filling in the first room with the random length and width given
-		for (int k = 1; k < 30; k++)                           //By creating a static starting position it will be easier to create logic to randomly add
+		for (int k = 0; k <= width; k++)                           //By creating a static starting position it will be easier to create logic to randomly add
 		{                                                           //rooms and corridors in different given directions.
-			grid[i][k] = Node();
+			grid[15-(length/2)+i][15-(width/2)+k] = Node();
 		}
 	}
 
@@ -122,7 +119,7 @@ bool Dungeon::isValidDirection(int direction, int width, int length, int row, in
 	{
 	case 1:         //check up
 	{
-		for (int i = 0; i <= length; i++)
+		for (int i = 1; i < length; i++)
 		{
 			if (row - length >= 0) {
 				if (grid[row - i][col].getObject()->getSymbol().compare(" # "))
@@ -153,7 +150,7 @@ bool Dungeon::isValidDirection(int direction, int width, int length, int row, in
 	}
 	case 2:    //check down
 	{
-		for (int i = 0; i <= length; i++)
+		for (int i = 1; i < length; i++)
 		{
 			if (row + length <= 30) {
 				if (grid[row + i][col].getObject()->getSymbol().compare(" # "))
@@ -184,7 +181,7 @@ bool Dungeon::isValidDirection(int direction, int width, int length, int row, in
 	}
 	case 3:     //check left
 	{
-		for (int i = 0; i <= width; i++)
+		for (int i = 1; i < width; i++)
 		{
 			if (col - width >= 0) {
 				if (grid[row][col - i].getObject()->getSymbol().compare(" # "))
@@ -215,7 +212,7 @@ bool Dungeon::isValidDirection(int direction, int width, int length, int row, in
 	}
 	case 4:             //check right
 	{
-		for (int i = 0; i <= width; i++)
+		for (int i = 1; i < width; i++)
 		{
 			if (col + width <= 30) {
 				if (grid[row][col + i].getObject()->getSymbol().compare(" # "))
@@ -417,7 +414,7 @@ void Dungeon::dungeonBuild(Node grid[30][30], Object* p)                     //W
 	numRooms = numRooms - 1;
 
 	int i = 1;                                                //starting from 1 because the 0th room has already been made.
-    makeRoom(numRooms, roomWidth[i], roomLength[i], grid);
+   // makeRoom(numRooms, roomWidth[i], roomLength[i], grid);
 
 
 }
@@ -432,7 +429,6 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty, vector<Enemy> &
             if (grid[i][k].getObject() == NULL)
             {
                 int chance = randomNumberGenerator(100,0);
-
                 int whatEnemy = randomNumberGenerator(100,0);
 
                 if (chance >= 99-difficulty)                    //This assumes difficult is something like 3 for hard. 2 for med. 1 for easy

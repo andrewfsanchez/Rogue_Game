@@ -40,8 +40,7 @@ Game::Game(int diff)
 
 void Game::startGame()
 {
-	Object* x = new Exit();
-
+	Exit* x = new Exit();
 	clearGrid();
 
 	level.dungeonBuild(grid, player);
@@ -137,6 +136,7 @@ void Game::playerAction()
 	while (check)
 	{
 		string input="";
+		cout << "Current Health: "<<player->getHealth()<<"\n";
 		cout << "What will you do? (M= move, D= drop item, U= use item, W= wait, Q= quit game)";
 		cin >> input;
 

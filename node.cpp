@@ -22,6 +22,7 @@ void Node::setObject(Object* thing)
 {
 	space = thing;
 }
+
 void Node::deleteObject()
 {
 	space = NULL;
