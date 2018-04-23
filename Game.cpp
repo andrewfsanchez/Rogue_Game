@@ -942,15 +942,18 @@ void Game::playerMove()
 
 			if (lengthY<=lengthX)
 			{
-				if (grid[player->getY()][player->getX()+1].getObject()->isEnemy())
+				if (grid[player->getY()][player->getX() + 1].getObject() != NULL)
 				{
-					Node target = grid[player->getY()][player->getX() + 1];
+					if (grid[player->getY()][player->getX() + 1].getObject()->isEnemy())
+					{  
+						Node target = grid[player->getY()][player->getX() + 1];
 
-					target.getObject()->takeDamage(player->getAttack());
-					if (target.getObject()->getHealth() <= 0)
-					{
-						player->addExp(target.getObject()->getExperience());
-						grid[player->getY()][player->getX() + 1] = Node();
+						target.getObject()->takeDamage(player->getAttack());
+						if (target.getObject()->getHealth() <= 0)
+						{
+							player->addExp(target.getObject()->getExperience());
+							grid[player->getY()][player->getX() + 1] = Node();
+						}
 					}
 				}
 				else
@@ -969,17 +972,20 @@ void Game::playerMove()
 			}
 			else
 			{
-				if (lengthY <= lengthX)
+				if (lengthX <= lengthY)
 				{
-					if (grid[player->getY() + 1][player->getX()].getObject()->isEnemy())
+					if (grid[player->getY() + 1][player->getX()].getObject() != NULL)
 					{
-						Node target = grid[player->getY()][player->getX() + 1];
-
-						target.getObject()->takeDamage(player->getAttack());
-						if (target.getObject()->getHealth() <= 0)
+						if (grid[player->getY() + 1][player->getX()].getObject()->isEnemy())
 						{
-							player->addExp(target.getObject()->getExperience());
-							grid[player->getY()][player->getX() + 1] = Node();
+							Node target = grid[player->getY() + 1][player->getX()];
+
+							target.getObject()->takeDamage(player->getAttack());
+							if (target.getObject()->getHealth() <= 0)
+							{
+								player->addExp(target.getObject()->getExperience());
+								grid[player->getY() + 1][player->getX()] = Node();
+							}
 						}
 					}
 					else
