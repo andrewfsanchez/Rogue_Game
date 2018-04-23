@@ -422,7 +422,8 @@ void Dungeon::dungeonBuild(Node grid[30][30], Object* p)                     //W
 
 }
 
-void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty, int floor)
+
+void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty, vector<Enemy> &enemies, int floor)
 {
     for (int i = 0; i < 30; i++)
     {
@@ -441,34 +442,67 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty, int floor)
                             Enemy* Bat = new Enemy(i,k);
 							Bat->setType(1);
                             grid[i][k].setObject(Bat);
-                            break;
+                            Bat->setX(i);
+                            Bat->setY(k);
+                            Bat->setAttack(7); //multiplied by floor
+                            Bat->setDefense(0); //keep 0
+                            Bat->setHealth(10); //multiplied by floor
+                            Bat->setExp(2); //add by floor# multiplied by 1 
+                            enemies.push_back (Bat);
                         }
-                        if (whatEnemy <=65 && whatEnemy >= 41)
+                        
+                        else if (whatEnemy <=65 && whatEnemy >= 41)
+                        {
+                            Enemy* Rat = new Enemy(i,k);
+                            Rat->setType(2);
+                            grid[i][k].setObject(Rat);
+                            Rat->setX(i);
+                            Rat->setY(k);
+                            Rat->setAttack(3); //multiplied by floor
+                            Rat->setDefense(2); //keep constant
+                            Rat->setHealth(10); //multiplied by floor
+                            Rat->setExp(3); //add by floor# multiplied by 1
+                            enemies.push_back (Rat);
+                        }
+                        else if (whatEnemy <=86 && whatEnemy >= 66) 
                         {
                             Enemy* Spider = new Enemy(i,k);
-                            Spider->setType(2);
+                            Spider->setType(3);
                             grid[i][k].setObject(Spider);
-                            break;
+                            Spider->setX(i);
+                            Spider->setY(k);
+                            Spider->setAttack(8); //multiplied by floor
+                            Spider->setDefense(5); //keep constant
+                            Spider->setHealth(20); //multiplied by floor
+                            Spider->setExp(4); //add by floor# multiplied by 1
+                            enemies.push_back (Spider);
                         }
-                        if (whatEnemy <=86 && whatEnemy >= 66)
-                        {
-                            Enemy* Lizard = new Enemy(i,k);
-                            Lizard->setType(3);
-                            grid[i][k].setObject(Lizard);
-                            break;
-                        }
-                        if (whatEnemy <=100 && whatEnemy >= 87)
+                        
+                        else if (whatEnemy <=100 && whatEnemy >= 87)
 						{
                             Enemy* Zombie = new Enemy(i,k);
                             Zombie->setType(4);
                             grid[i][k].setObject(Zombie);
-                            break;
+                            Zombie->setX(i);
+                            Zombie->setY(k);
+                            Zombie->setAttack(15); //multiplied by floor
+                            Zombie->setDefense(10); //keep constant
+                            Zombie->setHealth(25); //multiplied by floor
+                            Zombie->setExp(5); //add by floor# multiplied by 1
+                            enemies.push_back (Zombie);
 						}
                         else
 						{
                             Enemy* Bat = new Enemy(i,k);
                             Bat->setType(1);
                             grid[i][k].setObject(Bat);
+                            Bat->setX(i);
+                            Bat->setY(k);
+                            Bat->setAttack(7); //multiplied by floor
+                            Bat->setDefense(0); //keep constant
+                            Bat->setHealth(10); //multiplied by floor
+                            Bat->setExp(2); //add by floor# multiplied by 1
+                            enemies.push_back (Bat);
 						}
 
                 }
