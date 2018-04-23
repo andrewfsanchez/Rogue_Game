@@ -86,7 +86,25 @@ void Enemy::takeDamage(int damage)
 
 string Enemy::getSymbol()
 {
-	return " E ";
+	if (type == 1)
+	{
+
+		return " B ";     //Bat
+
+	}
+	else if (type == 2)
+	{
+
+		return " S ";     //Spider
+
+	}
+	else if (type == 3)
+	{
+
+		return " L ";     //Lizard
+		
+	}
+	
 }
 bool Enemy::isEnemy()
 {

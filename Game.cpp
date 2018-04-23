@@ -60,6 +60,11 @@ void Game::moveEnemies()
 	
 }
 
+void Game::eraseEnemies()
+{
+	for (int i = enemies.size() - 1; i >= 0; i--) enemies.erase(enemies.begin() + i);
+}
+
 void Game::playerAction() 
 {
 	bool check = true;
@@ -121,6 +126,7 @@ void Game::updateGrid()
 	/*if(player->getX()==exitX || player->getY()==exitY)
 	{
 		makeNextFloor(floor, diff, player);
+		eraseEnemies();
 		playerAction();
 		return;
 	}
