@@ -17,7 +17,3 @@ bool Wall::isWall()
 {
 	return true;
 }
-bool Wall::isDoor()
-{
-	return false;
-}

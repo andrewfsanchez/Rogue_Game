@@ -26,7 +26,6 @@ class Enemy: public Object
 		bool isEnemy();
 		bool isWall();
 		bool isItem();
-		bool isDoor();
 		
 	private:
 		

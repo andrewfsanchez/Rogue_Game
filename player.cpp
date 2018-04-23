@@ -12,11 +12,6 @@ Player::Player()
 	regen = 1;
 	level = 1;
 	turnsToRegen = 2; 
-	weapon;
-	armor;
-
-	currentExp = 0;
-	levelUpExp = 15;
 }
 int Player::getHealth()
 {
@@ -108,96 +103,18 @@ void Player::dropItem(int itemIndex)
 	inventory.erase(inventory.begin() + itemIndex);
 }
 
-void Player::useItem(Item x)
+/*
+void Player::useItem()
 {
-	attack = attack + x.getAttackMod();
-	defense = defense + x.getDefenseMod();
-	speed = speed + x.getSpeedMod();
-	currentHealth = currentHealth + x.getHealthMod();
-	if (currentHealth > maxHealth)
-		currentHealth = maxHealth;	
-	regen = regen + x.getRegenMod();
+	//Again, need to figure out how items work first
 }
-
-void Player::setWeapon(Item w)
-{
-	//Remove stat buffs from previously equipped weapon
-	attack = attack - weapon.getAttackMod();
-	defense = defense - weapon.getDefenseMod();
-	speed = speed - weapon.getSpeedMod();
-	maxHealth = maxHealth - weapon.getHealthMod();
-	regen = regen - weapon.getRegenMod();
-	
-	//Set new weapon
-	weapon = w;	
-	
-	//Apply new stat buff from newly equipped weapon
-	attack = attack + weapon.getAttackMod();
-	defense = defense + weapon.getDefenseMod();
-	speed = speed + weapon.getSpeedMod();
-	maxHealth = maxHealth + weapon.getHealthMod();
-	regen = regen + weapon.getRegenMod();
-}
-
-Item Player::getWeapon()
-{
-	return weapon;
-}
-
-void Player::setArmor(Item a)
-{
-	//Remove stat buffs from previously equipped armor
-	attack = attack - armor.getAttackMod();
-	defense = defense - armor.getDefenseMod();
-	speed = speed - armor.getSpeedMod();
-	maxHealth = maxHealth - armor.getHealthMod();
-	regen = regen - armor.getRegenMod();
-	
-	//Set new armor	
-	armor = a;
-	
-	//Apply new stat buffs
-	attack = attack + armor.getAttackMod();
-	defense = defense + armor.getDefenseMod();
-	speed = speed + armor.getSpeedMod();
-	maxHealth = maxHealth + armor.getHealthMod();
-	regen = regen + armor.getRegenMod();
-}
-
-Item Player::getArmor()
-{
-	return armor;
-}
-
-void Player::unequipWeapon()
-{
-	//remove stat buffs from equipped weapon
-	attack = attack - weapon.getAttackMod();
-	defense = defense - weapon.getDefenseMod();
-	speed = speed - weapon.getSpeedMod();
-	maxHealth = maxHealth - weapon.getHealthMod();
-	regen = regen - weapon.getRegenMod();
-	
-	weapon = Item();
-}
-
-void Player::unequipArmor()
-{
-	//Remove stat buffs from equipped armor
-	attack = attack - armor.getAttackMod();
-	defense = defense - armor.getDefenseMod();
-	speed = speed - armor.getSpeedMod();
-	maxHealth = maxHealth - armor.getHealthMod();
-	regen = regen - armor.getRegenMod();
-	
-	armor = Item();
-}
+*/
 
 void Player::regeneration()
 {
 	turnsToRegen--;
 	
-	if (turnsToRegen == 0)
+	while (turnsToRegen == 0)
 	{
 		if(currentHealth == maxHealth)
 			turnsToRegen = 2; 
@@ -210,12 +127,6 @@ void Player::regeneration()
 	}
 }
 		
-void Player::addExp(int add)
-{
-	currentExp += add;
-	if (currentExp >= levelUpExp)
-		levelUp();
-}
 
 void Player::levelUp()
 {
@@ -226,8 +137,6 @@ void Player::levelUp()
 	defense = defense + 1;
 	attack = attack + 1;
 	level++;
-
-	levelUpExp *= 2;
 }
 
 int Player::getLevel()
@@ -262,11 +171,6 @@ bool Player::isWall()
 }
 
 bool Player::isItem()
-{
-	return false;
-}
-
-bool Player::isDoor()
 {
 	return false;
 }
