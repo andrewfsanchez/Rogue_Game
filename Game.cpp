@@ -90,30 +90,16 @@ void Game::moveEnemies()
 		else if (enemies[i].getType() == 2)
 		{
 
-			//movement pattern for Rat
+			//movement pattern for Spider
 
 		}
 
 		else if (enemies[i].getType() == 3)
 		{
 
-			//movement pattern for Spider
-			//set new x and y coordinate accordingly
-
-		}
-
-		else if (enemies[i].getType() == 4)
-		{
-
 			//movement pattern for Zombie
 			//set new x and y coordinate accordingly
 
-		}
-		else if (enemies[i].getType() == 5)
-		{
-
-			//movement pattern for Zombie
-			
 		}
 
 	}
