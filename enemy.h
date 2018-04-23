@@ -19,15 +19,12 @@ class Enemy: public Object
 		int getAttack();
 		int getDefense();
 		int getType();
-		int getX();
-		void setX(int x);
-		int getY();
-		void setY(int y);
 		
 		//void Attack(Player& target);
 		void takeDamage(int damage);
 
 		string getSymbol();
+		int getExperience(int type);
 		bool isEnemy();
 		bool isWall();
 		bool isItem();
@@ -42,8 +39,11 @@ class Enemy: public Object
 		int speed;
 		int item;
 		int type;
-		int x;
-		int y;
+		
+		int batExp;
+		int spiderExp;
+		int lizardExp;
+		int zombieExp;
 };
 
 #endif
