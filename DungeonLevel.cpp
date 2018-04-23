@@ -130,7 +130,7 @@ void Dungeon::addOneItem(int length, int width, Node grid[30][30])
 {
     int item = randomNumberGenerator(0,1);
 
-    Item potion = Item("Potion", 5,  0, 0, 0, false, false,true);
+    Item* potion = new Item("Potion", 5,  0, 0, 0, false, false,true);
 
 
     int itemY = randomNumberGenerator(15+(length/2),15-(length/2));
