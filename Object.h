@@ -120,6 +120,14 @@ public:
 	{
 		return false;
 	}
+	virtual int getExperience()
+	{
+		return 0;
+	}
+	virtual void addExp(int)
+	{
+		return;
+	}
 
 
 

@@ -122,9 +122,7 @@ int Enemy::getExperience(int type)
 {
 	if (type == 1)
 	{
-		
-		return batExp;     
-
+		return batExp;
 	}
 	
 	else if (type == 2)
