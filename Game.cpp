@@ -754,6 +754,7 @@ void Game::playerMove()
 		cout << "Where do you want to move? (U= up, D= down, R= right, L= left, A= ai move): ";
 		string input = "";
 		cin >> input;
+		cout << endl;
 		
 
 		if (input.compare("U") == 0 || input.compare("u") == 0)
@@ -773,6 +774,10 @@ void Game::playerMove()
 			{
 
 				target.getObject()->takeDamage(player->getAttack());
+				if (target.getObject()->getHealth() < 1)
+					cout << "Enemy Health: " << 0 << endl;
+				else
+					cout << "Enemy Health: " << target.getObject()->getHealth() << endl;
 				if (target.getObject()->getHealth() <= 0)
 				{
 					player->addExp(target.getObject()->getExperience());
@@ -816,6 +821,10 @@ void Game::playerMove()
 			else if (target.getObject()->isEnemy())
 			{
 				target.getObject()->takeDamage(player->getAttack());
+				if (target.getObject()->getHealth() < 1)
+					cout << "Enemy Health: " << 0 << endl;
+				else
+					cout << "Enemy Health: " << target.getObject()->getHealth() << endl;
 				if (target.getObject()->getHealth() <= 0)
 				{
 					player->addExp(target.getObject()->getExperience());
@@ -861,6 +870,10 @@ void Game::playerMove()
 			{
 
 				target.getObject()->takeDamage(player->getAttack());
+				if (target.getObject()->getHealth() < 1)
+					cout << "Enemy Health: " << 0 << endl;
+				else
+					cout << "Enemy Health: " << target.getObject()->getHealth() << endl;
 				if (target.getObject()->getHealth() <= 0)
 				{
 					player->addExp(target.getObject()->getExperience());
@@ -904,6 +917,10 @@ void Game::playerMove()
 			{
 
 				target.getObject()->takeDamage(player->getAttack());
+				if (target.getObject()->getHealth() < 1)
+					cout << "Enemy Health: " << 0 << endl;
+				else
+					cout << "Enemy Health: " << target.getObject()->getHealth() << endl;
 				if (target.getObject()->getHealth() <= 0)
 				{
 					player->addExp(target.getObject()->getExperience());
@@ -949,6 +966,10 @@ void Game::playerMove()
 						Node target = grid[player->getY()][player->getX() + 1];
 
 						target.getObject()->takeDamage(player->getAttack());
+						if (target.getObject()->getHealth() < 1)
+							cout << "Enemy Health: " << 0 << endl;
+						else
+							cout << "Enemy Health: " << target.getObject()->getHealth() << endl;
 						if (target.getObject()->getHealth() <= 0)
 						{
 							player->addExp(target.getObject()->getExperience());
@@ -981,6 +1002,10 @@ void Game::playerMove()
 							Node target = grid[player->getY() + 1][player->getX()];
 
 							target.getObject()->takeDamage(player->getAttack());
+							if (target.getObject()->getHealth() < 1)
+								cout << "Enemy Health: " << 0 << endl;
+							else
+								cout << "Enemy Health: " << target.getObject()->getHealth() << endl;
 							if (target.getObject()->getHealth() <= 0)
 							{
 								player->addExp(target.getObject()->getExperience());
