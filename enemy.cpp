@@ -100,9 +100,10 @@ string Enemy::getSymbol()
 	{
 
 		return " Z ";      //Zombie
-	
-	}
 
+	}
+	else
+		return "B";
 }
 
 void Enemy::setExp(int x)
