@@ -428,7 +428,7 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty)
     {
         for (int k = 0; k < 30; k++)
         {
-            if (grid[i][k].getObject == NULL)
+            if (grid[i][k].getObject() == NULL)
             {
                 int chance = randomNumberGenerator(100,0);
 
