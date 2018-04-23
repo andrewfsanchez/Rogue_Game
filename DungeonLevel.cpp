@@ -55,6 +55,7 @@ void Dungeon::makeStartRoom(int width, int length, Node grid[30][30])
 void Dungeon::printRoom(int direction, int width, int length, int row, int col, Node grid[30][30])
 {
 
+	Object* door = new door();
 	switch (direction)
 	{
 	case 1:           //up
@@ -78,7 +79,7 @@ void Dungeon::printRoom(int direction, int width, int length, int row, int col, 
 		{
 			for (int k = 0; k <= width; k++)
 			{
-				grid[row + i][col + k].setObject(Null);
+				grid[row + i][col + k].setObject(NULL);
 			}
 		}
 		break;
@@ -91,7 +92,7 @@ void Dungeon::printRoom(int direction, int width, int length, int row, int col, 
 		{
 			for (int k = 1; k <= width; k++)
 			{
-				grid[row + i][col - k].setObject(Null);
+				grid[row + i][col - k].setObject(NULL);
 			}
 		}
 		break;
@@ -104,7 +105,7 @@ void Dungeon::printRoom(int direction, int width, int length, int row, int col, 
 		{
 			for (int k = 1; k <= width; k++)
 			{
-				grid[row + i][col + k].setObject(Null);
+				grid[row + i][col + k].setObject(NULL);
 			}
 		}
 		break;
@@ -119,6 +120,7 @@ void Dungeon::printRoom(int direction, int width, int length, int row, int col, 
 
 bool Dungeon::isValidDirection(int direction, int width, int length, int row, int col, Node grid[30][30])                        //1 = up, 2 = down, 3 = left, 4 = right.
 {
+	Object* wall = new wall();
 	switch (direction)
 	{
 	case 1:
