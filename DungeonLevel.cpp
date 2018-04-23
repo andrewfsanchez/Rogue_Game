@@ -32,6 +32,10 @@ int Dungeon::randDirectionGenerator()
 	return randomNumberGenerator(1, 4);
 }
 
+void Dungeon::checkerify(Node grid[30][30])
+{
+    
+}
 
 void Dungeon::makeStartRoom(int width, int length, Node grid[30][30], Object* p)
 {
