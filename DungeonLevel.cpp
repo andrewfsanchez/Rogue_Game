@@ -450,6 +450,10 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty)
                             Enemy* Bat = new Enemy();
 							Bat->setType(1);
                             grid[i][k].setObject(Bat);
+                            Bat->setX(i);
+                            Bat->setY(k);
+                            Bat->
+
                         }
                         case 41 ... 65:
                         {
