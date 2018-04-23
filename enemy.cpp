@@ -1,29 +1,4 @@
-
 #include "enemy.h"
-
-/*
-NOTES:
-- Should enemy level be considered when creating an enemy?
-- If so, should they be based on stage in the game or player level?
-- Will there be different types of enemies? Should some have different starting stats than others?
-
-- To accomplish this we could maybe pass "type" and "level" parameters when creating an enemy
-
-i.e.
-Enemy (string type, int level)
-{
-if type == bat
-{
-bat stats here
-}
-else if type == spider
-{
-spider stats here
-}
-}
-
-NOTE: I don't actually know if there will be different types of enemies or what they will be.
-*/
 
 Enemy::Enemy(int x, int y, int z)
 {
