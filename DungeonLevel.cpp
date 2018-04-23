@@ -38,9 +38,9 @@ int Dungeon::randDirectionGenerator()
 
 void Dungeon::makeStartRoom(int width, int length, Node grid[30][30], Object* p)
 {
-	for (int i = 1; i < 30; i++)                                //Because the grid should be filled with walls at this point this starting piece will go to the middle
+	for (int i = 1; i <= 28; i++)                                //Because the grid should be filled with walls at this point this starting piece will go to the middle
 	{                                                               //of the 30 by 30 grid and begin filling in the first room with the random length and width given
-		for (int k = 1; k < 30; k++)                           //By creating a static starting position it will be easier to create logic to randomly add
+		for (int k = 1; k <= 28; k++)                           //By creating a static starting position it will be easier to create logic to randomly add
 		{                                                           //rooms and corridors in different given directions.
 			grid[i][k] = Node();
 		}
