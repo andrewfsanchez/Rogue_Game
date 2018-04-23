@@ -89,8 +89,8 @@ void Game::moveEnemies()
 
 		else if (enemies[i].getType() == 2)
 		{
-
 			//movement pattern for Spider
+			//set new x and y coordinate accordingly
 
 		}
 
@@ -102,6 +102,7 @@ void Game::moveEnemies()
 
 		}
 
+	
 	}
 	
 }
@@ -592,7 +593,7 @@ void Game::gameOver()
 
 			if (difficulty == 1)
 				cout << "Easy Difficulty. Enter anything to continue: ";
-			else if (difficulty == 1)
+			else if (difficulty == 2)
 				cout << "Normal Difficulty. Enter anything to continue: ";
 			else
 				cout << "Hard Difficulty. Enter anything to continue: ";
