@@ -452,9 +452,9 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty)
                         }
                         if (whatEnemy <=86 && whatEnemy >= 66)
                         {
-                            Enemy* Lizard = new Enemy(i,k);
-                            Lizard->setType(3);
-                            grid[i][k].setObject(Lizard);
+                            Enemy* Rat = new Enemy(i,k);
+                            Rat->setType(3);
+                            grid[i][k].setObject(Rat);
                             break;
                         }
                         if (whatEnemy <=100 && whatEnemy >= 87)
