@@ -595,7 +595,7 @@ void Game::updateGrid()
 	for (std::vector<Enemy>::size_type i = 0; i != enemies.size(); i++)
 	{
 
-		if (enemies[i].getHealth() == 0)
+		if (enemies[i].getHealth() < 1)
 		{
 			// delete &enemies[i];  Unsure if this line is necessary based on how we implemented the Vector
 			enemies.erase (enemies.begin()+i);
