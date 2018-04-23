@@ -18,14 +18,32 @@ int main()
 
 
     if (diff == 1)
-        cout << "Easy Difficulty. Enter anything to continue: ";
+        cout << "Easy Difficulty. Enter \"go\" to continue: ";
     else if (diff == 2)
-        cout << "Normal Difficulty. Enter anything to continue: ";
+        cout << "Normal Difficulty. Enter \"go\" to continue: ";
     else
-        cout << "Hard Difficulty. Enter anything to continue: ";
+        cout << "Hard Difficulty. Enter \"go\" to continue: ";
 
     string nothing;
-    cin >> nothing;
+    
+
+	bool check = true;
+	while (check)
+	{
+		cin >> nothing;
+
+		if (noting.compare("go") == 0)
+		{
+			check = false;
+		}
+		else
+		{
+			cin.clear();
+			cin.ignore();
+			cout << "Enter \"go\" to continue: ";
+
+		}
+	}
 
     Game game = Game(diff);
 
