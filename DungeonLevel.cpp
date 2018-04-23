@@ -120,7 +120,7 @@ bool Dungeon::isValidDirection(int direction, int width, int length, int row, in
 	Object* wall = new Wall();
 	switch (direction)
 	{
-	case 1:
+	case 1:         //check up
 	{
 		for (int i = 0; i <= length; i++)
 		{
@@ -151,7 +151,7 @@ bool Dungeon::isValidDirection(int direction, int width, int length, int row, in
 		}
 		return true;
 	}
-	case 2:
+	case 2:    //check down
 	{
 		for (int i = 0; i <= length; i++)
 		{
@@ -182,7 +182,7 @@ bool Dungeon::isValidDirection(int direction, int width, int length, int row, in
 		}
 		return true;
 	}
-	case 3:
+	case 3:     //check left
 	{
 		for (int i = 0; i <= width; i++)
 		{
@@ -213,18 +213,18 @@ bool Dungeon::isValidDirection(int direction, int width, int length, int row, in
 		}
 		return true;
 	}
-	case 4:
+	case 4:             //check right
 	{
 		for (int i = 0; i <= width; i++)
 		{
 			if (col + width <= 30) {
-				if (grid[row][col + i].getObject() == wall)
+				if (grid[row][col + i].getObject()->getSymbol().compare(" # "))
 				{
 					for (int k = 0; k <= length; k++)
 					{
 						if (length + row <= 30)
 						{
-							if (grid[row + i][col + k].getObject() == wall)
+							if (grid[row + i][col + k].getObject()->getSymbol().compare(" # "))
 							{
 								continue;
 							}
@@ -385,14 +385,6 @@ void Dungeon::makeRoom(int numRooms, int width, int length, Node grid[30][30])
 		}
 	}
 
-	/* for (int i = 0; i < 30; i++)
-	{
-		for (int k = 0; k < 30; k++)                               //todo this is where I left off
-		{
-			grid[i][k] = Node();                                   //todo look into this error later
-		}
-	}*/
-
 }
 
 void Dungeon::dungeonBuild(Node grid[30][30], Object* p)                     //We pass in the original grid created which is filled with Nodes that point to nothing. Here we will begin
@@ -439,47 +431,45 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty)
             if (grid[i][k].getObject == NULL)
             {
                 int chance = randomNumberGenerator(100,0);
+
                 int whatEnemy = randomNumberGenerator(100,0);
 
                 if (chance >= 99-difficulty)                    //This assumes difficult is something like 3 for hard. 2 for med. 1 for easy
                 {
-                    switch (whatEnemy)
-                    {
-                        case 0 ... 40:
+                        if (whatEnemy <= 40)
                         {
-                            Enemy* Bat = new Enemy(i,k);
+                            Enemy* Bat = new Enemy();
 							Bat->setType(1);
                             grid[i][k].setObject(Bat);
-                            Bat->setX(i);
-                            Bat->setY(k);
-                            Bat->
-
+                            break;
                         }
-                        case 41 ... 65:
+                        if (whatEnemy <=65 && whatEnemy >= 41)
                         {
-                            Enemy* Spider = new Enemy(i,k);
+                            Enemy* Spider = new Enemy();
                             Spider->setType(2);
                             grid[i][k].setObject(Spider);
+                            break;
                         }
-                        case 66 ... 86:
+                        if (whatEnemy <=86 && whatEnemy >= 66)
                         {
-                            Enemy* Lizard = new Enemy(i,k);
+                            Enemy* Lizard = new Enemy();
                             Lizard->setType(3);
                             grid[i][k].setObject(Lizard);
+                            break;
                         }
-						case 87 ... 100:
+                        if (whatEnemy <=100 && whatEnemy >= 87)
 						{
-                            Enemy* Zombie = new Enemy(i,k);
+                            Enemy* Zombie = new Enemy();
                             Zombie->setType(4);
                             grid[i][k].setObject(Zombie);
+                            break;
 						}
-						default:
+                        else 
 						{
-                            Enemy* Bat = new Enemy(i,k);
+                            Enemy* Bat = new Enemy();
                             Bat->setType(1);
                             grid[i][k].setObject(Bat);
 						}
-                    }
 
                 }
 
