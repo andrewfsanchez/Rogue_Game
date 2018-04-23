@@ -28,10 +28,13 @@ NOTE: I don't actually know if there will be different types of enemies or what 
 Enemy::Enemy()
 {
 	//Test values again
-	health = 15;
-	attack = 2;
+	health = 0;
+	attack = 0;
 	defense = 0;
 	type = 0;
+	x = 0;
+	y = 0;
+
 }
 
 int Enemy::getHealth()
@@ -63,6 +66,26 @@ int Enemy::getAttack()
 int Enemy::getDefense()
 {
 	return defense;
+}
+
+void Enemy::setX(int x)
+{
+	x = x;
+}
+
+int Enemy::getX()
+{
+	return x;
+}
+
+void Enemy::setY(int y)
+{
+	y = y;
+}
+
+int Enemy::getY()
+{
+	return y;
 }
 
 
