@@ -447,58 +447,33 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty, vector<Enemy> &
                             enemies.push_back (*Bat);
                         }
                         
-                        else if (whatEnemy <=65 && whatEnemy >= 41)
-                        {
-                            Enemy* Rat = new Enemy(i,k);
-                            Rat->setType(2);
-                            grid[i][k].setObject(Rat);
-                            Rat->setX(i);
-                            Rat->setY(k);
-                            Rat->setAttack(3*floor); //multiplied by floor
-                            Rat->setDefense(2); //keep constant
-                            Rat->setHealth(10*floor); //multiplied by floor
-                            Rat->setExp(2 + floor); //add by floor# multiplied by 1
-                            enemies.push_back (*Rat);
-                        }
+                        
                         else if (whatEnemy <=86 && whatEnemy >= 66) 
                         {
                             Enemy* Spider = new Enemy(i,k);
-                            Spider->setType(3);
+                            Spider->setType(2);
                             grid[i][k].setObject(Spider);
                             Spider->setX(i);
                             Spider->setY(k);
                             Spider->setAttack(8*floor); //multiplied by floor
                             Spider->setDefense(5); //keep constant
                             Spider->setHealth(20*floor); //multiplied by floor
-                            Spider->setExp(3 + floor); //add by floor# multiplied by 1
+                            Spider->setExp(2 + floor); //add by floor# multiplied by 1
                             enemies.push_back (*Spider);
                         }
                         
                         else if (whatEnemy <=100 && whatEnemy >= 87)
 						{
                             Enemy* Zombie = new Enemy(i,k);
-                            Zombie->setType(4);
+                            Zombie->setType(3);
                             grid[i][k].setObject(Zombie);
                             Zombie->setX(i);
                             Zombie->setY(k);
                             Zombie->setAttack(15*floor); //multiplied by floor
                             Zombie->setDefense(10); //keep constant
                             Zombie->setHealth(25*floor); //multiplied by floor
-                            Zombie->setExp(4 + floor); //add by floor# multiplied by 1
+                            Zombie->setExp(3 + floor); //add by floor# multiplied by 1
                             enemies.push_back (*Zombie);
-						}
-                        else
-						{
-                            Enemy* Bat = new Enemy(i,k);
-                            Bat->setType(1);
-                            grid[i][k].setObject(Bat);
-                            Bat->setX(i);
-                            Bat->setY(k);
-                            Bat->setAttack(7*floor); //multiplied by floor
-                            Bat->setDefense(0); //keep constant
-                            Bat->setHealth(10*floor); //multiplied by floor
-                            Bat->setExp(1 + floor); //add by floor# multiplied by 1
-                            enemies.push_back (*Bat);
 						}
 
                 }

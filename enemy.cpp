@@ -116,26 +116,14 @@ string Enemy::getSymbol()
 		return " S ";     //Spider
 
 	}
-	else if (type == 3)
-	{
 
-		return " R ";     //Rat
-		
-	}
-	else if (type == 4)
+	else if (type == 3)
 	{
 
 		return " Z ";      //Zombie
 	
 	}
 
-	else if (type == 5)
-	{
-
-		return " K ";      //Rat King
-
-	}
-	
 }
 
 void Enemy::setExp(int x)
