@@ -408,7 +408,7 @@ void Dungeon::dungeonBuild(Node grid[30][30], Object* p)                     //W
 	{
 		for (int k = 0; k < 30; k++)
 		{
-			grid[i][k] = Node(wall);                     //todo look into this error later
+			grid[i][k] = Node(wall);
 		}
 	}
 
@@ -426,6 +426,61 @@ void Dungeon::dungeonBuild(Node grid[30][30], Object* p)                     //W
 
 	int i = 1;                                                //starting from 1 because the 0th room has already been made.
     makeRoom(numRooms, roomWidth[i], roomLength[i], grid);
-	
 
+
+}
+
+void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty)
+{
+    for (int i = 0; i < 30; i++)
+    {
+        for (int k = 0; k < 30; k++)
+        {
+            if (grid[i][k].getObject == NULL)
+            {
+                int chance = randomNumberGenerator(100,0);
+                int whatEnemy = randomNumberGenerator(100,0);
+
+                if (chance >= 99-difficulty)                    //This assumes difficult is something like 3 for hard. 2 for med. 1 for easy
+                {
+                    switch (whatEnemy)
+                    {
+                        case 0 ... 40:
+                        {
+                            Enemy* Bat = new Enemy();
+							Bat->setType(1);
+                            grid[i][k].setObject(Bat);
+                        }
+                        case 41 ... 65:
+                        {
+                            Enemy* Spider = new Enemy();
+                            Spider->setType(2);
+                            grid[i][k].setObject(Spider);
+                        }
+                        case 66 ... 86:
+                        {
+                            Enemy* Lizard = new Enemy();
+                            Lizard->setType(3);
+                            grid[i][k].setObject(Lizard);
+                        }
+						case 87 ... 100:
+						{
+                            Enemy* Zombie = new Enemy();
+                            Zombie->setType(4);
+                            grid[i][k].setObject(Zombie);
+						}
+						default:
+						{
+                            Enemy* Bat = new Enemy();
+                            Bat->setType(1);
+                            grid[i][k].setObject(Bat);
+						}
+                    }
+
+                }
+
+            }
+
+        }
+    }
 }
