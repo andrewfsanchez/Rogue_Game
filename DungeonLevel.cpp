@@ -437,9 +437,10 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty, vector<Enemy> &
 
                 if (chance >= 99-difficulty)                    //This assumes difficult is something like 3 for hard. 2 for med. 1 for easy
                 {
+					int direction = randomNumberGenerator(3,0);
                         if (whatEnemy <= 40)
                         {
-                            Enemy* Bat = new Enemy(i,k);
+                            Enemy* Bat = new Enemy(i,k,direction);
 							Bat->setType(1);
                             grid[i][k].setObject(Bat);
                             Bat->setX(i);
@@ -454,7 +455,7 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty, vector<Enemy> &
                         
                         else if (whatEnemy <=86 && whatEnemy >= 66) 
                         {
-                            Enemy* Spider = new Enemy(i,k);
+                            Enemy* Spider = new Enemy(i,k,direction);
                             Spider->setType(2);
                             grid[i][k].setObject(Spider);
                             Spider->setX(i);
@@ -468,7 +469,7 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty, vector<Enemy> &
                         
                         else if (whatEnemy <=100 && whatEnemy >= 87)
 						{
-                            Enemy* Zombie = new Enemy(i,k);
+                            Enemy* Zombie = new Enemy(i,k,direction);
                             Zombie->setType(3);
                             grid[i][k].setObject(Zombie);
                             Zombie->setX(i);

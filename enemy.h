@@ -1,4 +1,5 @@
 #include "Object.h"
+#include "DungeonLevel.h"
 
 #ifndef ENEMY_H
 #define ENEMY_H
@@ -10,7 +11,7 @@ class Enemy: public Object
 {
 	public:
 	
-		Enemy(int, int);
+		Enemy(int, int, int);
 		
 		int getHealth();
 		void setHealth(int x);
@@ -25,6 +26,9 @@ class Enemy: public Object
 		void setY(int);
 		//void Attack(Player& target);
 		void takeDamage(int damage);
+
+		int getDirection();
+		void reverseDirection();
 
 		string getSymbol();
 		void setExp(int exp);
@@ -44,6 +48,7 @@ class Enemy: public Object
 		int type;
 		int exp;
 		int posX, posY;
+		int direction;
 };
 
 #endif

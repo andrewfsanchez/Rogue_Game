@@ -25,7 +25,7 @@ spider stats here
 NOTE: I don't actually know if there will be different types of enemies or what they will be.
 */
 
-Enemy::Enemy(int x, int y)
+Enemy::Enemy(int x, int y, int z)
 {
 	//Test values again
 	health = 15;
@@ -35,6 +35,8 @@ Enemy::Enemy(int x, int y)
 	exp = 0;
 	posX = x;
 	posY = y;
+
+	direction = z;
 	
 }
 
@@ -91,6 +93,17 @@ int Enemy::getDefense()
 void Enemy::takeDamage(int playerAtk)
 {
 	health = health - (playerAtk*10)/(10 + defense);
+}
+
+int Enemy::getDirection()
+{
+	return direction;
+}
+
+void Enemy::reverseDirection()
+{
+	if (direction < 2) direction += 2;
+	else direction -= 2;
 }
 
 string Enemy::getSymbol()
