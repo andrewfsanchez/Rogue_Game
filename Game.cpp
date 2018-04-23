@@ -89,8 +89,56 @@ void Game::moveEnemies()
 
 		else if (enemies[i].getType() == 2)
 		{
-			//movement pattern for Spider
-			//set new x and y coordinate accordingly
+
+			
+		  if (17 > enemies[i].getX() && 17 > enemies[i].getY())
+		  
+		{
+			
+			  
+			  if (abs(17 - enemies[i].getX()) > abs(17 - enemies[i].getY()))
+			  {
+				  Node target=grid[enemies[i].getX() + 1][enemies[i].getY()];
+				  if(target.getObject()->isPlayer())
+				  
+				  enemies[i].setX(enemies[i].getX() + 1);
+				  break;
+			  }
+			  else if (abs(17 - enemies[i].getX()) < abs(17 - enemies[i].getY()))
+			  {
+				  enemies[i].setY(enemies[i].getY() + 1);
+				  break;
+			  }
+			  
+		 }
+			else if (17 < enemies[i].getX() && 17 > enemies[i].getY())
+		  {
+			  if (abs(17 - enemies[i].getX()) > abs(17 - enemies[i].getY()))
+			  {
+				  enemies[i].setX(enemies[i].getX() - 1);
+				  break;
+			  }
+			  else if (abs(17 - enemies[i].getX()) < abs(17 - enemies[i].getY()))
+			  {
+				  enemies[i].setY(enemies[i].getY() + 1);
+				  break;
+			  }
+
+		  }
+		   case 2: (17 > enemies[i].getX() && 17 < enemies[i].getY())
+		  {
+			  
+		  }
+		   case 3: (17 < enemies[i].getX() && 17 < enemies[i].getY())
+		  {
+			  
+		  }
+		  else 
+		  {
+
+			  return;
+
+		  }
 
 		}
 
