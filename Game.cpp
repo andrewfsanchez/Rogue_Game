@@ -96,7 +96,7 @@ void Game::moveEnemies()
 				}
 				else if (target.getObject()->isPlayer())
 				{
-					//attack player
+					target.getObject()->takeDamage(enemies[i].getAttack());
 				}
 				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy() || target.getObject()->isExit())
 					enemies[i].reverseDirection();
@@ -112,7 +112,7 @@ void Game::moveEnemies()
 				}
 				else if (target.getObject()->isPlayer())
 				{
-					//attack player
+					target.getObject()->takeDamage(enemies[i].getAttack());
 				}
 				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy() || target.getObject()->isExit())
 					enemies[i].reverseDirection();
@@ -128,7 +128,7 @@ void Game::moveEnemies()
 				}
 				else if (target.getObject()->isPlayer())
 				{
-					//attack player
+					target.getObject()->takeDamage(enemies[i].getAttack());
 				}
 				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy() || target.getObject()->isExit())
 					enemies[i].reverseDirection();
@@ -144,7 +144,7 @@ void Game::moveEnemies()
 				}
 				else if (target.getObject()->isPlayer())
 				{
-					//attack player
+					target.getObject()->takeDamage(enemies[i].getAttack());
 				}
 				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy() || target.getObject()->isExit())
 					enemies[i].reverseDirection();	
@@ -437,7 +437,7 @@ void Game::moveEnemies()
 				}
 				else if (target.getObject()->isPlayer())
 				{
-					//attack player
+					target.getObject()->takeDamage(enemies[i].getAttack());
 				}
 				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy() || target.getObject()->isExit())
 					enemies[i].reverseDirection();
@@ -453,7 +453,7 @@ void Game::moveEnemies()
 				}
 				else if (target.getObject()->isPlayer())
 				{
-					//attack player
+					target.getObject()->takeDamage(enemies[i].getAttack());
 				}
 				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy() || target.getObject()->isExit())
 					enemies[i].reverseDirection();
@@ -469,7 +469,7 @@ void Game::moveEnemies()
 				}
 				else if (target.getObject()->isPlayer())
 				{
-					//attack player
+					target.getObject()->takeDamage(enemies[i].getAttack());
 				}
 				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy() || target.getObject()->isExit())
 					enemies[i].reverseDirection();
@@ -485,7 +485,7 @@ void Game::moveEnemies()
 				}
 				else if (target.getObject()->isPlayer())
 				{
-					//attack player
+					target.getObject()->takeDamage(enemies[i].getAttack());
 				}
 				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy() || target.getObject()->isExit())
 					enemies[i].reverseDirection();	
