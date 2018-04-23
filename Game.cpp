@@ -160,9 +160,14 @@ void Game::moveEnemies()
 			  {
 				  Node target=grid[enemies[i].getX() + 1][enemies[i].getY()];
 				  if(target.getObject()->isPlayer())
-				  
-				  enemies[i].setX(enemies[i].getX() + 1);
-				  break;
+				  {
+
+					  target.getObject()->takeDamage(enemies[i].getAttack());;
+
+				  }
+				else
+				enemies[i].setX(enemies[i].getX() + 1);
+				break;
 			  }
 			  else if (abs(17 - enemies[i].getX()) < abs(17 - enemies[i].getY()))
 			  {
