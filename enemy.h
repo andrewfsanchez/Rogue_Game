@@ -17,7 +17,6 @@ class Enemy: public Object
 		void setType(int x);
 		int getSpeed();
 		int getAttack();
-		int getItem();
 		int getDefense();
 		int getType();
 		

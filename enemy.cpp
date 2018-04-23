@@ -70,11 +70,6 @@ int Enemy::getDefense()
 	return defense;
 }
 
-int Enemy::getItem()
-{
-	//Still need to know how items work. Is this like what the enemy drops when killed?
-	return item;
-}
 
 /*void Enemy::Attack(Player& target)
 {
