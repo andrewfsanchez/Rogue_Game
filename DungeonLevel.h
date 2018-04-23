@@ -7,13 +7,13 @@
 #include <random>
 #include <vector>
 #include <iostream>
-#include "exit.cpp"
-#include "player.cpp"
-#include "enemy.cpp"
-#include "item.cpp"
-#include "node.cpp"
-#include "wall.cpp"
-#include "door.cpp"
+#include "exit.h"
+#include "player.h"
+#include "enemy.h"
+#include "item.h"
+#include "node.h"
+#include "wall.h"
+#include "door.h"
 
 class Dungeon
 {
