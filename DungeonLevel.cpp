@@ -8,7 +8,6 @@
 #include <random>
 #include <iostream>
 #include <random>
-#include <Object.h>
 #include <vector>
 
 int randomNumberGenerator(int max, int min)                        //This generator is used to give us a random number so we can keep up constant new levels
@@ -53,9 +52,11 @@ void makeStartRoom(int width, int length, Node grid[30][30])
 
 void printRoom(int direction, int width, int length, int row, int col, Node grid[30][30])
 {
+    Object* door = new door();
 
-switch (direction)
+    switch (direction)
 {
+
     case 1:           //up
 
         grid[row][col].setObject(door);            //the original point selected becomes a door to the new room.
@@ -64,7 +65,7 @@ switch (direction)
         {
             for (int k = 0; k<=width; k++)
             {
-                grid[row-i][col+k].setObject(Null);
+                grid[row-i][col+k].setObject(NULL);
             }
         }
         break;
@@ -77,7 +78,7 @@ switch (direction)
         {
             for (int k = 0; k<=width; k++)
             {
-                grid[row+i][col+k].setObject(Null);
+                grid[row+i][col+k].setObject(NULL);
             }
         }
         break;
@@ -90,7 +91,7 @@ switch (direction)
         {
             for (int k = 1; k<=width; k++)
             {
-                grid[row+i][col-k].setObject(Null);
+                grid[row+i][col-k].setObject(NULL);
             }
         }
         break;
@@ -103,7 +104,7 @@ switch (direction)
         {
             for (int k = 1; k<=width; k++)
             {
-                grid[row+i][col+k].setObject(Null);
+                grid[row+i][col+k].setObject(NULL);
             }
         }
         break;
@@ -118,6 +119,7 @@ switch (direction)
 
 bool isValidDirection (int direction, int width, int length, int row, int col, Node grid[30][30])                        //1 = up, 2 = down, 3 = left, 4 = right.
 {
+    Object* wall = new wall();
     switch (direction)
     {
         case 1:

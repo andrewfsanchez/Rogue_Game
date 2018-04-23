@@ -11,6 +11,5 @@ public:
 	bool isEnemy();
 	bool isWall();
 	bool isItem();
-	bool isDoor();
 };
 #endif

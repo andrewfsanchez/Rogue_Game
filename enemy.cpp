@@ -94,8 +94,4 @@ bool Enemy::isItem()
 {
 	return false;
 }
-bool Enemy::isDoor()
-{
-	return false;
-}
 
