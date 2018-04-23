@@ -1,14 +1,26 @@
-
 #include "item.h"
 
+//Default constructor for item, used in player equipment methods for unequipping and also for starting weapon and armor fields.
+Item::Item()
+{
+	name = "NONE";
+	healthMod = 0;
+	defenseMod = 0;
+	attackMod = 0;
+	regenMod = 0;
 
-Item::Item(string id, int h, int s, int d, int a, int r, bool weap, bool arm, bool consume)
+	weapon = false;
+	armor = false;
+	consumable = false;
+	equipped = false;
+}
+	
+Item::Item(string id, int h, int d, int a, int r, bool weap, bool arm, bool consume)
 {
 	//Don't know what the default item values should be. Maybe there should be a constructor with a name parameter that sets stats for each type of item differently. 
 	
 	name = id;
 	healthMod = h;
-	speedMod = s;
 	defenseMod = d;
 	attackMod = a;
 	regenMod = r;
@@ -16,18 +28,13 @@ Item::Item(string id, int h, int s, int d, int a, int r, bool weap, bool arm, bo
 	weapon = weap;
 	armor = arm;
 	consumable = consume;
-	equiped = false;
+	equipped = false;
 	
 }
 
 int Item::getHealthMod()
 {
 	return healthMod;
-}
-
-int Item::getSpeedMod()
-{
-	return speedMod;
 }
 
 int Item::getDefenseMod()
@@ -62,17 +69,17 @@ bool Item::isConsumable()
 
 bool Item::isEquipped()
 {
-	return equiped;
+	return equipped;
 }
 
 void Item::equip()
 {
-	equiped = true;
+	equipped = true;
 }
 
 void Item::unequip()
 {
-	equiped = false;
+	equipped = false;
 }
 
 string Item::getName()
@@ -95,4 +102,8 @@ bool Item::isWall()
 bool Item::isItem()
 {
 	return true;
+}
+bool Item::isDoor()
+{
+	return false;
 }

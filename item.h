@@ -10,9 +10,9 @@ class Item: public Object
 {
 	public:
 		
-		Item(string, int, int, int, int, int, bool, bool, bool);
+		Item();
+		Item(string, int, int, int, int, bool, bool, bool);
 		int getHealthMod();
-		int getSpeedMod();
 		int getDefenseMod();
 		int getAttackMod();
 		int getRegenMod();
@@ -29,12 +29,12 @@ class Item: public Object
 		bool isEnemy();
 		bool isWall();
 		bool isItem();
+		bool isDoor();
 		
 	private:
 		
 		string name;
 		int healthMod;
-		int speedMod;
 		int defenseMod;
 		int attackMod;
 		int regenMod;
@@ -43,7 +43,7 @@ class Item: public Object
 		bool weapon;
 		bool consumable;
 
-		bool equiped;
+		bool equipped;
 };
 
 #endif

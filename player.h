@@ -1,5 +1,6 @@
 #include <vector>
 #include "Object.h"
+#include "item.h"
 #include "item.cpp" 
 
 #ifndef PLAYER_H
@@ -16,8 +17,6 @@ class Player : public Object
 		Player();
 		int getHealth();
 		void setHealth(int x);
-		int getSpeed();
-		void setSpeed(int x);
 		int getAttack();
 		void setAttack(int x);
 		int getDefense();
@@ -25,6 +24,12 @@ class Player : public Object
 		int getRegen();
 		void setRegen(int x);
 		
+		int getMaxHealth();
+
+		int getX();
+		void setX(int);
+		int getY();
+		void setY(int);
 		
 		bool isInvEmpty();
 		bool isInvFull();
@@ -34,7 +39,14 @@ class Player : public Object
 		void addItem(Item);
 		void dropItem();
 		void dropItem(int);
-		//void useItem();
+		
+		void useItem(Item x);
+		Item getWeapon();
+		Item getArmor();
+		void setWeapon(Item w);
+		void setArmor(Item a);
+		void unequipWeapon();
+		void unequipArmor();
 		
 		void regeneration();
 		void levelUp();
@@ -42,24 +54,34 @@ class Player : public Object
 		Player getPlayer(); //Location? 
 		//void Attack(Enemy& target);
 		void takeDamage(int damage);
+		void addExp(int);
+		
 
 		string getSymbol();
 		bool isEnemy();
 		bool isWall();
 		bool isItem();
+		bool isDoor();
 	
 	private:
+
+		int x;
+		int y;
 		
 		int maxHealth;
 		int currentHealth;
-		int speed;
+
 		int attack;
 		int defense;
 		int regen;
 		int level;
+		int levelUpExp;
+		int currentExp;
 		int turnsToRegen;
 		int invMaxSize = 20;
 		vector<Item> inventory; //Not used yet
+		Item weapon;
+		Item armor;
 };
 
 #endif

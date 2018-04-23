@@ -2,7 +2,8 @@
 #include "player.cpp"
 #include "enemy.cpp"
 #include "Object.h"
-#include "item.h"
+#include "item.cpp"
+#include "DungeonLevel.cpp"
 #include <iostream>
 #include <vector>
 
@@ -18,6 +19,12 @@ public:
 	void playerAction();
 	void gameOver();
 	
+	void useItem(Item, Object*);
+	Item getWeapon();
+	Item getArmor();
+	void setWeapon(Item w, Object*);
+	void setArmor(Item a, Object*);
+	
 private:
 	//void makeNextFloor(int, int);
 	void updateGrid();
@@ -28,18 +35,23 @@ private:
 	void playerDrop();
 	void playerUseItem();
 	void moveEnemies();
-	
+
+	Item weapon;
+	Item armor;
 
 
-
-	Player player;
+	Object* player;
 	Node grid[30][30];
 	int difficulty;
 	int floor;
 	
 	//Vector for test items
 	vector<Item> items;
+<<<<<<< HEAD
 	vector<Enemy> Enemy;
+=======
+	vector<Item> inventory;
+>>>>>>> 4855d810ae524144a51f8543384ffb2505e35877
 
 };
 
