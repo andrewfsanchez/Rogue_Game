@@ -79,7 +79,7 @@ void Game::moveEnemies()
 {
 	for (std::vector<Enemy>::size_type i = 0; i != enemies.size(); i++)
 	{
-		if(enemies[i].getType() == 1)
+		if (enemies[i].getType() == 1)
 		{
 			int direction = enemies[i].getDirection();
 			Node target = grid[enemies[i].getY()][enemies[i].getX()];
@@ -145,6 +145,7 @@ void Game::moveEnemies()
 					grid[enemies[i].getY()][enemies[i].getX()].setObject(&enemies[i]);
 				}
 			}
+			//Bat
 		}
 
 		else if (enemies[i].getType() == 2)
@@ -397,7 +398,7 @@ void Game::playerMove()
 	bool check = true;
 	while (check)
 	{
-		cout << "Where do you want to move? (U= up, D= down, R= right, L= left): ";
+		cout << "Where do you want to move? (U= up, D= down, R= right, L= left, A= ai move): ";
 		string input = "";
 		cin >> input;
 		
@@ -455,9 +456,9 @@ void Game::playerMove()
 			Node target = grid[player->getY() + 1][player->getX()];
 			if (target.getObject() == NULL)
 			{
-			grid[player->getY()][player->getX()]= Node();
-			player->setY(player->getY()+1);
-			grid[player->getY()][player->getX()].setObject(player);
+				grid[player->getY()][player->getX()]= Node();
+				player->setY(player->getY()+1);
+				grid[player->getY()][player->getX()].setObject(player);
 			}
 			else if (target.getObject()->isEnemy())
 			{
@@ -565,6 +566,8 @@ void Game::playerMove()
 			}
 			else if (target.getObject()->isItem())
 			{
+				
+
 				Item x = Item(target.getObject()->getName(), target.getObject()->getHealthMod(), target.getObject()->getDefenseMod(), target.getObject()->getAttackMod(), target.getObject()->getRegenMod(), target.getObject()->isWeapon(), target.getObject()->isArmor(), target.getObject()->isConsumable());
 				inventory.push_back(x);
 
@@ -578,6 +581,33 @@ void Game::playerMove()
 				cout << "You hit a wall.\n";
 			}
 		}
+		else if (input.compare("A") == 0 || input.compare("a") == 0)
+		{
+			check = false;
+			int lengthX = 17 - player->getX();
+			int lengthY = 17 - player->getY();
+
+			if (lengthY<=lengthX)
+			{
+				grid[player->getY()][player->getX()] = Node();
+				player->setX(player->getX() + 1);
+				grid[player->getY()][player->getX()].setObject(player);
+			}
+			else if (lengthY == 1)
+			{
+				floor++;
+				player->setX(15);
+				player->setY(15);
+				makeNextLevel();
+			}
+			else
+			{
+				grid[player->getY()][player->getX()] = Node();
+				player->setY(player->getY() + 1);
+				grid[player->getY()][player->getX()].setObject(player);
+			}
+		}
+
 		else
 			cout << "Invalid Direction. \n";
 	}
