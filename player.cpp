@@ -108,14 +108,13 @@ void Player::addExp(int add)
 
 void Player::levelUp()
 {
-	//Haven't discussed how this will work yet, so just a test.
-	
 	maxHealth = maxHealth + 5;
 	defense = defense + 1;
 	attack = attack + 1;
 	level++;
 
-	levelUpExp *= 2;
+	currentExp = currentExp - levelUpExp;
+	levelUpExp += 15;
 }
 
 int Player::getLevel()
@@ -163,13 +162,6 @@ bool Player::isExit()
 	return false;
 }
 
-
-/*
-Player::getPlayer()
-{
-	//Assuming this should return the player location. Not sure how this will be done yet.
-}
-*/
 	
 	
 
