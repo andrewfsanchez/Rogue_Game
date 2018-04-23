@@ -13,5 +13,6 @@ public:
 	bool isWall();
 	bool isItem();
 	bool isDoor();
+	bool isPlayer();
 };
 #endif

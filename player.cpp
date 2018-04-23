@@ -162,6 +162,11 @@ bool Player::isExit()
 	return false;
 }
 
+bool Player::isPlayer()
+{
+	return true;
+}
+
 
 /*
 Player::getPlayer()

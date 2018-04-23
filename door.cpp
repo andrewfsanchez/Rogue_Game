@@ -32,6 +32,11 @@ bool Door::isExit()
 	return false;
 }
 
+bool Door::isPlayer()
+{
+	return false;
+}
+
 void Door::open()
 {
 	opened = true;

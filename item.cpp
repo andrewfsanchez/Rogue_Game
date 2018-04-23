@@ -111,3 +111,8 @@ bool Item::isExit()
 {
 	return false;
 }
+
+bool Item::isPlayer()
+{
+	return false;
+}

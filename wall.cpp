@@ -25,3 +25,8 @@ bool Wall::isExit()
 {
 	return false;
 }
+
+bool Wall::isPlayer()
+{
+	return false;
+}

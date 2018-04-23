@@ -24,6 +24,10 @@ bool Exit::isDoor()
 {
 	return false;
 }
+bool Exit::isPlayer()
+{
+	return false;
+}
 bool Exit::isExit()
 {
 	return true;

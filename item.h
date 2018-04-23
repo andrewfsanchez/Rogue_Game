@@ -31,6 +31,7 @@ class Item: public Object
 		bool isItem();
 		bool isDoor();
 		bool isExit();
+		bool isPlayer();
 		
 	private:
 		
