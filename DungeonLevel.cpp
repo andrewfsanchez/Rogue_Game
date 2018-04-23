@@ -395,8 +395,8 @@ void Dungeon::dungeonBuild(Node grid[30][30])                     //We pass in t
 															   //delete walls to build a room and it will help with the algorithm later used to place more rooms.
 
 	int numRooms = numRoomsGenerator();                       //Here we will randomly decide how many rooms this dungeon level will have
-	int roomLength[numRooms];
-	int roomWidth[numRooms];
+	int *roomLength = new int[numRooms];
+	int *roomWidth = new int[numRooms];
 	Object* wall = new Wall();
 
 	for (int i = 0; i < 30; i++)

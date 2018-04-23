@@ -1,8 +1,3 @@
-#include "node.cpp"
-#include "player.cpp"
-#include "enemy.cpp"
-#include "Object.h"
-#include "item.cpp"
 #include "DungeonLevel.cpp"
 #include <iostream>
 #include <vector>
@@ -48,6 +43,7 @@ private:
 	//Vector for test items
 	vector<Item> items;
 	vector<Enemy> Enemy;
+	vector<Item> inventory;
 
 };
 

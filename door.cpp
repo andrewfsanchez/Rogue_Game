@@ -2,14 +2,14 @@
 
 Door::Door()
 {
-	open = false;
+	opened = false;
 }
 string Door::getSymbol()
 {
-	if(!open)
+	if (!opened)
 		return " + ";
 	else
-		return " . "
+		return " . ";
 }
 bool Door::isDoor()
 {
@@ -23,13 +23,17 @@ bool Door::isItem()
 {
 	return false;
 }
+bool Door::isWall()
+{
+	return false;
+}
 
 void Door::open()
 {
-	open = true;
+	opened = true;
 }
 bool Door::isOpen()
 {
-	return open;
+	return opened;
 }
 

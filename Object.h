@@ -1,4 +1,5 @@
 #include <string>
+#include <vector>
 using namespace std;
 
 #ifndef object
@@ -78,9 +79,9 @@ public:
 	{
 		return;
 	}
-	virtual string getType()
+	virtual int getType()
 	{
-		return "";
+		return 0;
 	}
 
 

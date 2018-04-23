@@ -7,6 +7,9 @@
 #include <random>
 #include <vector>
 #include <iostream>
+#include "player.cpp"
+#include "enemy.cpp"
+#include "item.cpp"
 #include "node.cpp"
 #include "wall.cpp"
 #include "door.cpp"

@@ -6,6 +6,7 @@
 class Door: public Object
 {
 public:
+	Door();
 	string getSymbol();
 	bool isEnemy();
 	bool isWall();
@@ -17,7 +18,7 @@ public:
 	
 	
 private:
-	bool open;
+	bool opened;
 };
 
 #endif
