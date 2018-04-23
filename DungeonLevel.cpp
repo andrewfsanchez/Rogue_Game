@@ -128,7 +128,7 @@ void Dungeon::dungeonBuild(Node grid[30][30], Object* p)                     //W
 
 void Dungeon::addOneItem(int length, int width, Node grid[30][30])
 {
-    int item = randomNumberGenerator(0,1);
+    int item = randomNumberGenerator(1,0);
 
     Item* potion = new Item("Potion", 5,  0, 0, 0, false, false,true);
 
