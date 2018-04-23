@@ -41,6 +41,17 @@ public:
     bool makeRoom;
     bool placeRoom;
     bool placeObject;
+	int randomNumberGenerator(int max, int min);
+	int randRoomWidth(int numRooms);
+	int randRoomLength(int numRooms);
+	int numRoomsGenerator();
+	int randDirectionGenerator();
+	void makeStartRoom(int width, int length, Node grid[30][30]);
+	void printRoom(int direction, int width, int length, int row, int col, Node grid[30][30]);
+	bool isValidDirection(int direction, int width, int length, int row, int col, Node grid[30][30]);
+	bool isEdge(Node grid[30][30], int i, int k);
+	bool roomMadeHere();
+	void dungeonBuild(Node grid[30][30]);
 
 private:
     int _width, _height;
