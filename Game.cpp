@@ -87,84 +87,83 @@ void Game::moveEnemies()
 			{
 			case 0:   // up
 				target = grid[enemies[i].getY() - 1][enemies[i].getX()];
-				if (target.getObject()->isPlayer())
-				{
-					//attack player
-				}
-				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy() || target.getObject()->isExit())
-					enemies[i].reverseDirection();
-				else if (target.getObject() == NULL)
+
+				if (target.getObject() == NULL)
 				{
 					grid[enemies[i].getY()][enemies[i].getX()].deleteObject();
 					enemies[i].setY(enemies[i].getY() - 1);
 					grid[enemies[i].getY()][enemies[i].getX()].setObject(&enemies[i]);
 				}
-
-			case 1:   //right
-				target = grid[enemies[i].getY()][enemies[i].getX() + 1];
-				if (target.getObject()->isPlayer())
+				else if (target.getObject()->isPlayer())
 				{
 					//attack player
 				}
 				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy() || target.getObject()->isExit())
 					enemies[i].reverseDirection();
-				else if (target.getObject() == NULL)
+				
+
+			case 1:   //right
+				target = grid[enemies[i].getY()][enemies[i].getX() + 1];
+				if (target.getObject() == NULL)
 				{
 					grid[enemies[i].getY()][enemies[i].getX()].deleteObject();
 					enemies[i].setX(enemies[i].getX() + 1);
 					grid[enemies[i].getY()][enemies[i].getX()].setObject(&enemies[i]);
 				}
-
-			case 2:  // down
-				target = grid[enemies[i].getY() + 1][enemies[i].getX()];
-				if (target.getObject()->isPlayer())
+				else if (target.getObject()->isPlayer())
 				{
 					//attack player
 				}
 				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy() || target.getObject()->isExit())
 					enemies[i].reverseDirection();
-				else if (target.getObject() == NULL)
+				
+
+			case 2:  // down
+				target = grid[enemies[i].getY() + 1][enemies[i].getX()];
+				if (target.getObject() == NULL)
 				{
 					grid[enemies[i].getY()][enemies[i].getX()].deleteObject();
 					enemies[i].setY(enemies[i].getY() + 1);
 					grid[enemies[i].getY()][enemies[i].getX()].setObject(&enemies[i]);
 				}
-
-			case 3: // left
-				target = grid[enemies[i].getY()][enemies[i].getX() - 1];
-				if (target.getObject()->isPlayer())
+				else if (target.getObject()->isPlayer())
 				{
 					//attack player
 				}
 				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy() || target.getObject()->isExit())
 					enemies[i].reverseDirection();
-				else if (target.getObject() == NULL)
+				
+
+			case 3: // left
+				target = grid[enemies[i].getY()][enemies[i].getX() - 1];
+				if (target.getObject() == NULL)
 				{
 					grid[enemies[i].getY()][enemies[i].getX()].deleteObject();
 					enemies[i].setX(enemies[i].getX() - 1);
 					grid[enemies[i].getY()][enemies[i].getX()].setObject(&enemies[i]);
 				}
+				else if (target.getObject()->isPlayer())
+				{
+					//attack player
+				}
+				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy() || target.getObject()->isExit())
+					enemies[i].reverseDirection();	
 			}
-			//Bat
 		}
 
 		else if (enemies[i].getType() == 2)
 		{
 
 			
-		  if (17 > enemies[i].getX() && 17 > enemies[i].getY())
-		  
-		{
-			
-			  
+		  if (17 > enemies[i].getX() && 17 > enemies[i].getY())  
+		{		
+
 			  if (abs(17 - enemies[i].getX()) > abs(17 - enemies[i].getY()))
 			  {
 				  Node target=grid[enemies[i].getX() + 1][enemies[i].getY()];
 				  if(target.getObject()->isPlayer())
 				  {
-
 					  target.getObject()->takeDamage(enemies[i].getAttack());;
-
 				  }
 				else
 				enemies[i].setX(enemies[i].getX() + 1);
@@ -174,8 +173,7 @@ void Game::moveEnemies()
 			  {
 				  enemies[i].setY(enemies[i].getY() + 1);
 				  break;
-			  }
-			  
+			  }		  
 		 }
 			else if (17 < enemies[i].getX() && 17 > enemies[i].getY())
 		  {
@@ -189,29 +187,18 @@ void Game::moveEnemies()
 				  enemies[i].setY(enemies[i].getY() + 1);
 				  break;
 			  }
-
 		  }
-
 		  else 
 		  {
-
 			  return;
-
 		  }
-
 		}
-
 		else if (enemies[i].getType() == 3)
 		{
-
 			//movement pattern for Zombie
 			//set new x and y coordinate accordingly
-
 		}
-
-	
 	}
-	
 }
 
 /*void Game::eraseEnemies()
