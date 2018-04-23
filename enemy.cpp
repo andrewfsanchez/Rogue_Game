@@ -29,10 +29,16 @@ Enemy::Enemy()
 {
 	//Test values again
 	health = 15;
-	attack = 2;
-	speed = 2;
+	attack = 0;
+	speed = 0;
 	defense = 0;
 	type = 0;
+	
+	//Experience values, can be changed.
+	batExp = 7;
+	spiderExp = 9;
+	lizardExp = 11;
+	zombieExp = 15;
 }
 
 int Enemy::getHealth()
@@ -95,17 +101,47 @@ string Enemy::getSymbol()
 	else if (type == 2)
 	{
 
-		return " S ";     //Spider
+		return " L ";     //Lizard
 
 	}
 	else if (type == 3)
 	{
 
-		return " L ";     //Lizard
+		return " S ";     //Spider
 		
 	}
 	
 }
+
+int Enemy::getExperience(int type)
+{
+	if (type == 1)
+	{
+<<<<<<< HEAD
+		
+		return " Z ";     //Zombie
+
+=======
+		return batExp;
+>>>>>>> 09fb073f58dde55e775437ab20e0a1f859c7a37f
+	}
+	
+	else if (type == 2)
+	{
+		return spiderExp;
+	}
+	
+	else if (type == 3)
+	{
+		return lizardExp;
+	}
+	
+	else if (type == 4)
+	{
+		return zombieExp;
+	}
+}	
+		
 bool Enemy::isEnemy()
 {
 	return true;

@@ -24,6 +24,7 @@ class Enemy: public Object
 		void takeDamage(int damage);
 
 		string getSymbol();
+		int getExperience(int type);
 		bool isEnemy();
 		bool isWall();
 		bool isItem();
@@ -38,6 +39,11 @@ class Enemy: public Object
 		int speed;
 		int item;
 		int type;
+		
+		int batExp;
+		int spiderExp;
+		int lizardExp;
+		int zombieExp;
 };
 
 #endif
