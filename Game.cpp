@@ -604,7 +604,7 @@ void Game::updateGrid()
 	}
 
 
-	//moveEnemies();
+	moveEnemies();
 
 	if (player->getHealth()<1) //if player is dead, game over
 	{
