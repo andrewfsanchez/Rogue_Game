@@ -338,12 +338,12 @@ void Game::deleteGrid()
 void Game::playerDrop()
 {
 
-	for (int i = 0; i < inventory.size(); i++)
+	for (unsigned int i = 0; i < inventory.size(); i++)
 	{
 		cout << i << ". " << inventory[i].getName()<<"\n";
 	}
 
-	int index;
+	unsigned int index;
 	do {
 		cout << "Choose the number of the item you want to drop: ";
 		cin >> index;
@@ -363,12 +363,12 @@ void Game::playerUseItem()
 {
 
 
-	for (int i = 0; i < inventory.size(); i++)
+	for (unsigned int i = 0; i < inventory.size(); i++)
 	{
 		cout << i << ". " << inventory[i].getName() << "\n";
 	}
 
-	int index;
+	unsigned int index;
 	do {
 		cout << "Choose the number of the item you want to use/equip: ";
 		cin >> index;
