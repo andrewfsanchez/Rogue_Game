@@ -47,11 +47,7 @@ private:
 	
 	//Vector for test items
 	vector<Item> items;
-<<<<<<< HEAD
 	vector<Enemy> Enemy;
-=======
-	vector<Item> inventory;
->>>>>>> 4855d810ae524144a51f8543384ffb2505e35877
 
 };
 
