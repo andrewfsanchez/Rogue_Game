@@ -13,6 +13,7 @@ public:
 	virtual bool isWall() = 0;
 	virtual bool isItem() = 0;
 	virtual bool isDoor() = 0;
+	virtual bool isExit() = 0;
 	
 	virtual int getHealth()
 	{

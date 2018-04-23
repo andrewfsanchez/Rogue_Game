@@ -34,7 +34,16 @@ Game::Game(int diff)
 	weapon = katana;
 	armor = oldShirt;
 
+	level = Dungeon();
 }
+
+
+void Game::startGame()
+{
+	level.dungeonBuild(grid);
+	printGrid();
+}
+
 
 /*void Game::makeLevel()
 {
@@ -108,10 +117,10 @@ void Game::playerAction()
 
 void Game::updateGrid()
 {
-	/*if(player.getX()==exitX || player.getY()==exitY)
+	/*if(player->getX()==exitX || player->getY()==exitY)
 	{
 		makeNextFloor(floor, diff, player);
-		delete vector list 
+		playerAction();
 		return;
 	}
 	*/

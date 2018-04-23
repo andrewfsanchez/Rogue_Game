@@ -12,6 +12,7 @@ public:
 	bool isWall();
 	bool isItem();
 	bool isDoor();
+	bool isExit();
 
 	bool isOpen();
 	void open();

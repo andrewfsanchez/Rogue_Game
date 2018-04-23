@@ -27,6 +27,10 @@ bool Door::isWall()
 {
 	return false;
 }
+bool Door::isExit()
+{
+	return false;
+}
 
 void Door::open()
 {
