@@ -133,7 +133,7 @@ int Player::getLevel()
 
 void Player::takeDamage(int damage)
 {
-	currentHealth = currentHealth - (damage/defense);
+	currentHealth = currentHealth - (10*damage)/(10 + defense);
 }
 string Player::getSymbol()
 {
