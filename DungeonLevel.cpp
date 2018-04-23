@@ -304,7 +304,7 @@ void Dungeon::makeRoom(int numRooms, int width, int length, Node grid[30][30])
 	                                                                                  //This next piece of the method chooses a random direction, places a corridor of random length,
 	                                                                                  //then attempts to put a room at the end of that corridor on a random direction.
 
-	for (int r = 0; r <= numRooms;)
+	for (int r = 0; r <= numRooms;r++)
 	{
 		for (int i = 0; i <= 30; i++)
 		{

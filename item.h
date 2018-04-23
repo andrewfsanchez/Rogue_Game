@@ -30,6 +30,7 @@ class Item: public Object
 		bool isWall();
 		bool isItem();
 		bool isDoor();
+		bool isExit();
 		
 	private:
 		

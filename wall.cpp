@@ -21,3 +21,7 @@ bool Wall::isDoor()
 {
 	return false;
 }
+bool Wall::isExit()
+{
+	return false;
+}

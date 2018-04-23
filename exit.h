@@ -1,18 +1,16 @@
 #include "Object.h"
 
-#ifndef WALL_H
-#define WALL_H
+#ifndef EXIT_H
+#define EXIT_H
 
-class Wall: public Object
+class Exit : public Object
 {
 public:
-	Wall();
+	bool isExit();
 	string getSymbol();
 	bool isEnemy();
 	bool isWall();
 	bool isItem();
 	bool isDoor();
-	bool isExit();
 
-};
 #endif

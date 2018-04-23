@@ -158,6 +158,10 @@ bool Player::isDoor()
 {
 	return false;
 }
+bool Player::isExit()
+{
+	return false;
+}
 
 
 /*

@@ -31,8 +31,8 @@ class Player : public Object
 		void regeneration();
 		void levelUp();
 		int getLevel();
-		Player getPlayer(); //Location? 
-		//void Attack(Enemy& target);
+		
+
 		void takeDamage(int damage);
 		void addExp(int);
 		
@@ -42,6 +42,7 @@ class Player : public Object
 		bool isWall();
 		bool isItem();
 		bool isDoor();
+		bool isExit();
 	
 	private:
 

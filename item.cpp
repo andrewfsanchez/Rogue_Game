@@ -107,3 +107,7 @@ bool Item::isDoor()
 {
 	return false;
 }
+bool Item::isExit()
+{
+	return false;
+}
