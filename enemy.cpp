@@ -101,7 +101,7 @@ string Enemy::getSymbol()
 	else if (type == 2)
 	{
 
-		return " L ";     //Rat
+		return " L ";     //Lizard
 
 	}
 	else if (type == 3)
@@ -112,8 +112,7 @@ string Enemy::getSymbol()
 	}
 	else if (type == 4)
 	{
-
-		return " Z ";      //Zombie
+		return "Z";
 	}
 	
 }
