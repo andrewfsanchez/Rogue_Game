@@ -2,30 +2,30 @@
 #include <cstdlib>
 
 
-Game::Game(int diff) 
+Game::Game(int diff)
 {
 	for (int i = 0; i < 30; i++)
 	{
 		for (int k = 0; k < 30; k++)
-			{
+		{
 			grid[i][k] = Node();
-			}
+		}
 	}
 	difficulty = diff;
 	floor = 1;
-	player= new Player();
-	
+	player = new Player();
+
 	//Create some generic items
-	Item potion = Item("Potion", 5,  0, 0, 0, false, false,true);
+	Item potion = Item("Potion", 5, 0, 0, 0, false, false, true);
 	Item katana = Item("Katana", 0, 0, 7, 0, true, false, false);
 	Item oldShirt = Item("Old Shirt", 0, 2, 0, 0, false, true, false);
-	
+
 	//Add to item vector
 	items.push_back(potion);
 	items.push_back(katana);
 	items.push_back(oldShirt);
-	
-	
+
+
 
 	inventory.push_back(potion);
 	inventory.push_back(katana);
@@ -47,7 +47,7 @@ void Game::startGame()
 
 	level.addEnemiesToMap(grid, difficulty, enemies, floor);
 
-	grid[17][17]=Node(x);
+	grid[17][17] = Node(x);
 	printGrid();
 	playerAction();
 }
@@ -68,10 +68,10 @@ void Game::makeNextLevel()
 
 /*void Game::makeLevel()
 {
-	clearGrid();
-	floor++;
-	int rooms = rand() % 4 + 3;
-	int roomSize = 15 - rooms;
+clearGrid();
+floor++;
+int rooms = rand() % 4 + 3;
+int roomSize = 15 - rooms;
 }
 */
 
@@ -100,7 +100,7 @@ void Game::moveEnemies()
 				}
 				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy() || target.getObject()->isExit())
 					enemies[i].reverseDirection();
-				
+
 
 			case 1:   //right
 				target = grid[enemies[i].getY()][enemies[i].getX() + 1];
@@ -116,7 +116,7 @@ void Game::moveEnemies()
 				}
 				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy() || target.getObject()->isExit())
 					enemies[i].reverseDirection();
-				
+
 
 			case 2:  // down
 				target = grid[enemies[i].getY() + 1][enemies[i].getX()];
@@ -132,7 +132,7 @@ void Game::moveEnemies()
 				}
 				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy() || target.getObject()->isExit())
 					enemies[i].reverseDirection();
-				
+
 
 			case 3: // left
 				target = grid[enemies[i].getY()][enemies[i].getX() - 1];
@@ -147,221 +147,221 @@ void Game::moveEnemies()
 					target.getObject()->takeDamage(enemies[i].getAttack());
 				}
 				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy() || target.getObject()->isExit())
-					enemies[i].reverseDirection();	
+					enemies[i].reverseDirection();
 			}
 		}
 		/*
 		else if (enemies[i].getType() == 2)
 		{
 
-			
-		  if (17 > enemies[i].getX() && 17 > enemies[i].getY())  
-		{		
 
-			  if (abs(17 - enemies[i].getX()) > abs(17 - enemies[i].getY()))
-			  {
-				  Node target=grid[enemies[i].getX() + 1][enemies[i].getY()];
-			
+		if (17 > enemies[i].getX() && 17 > enemies[i].getY())
+		{
 
-				if (target.getObject() != NULL){
-				  if(target.getObject()->isItem()||target.getObject()->isWall())
-				  {
+		if (abs(17 - enemies[i].getX()) > abs(17 - enemies[i].getY()))
+		{
+		Node target=grid[enemies[i].getX() + 1][enemies[i].getY()];
 
-					enemies[i].setY(enemies[i].getY() + 1);
-					break;
 
-				  }
-				  else if(target.getObject()->isPlayer())
-				  	{
+		if (target.getObject() != NULL){
+		if(target.getObject()->isItem()||target.getObject()->isWall())
+		{
 
-					  target.getObject()->takeDamage(enemies[i].getAttack());
+		enemies[i].setY(enemies[i].getY() + 1);
+		break;
 
-				  	}
-					}
-					else 
-					{
-					
-					enemies[i].setX(enemies[i].getX() + 1);
-					break;
+		}
+		else if(target.getObject()->isPlayer())
+		{
 
-					}
-			  }
-			  else if (abs(17 - enemies[i].getX()) < abs(17 - enemies[i].getY()))
-			  {
-				  Node target=grid[enemies[i].getX()][enemies[i].getY() + 1];
-				  
-				  if (target.getObject() != NULL)
-				  {
-				  if(target.getObject()->isItem()||target.getObject()->isWall())
-				  {
+		target.getObject()->takeDamage(enemies[i].getAttack());
 
-					enemies[i].setX(enemies[i].getX() + 1);
-					break;
+		}
+		}
+		else
+		{
 
-				  }
-				  
-				  else if (target.getObject()->isPlayer())
-				  {
+		enemies[i].setX(enemies[i].getX() + 1);
+		break;
 
-					  target.getObject()->takeDamage(enemies[i].getAttack());
+		}
+		}
+		else if (abs(17 - enemies[i].getX()) < abs(17 - enemies[i].getY()))
+		{
+		Node target=grid[enemies[i].getX()][enemies[i].getY() + 1];
 
-				  }
-				  }
+		if (target.getObject() != NULL)
+		{
+		if(target.getObject()->isItem()||target.getObject()->isWall())
+		{
 
-				  else
-				  {
+		enemies[i].setX(enemies[i].getX() + 1);
+		break;
 
-				  enemies[i].setY(enemies[i].getY() + 1);
-				  break;
-			  }		  
-		 }
-		 }
-			
-			
+		}
+
+		else if (target.getObject()->isPlayer())
+		{
+
+		target.getObject()->takeDamage(enemies[i].getAttack());
+
+		}
+		}
+
+		else
+		{
+
+		enemies[i].setY(enemies[i].getY() + 1);
+		break;
+		}
+		}
+		}
+
+
 		else if (17 < enemies[i].getX() && 17 > enemies[i].getY())
-		  
-		  
-		  {
-			  if (abs(17 - enemies[i].getX()) > abs(17 - enemies[i].getY()))
-			  {
 
-				 
-				  Node target=grid[enemies[i].getX() - 1][enemies[i].getY()];
 
-					if (target.getObject() != NULL)
-					
-				{
-				  if(target.getObject()->isItem()||target.getObject()->isWall())
-				  {
+		{
+		if (abs(17 - enemies[i].getX()) > abs(17 - enemies[i].getY()))
+		{
 
-					enemies[i].setY(enemies[i].getY() + 1);
-					break;
 
-				  }
+		Node target=grid[enemies[i].getX() - 1][enemies[i].getY()];
 
-				  else if (target.getObject()->isPlayer()) 
-				  {
+		if (target.getObject() != NULL)
 
-					  target.getObject()->takeDamage(enemies[i].getAttack());
-					
-				  }
-				  }
+		{
+		if(target.getObject()->isItem()||target.getObject()->isWall())
+		{
 
-				  else	
-					{
-					
-					enemies[i].setX(enemies[i].getX() - 1);
-					break;
-				  
-					}
-			  }
-			  
-			  else if (abs(17 - enemies[i].getX()) < abs(17 - enemies[i].getY()))
-			  {
-				  Node target=grid[enemies[i].getX()][enemies[i].getY() + 1];
+		enemies[i].setY(enemies[i].getY() + 1);
+		break;
 
-				  if (target.getObject() != NULL)
-				  {
+		}
 
-				  if(target.getObject()->isItem()||target.getObject()->isWall())
-				  {
+		else if (target.getObject()->isPlayer())
+		{
 
-					enemies[i].setX(enemies[i].getX() - 1);
-					break;
+		target.getObject()->takeDamage(enemies[i].getAttack());
 
-				  }
-				  
-				  else if(target.getObject()->isPlayer())
-				  {
+		}
+		}
 
-					  target.getObject()->takeDamage(enemies[i].getAttack());
+		else
+		{
 
-				  }
-				  }
+		enemies[i].setX(enemies[i].getX() - 1);
+		break;
 
-				  else
-				  {
-				 
-				  enemies[i].setY(enemies[i].getY() + 1);
-				  break;
-				  
-				  }
-			  }
-		  }
+		}
+		}
+
+		else if (abs(17 - enemies[i].getX()) < abs(17 - enemies[i].getY()))
+		{
+		Node target=grid[enemies[i].getX()][enemies[i].getY() + 1];
+
+		if (target.getObject() != NULL)
+		{
+
+		if(target.getObject()->isItem()||target.getObject()->isWall())
+		{
+
+		enemies[i].setX(enemies[i].getX() - 1);
+		break;
+
+		}
+
+		else if(target.getObject()->isPlayer())
+		{
+
+		target.getObject()->takeDamage(enemies[i].getAttack());
+
+		}
+		}
+
+		else
+		{
+
+		enemies[i].setY(enemies[i].getY() + 1);
+		break;
+
+		}
+		}
+		}
 
 		else if (17 > enemies[i].getX() && 17 < enemies[i].getY())
 		{
-			if (abs(17 - enemies[i].getX()) > abs(17 - enemies[i].getY()))
-			
-			{
-			
-				Node target=grid[enemies[i].getX() + 1][enemies[i].getY()];
-			
-			if (target.getObject() != NULL)
-			{
-			if(target.getObject()->isItem()||target.getObject()->isWall())
-				  
-				  {
+		if (abs(17 - enemies[i].getX()) > abs(17 - enemies[i].getY()))
 
-					enemies[i].setY(enemies[i].getY() - 1);
-					break;
+		{
 
-				  }
+		Node target=grid[enemies[i].getX() + 1][enemies[i].getY()];
 
-			else if(target.getObject()->isPlayer())
-			
-			{
+		if (target.getObject() != NULL)
+		{
+		if(target.getObject()->isItem()||target.getObject()->isWall())
 
-				target.getObject()->takeDamage(enemies[i].getAttack());
+		{
 
-			}
-			}
+		enemies[i].setY(enemies[i].getY() - 1);
+		break;
 
-
-			else
-			{
-
-				enemies[i].setX(enemies[i].getX() + 1);
-				break;
-
-			}
-			}
-
-			else if (abs(17 - enemies[i].getX()) < abs(17 - enemies[i].getY()))
-			
-			{
-
-				Node target=grid[enemies[i].getX()][enemies[i].getY() - 1];
-
-				if (target.getObject() != NULL)
-				{
-
-				if(target.getObject()->isItem()||target.getObject()->isWall())
-				  {
-
-					enemies[i].setX(enemies[i].getX() + 1);
-					break;
-
-				  }
+		}
 
 		else if(target.getObject()->isPlayer())
-			
-			{
 
-				target.getObject()->takeDamage(enemies[i].getAttack());
+		{
 
-			}
-			}
+		target.getObject()->takeDamage(enemies[i].getAttack());
 
-			else
-			{
+		}
+		}
 
-				enemies[i].setY(enemies[i].getY() - 1);
-				break;
 
-			}
+		else
+		{
 
-			}
+		enemies[i].setX(enemies[i].getX() + 1);
+		break;
+
+		}
+		}
+
+		else if (abs(17 - enemies[i].getX()) < abs(17 - enemies[i].getY()))
+
+		{
+
+		Node target=grid[enemies[i].getX()][enemies[i].getY() - 1];
+
+		if (target.getObject() != NULL)
+		{
+
+		if(target.getObject()->isItem()||target.getObject()->isWall())
+		{
+
+		enemies[i].setX(enemies[i].getX() + 1);
+		break;
+
+		}
+
+		else if(target.getObject()->isPlayer())
+
+		{
+
+		target.getObject()->takeDamage(enemies[i].getAttack());
+
+		}
+		}
+
+		else
+		{
+
+		enemies[i].setY(enemies[i].getY() - 1);
+		break;
+
+		}
+
+		}
 
 
 
@@ -369,76 +369,76 @@ void Game::moveEnemies()
 		}
 		else if (17 < enemies[i].getX() && 17 < enemies[i].getY())
 		{
-			if (abs(17 - enemies[i].getX()) > abs(17 - enemies[i].getY()))
-			
-			{
-			
-				Node target=grid[enemies[i].getX() - 1][enemies[i].getY()];
+		if (abs(17 - enemies[i].getX()) > abs(17 - enemies[i].getY()))
 
-				if (target.getObject() != NULL)
-				{
-				
-				if(target.getObject()->isItem()||target.getObject()->isWall())
-				  {
+		{
 
-					enemies[i].setY(enemies[i].getY() - 1);
-					break;
+		Node target=grid[enemies[i].getX() - 1][enemies[i].getY()];
 
-				  }
+		if (target.getObject() != NULL)
+		{
 
-			else if(target.getObject()->isPlayer())
-			
-			{
+		if(target.getObject()->isItem()||target.getObject()->isWall())
+		{
 
-				target.getObject()->takeDamage(enemies[i].getAttack());
+		enemies[i].setY(enemies[i].getY() - 1);
+		break;
 
-			}
-			}
+		}
 
-			else
-			{
+		else if(target.getObject()->isPlayer())
 
-				enemies[i].setX(enemies[i].getX() - 1);
-				break;
+		{
 
-			}
-			}
+		target.getObject()->takeDamage(enemies[i].getAttack());
 
-			else if (abs(17 - enemies[i].getX()) < abs(17 - enemies[i].getY()))
-			
-			{
+		}
+		}
 
-				Node target=grid[enemies[i].getX()][enemies[i].getY() - 1];
+		else
+		{
 
-				if (target.getObject() != NULL)
-				{
-				
-				if(target.getObject()->isItem()||target.getObject()->isWall())
-				  {
+		enemies[i].setX(enemies[i].getX() - 1);
+		break;
 
-					enemies[i].setX(enemies[i].getX() - 1);
-					break;
+		}
+		}
 
-				  }
+		else if (abs(17 - enemies[i].getX()) < abs(17 - enemies[i].getY()))
 
-			else if(target.getObject()->isPlayer())
-			
-			{
+		{
 
-				target.getObject()->takeDamage(enemies[i].getAttack());
+		Node target=grid[enemies[i].getX()][enemies[i].getY() - 1];
 
-			}
-			}
+		if (target.getObject() != NULL)
+		{
 
-			else
-			{
+		if(target.getObject()->isItem()||target.getObject()->isWall())
+		{
 
-				enemies[i].setY(enemies[i].getY() - 1);
-				break;
+		enemies[i].setX(enemies[i].getX() - 1);
+		break;
 
-			}
+		}
 
-			}
+		else if(target.getObject()->isPlayer())
+
+		{
+
+		target.getObject()->takeDamage(enemies[i].getAttack());
+
+		}
+		}
+
+		else
+		{
+
+		enemies[i].setY(enemies[i].getY() - 1);
+		break;
+
+		}
+
+		}
 
 
 
@@ -468,7 +468,7 @@ void Game::moveEnemies()
 				}
 				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy() || target.getObject()->isExit())
 					enemies[i].reverseDirection();
-				
+
 
 			case 1:   //right
 				target = grid[enemies[i].getY()][enemies[i].getX() + 1];
@@ -484,7 +484,7 @@ void Game::moveEnemies()
 				}
 				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy() || target.getObject()->isExit())
 					enemies[i].reverseDirection();
-				
+
 
 			case 2:  // down
 				target = grid[enemies[i].getY() + 1][enemies[i].getX()];
@@ -500,7 +500,7 @@ void Game::moveEnemies()
 				}
 				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy() || target.getObject()->isExit())
 					enemies[i].reverseDirection();
-				
+
 
 			case 3: // left
 				target = grid[enemies[i].getY()][enemies[i].getX() - 1];
@@ -515,38 +515,38 @@ void Game::moveEnemies()
 					target.getObject()->takeDamage(enemies[i].getAttack());
 				}
 				else if (target.getObject()->isWall() || target.getObject()->isItem() || target.getObject()->isEnemy() || target.getObject()->isExit())
-					enemies[i].reverseDirection();	
+					enemies[i].reverseDirection();
 			}
 		}
-		}
-		}
+	}
+}
 
 /*void Game::eraseEnemies()
 {
 
-	for (int i = enemies.size() - 1; i >= 0; i--)
-	{
-	delete &enemies[i];                    // Unsure if this line is necessary based on how we implemented the Vector
-	enemies.erase(enemies.begin() + i);
-	}
+for (int i = enemies.size() - 1; i >= 0; i--)
+{
+delete &enemies[i];                    // Unsure if this line is necessary based on how we implemented the Vector
+enemies.erase(enemies.begin() + i);
+}
 }*/
 
-void Game::playerAction() 
+void Game::playerAction()
 {
 	bool check = true;
 	while (check)
 	{
-		string input="";
-		cout << "Current Health: "<<player->getHealth()<<"\n";
+		string input = "";
+		cout << "Current Health: " << player->getHealth() << "\n";
 		cout << "What will you do? (M= move, D= drop item, U= use item, W= wait, Q= quit game)";
 		cin >> input;
 
-		if (input.compare("M") == 0 || input.compare("m")==0)
+		if (input.compare("M") == 0 || input.compare("m") == 0)
 		{
 			check = false;
 			playerMove();
 		}
-		else if (input.compare("D")==0 || input.compare("d") == 0)
+		else if (input.compare("D") == 0 || input.compare("d") == 0)
 		{
 			if (!inventory.empty())
 			{
@@ -574,9 +574,9 @@ void Game::playerAction()
 		else if (input.compare("Q") == 0 || input.compare("q") == 0)
 		{
 			cout << "Are you sure you want to quit? (Y/N) ";
-			string a="";
+			string a = "";
 			cin >> a;
-			if (a.compare("Y")==0||a.compare("y")==0)
+			if (a.compare("Y") == 0 || a.compare("y") == 0)
 			{
 				check = false;
 				cout << "Successfully quit game.\n";
@@ -598,7 +598,7 @@ void Game::updateGrid()
 		if (enemies[i].getHealth() == 0)
 		{
 			// delete &enemies[i];  Unsure if this line is necessary based on how we implemented the Vector
-			enemies.erase (enemies.begin()+i);
+			enemies.erase(enemies.begin() + i);
 		}
 
 	}
@@ -617,12 +617,12 @@ void Game::updateGrid()
 		playerAction();
 	}
 
-	
+
 }
 
 void Game::printGrid()
 {
-	for (int i=0; i<30;i++)
+	for (int i = 0; i<30; i++)
 	{
 		for (int k = 0; k < 30; k++)
 		{
@@ -653,7 +653,7 @@ void Game::playerDrop()
 
 	for (unsigned int i = 0; i < inventory.size(); i++)
 	{
-		cout << i << ". " << inventory[i].getName()<<"\n";
+		cout << i << ". " << inventory[i].getName() << "\n";
 	}
 
 	unsigned int index;
@@ -710,11 +710,11 @@ void Game::playerUseItem()
 void Game::useItem(Item x, Object* p)
 {
 	p->setAttack(p->getAttack() + x.getAttackMod());
-	p->setDefense( p->getDefense() + x.getDefenseMod());
-	p->setHealth( p->getHealth() + x.getHealthMod());
+	p->setDefense(p->getDefense() + x.getDefenseMod());
+	p->setHealth(p->getHealth() + x.getHealthMod());
 	if (p->getHealth() > p->getMaxHealth())
-		p->setHealth( p->getMaxHealth());
-	p->setRegen( p->getRegen() + x.getRegenMod());
+		p->setHealth(p->getMaxHealth());
+	p->setRegen(p->getRegen() + x.getRegenMod());
 
 
 }
@@ -754,29 +754,29 @@ void Game::playerMove()
 		cout << "Where do you want to move? (U= up, D= down, R= right, L= left, A= ai move): ";
 		string input = "";
 		cin >> input;
-		
+
 
 		if (input.compare("U") == 0 || input.compare("u") == 0)
 		{
 			check = false;
-			
-			
-			Node target=grid[player->getY() - 1][player->getX()];
+
+
+			Node target = grid[player->getY() - 1][player->getX()];
 			if (target.getObject() == NULL)
 			{
 				grid[player->getY()][player->getX()].deleteObject();
-				player->setY(player->getY()-1);
+				player->setY(player->getY() - 1);
 				grid[player->getY()][player->getX()].setObject(player);
-				
+
 			}
-			else if(target.getObject()->isEnemy())
+			else if (target.getObject()->isEnemy())
 			{
 
 				target.getObject()->takeDamage(player->getAttack());
 				if (target.getObject()->getHealth() <= 0)
 				{
 					player->addExp(target.getObject()->getExperience());
-					grid[player->getY() - 1][player->getX()]=Node();
+					grid[player->getY() - 1][player->getX()] = Node();
 				}
 			}
 			else if (target.getObject()->isExit())
@@ -801,7 +801,7 @@ void Game::playerMove()
 			{
 				check = false;
 			}
-			
+
 		}
 		else if (input.compare("D") == 0 || input.compare("d") == 0)
 		{
@@ -809,8 +809,8 @@ void Game::playerMove()
 			Node target = grid[player->getY() + 1][player->getX()];
 			if (target.getObject() == NULL)
 			{
-				grid[player->getY()][player->getX()]= Node();
-				player->setY(player->getY()+1);
+				grid[player->getY()][player->getX()] = Node();
+				player->setY(player->getY() + 1);
 				grid[player->getY()][player->getX()].setObject(player);
 			}
 			else if (target.getObject()->isEnemy())
@@ -839,23 +839,23 @@ void Game::playerMove()
 				grid[player->getY()][player->getX()].setObject(player);
 
 			}
-			else if (target.getObject()->getSymbol().compare(" # ")==0)
+			else if (target.getObject()->getSymbol().compare(" # ") == 0)
 			{
 				check = false;
 				cout << "You hit a wall.\n";
 			}
-			
+
 
 		}
 		else if (input.compare("L") == 0 || input.compare("l") == 0)
 		{
 			check = false;
-			Node target = grid[player->getY()][player->getX()-1];
+			Node target = grid[player->getY()][player->getX() - 1];
 			if (target.getObject() == NULL)
 			{
-			grid[player->getY()][player->getX()]= Node();
-			player->setX(player->getX()-1);
-			grid[player->getY()][player->getX()].setObject(player);
+				grid[player->getY()][player->getX()] = Node();
+				player->setX(player->getX() - 1);
+				grid[player->getY()][player->getX()].setObject(player);
 			}
 			else if (target.getObject()->isEnemy())
 			{
@@ -919,7 +919,7 @@ void Game::playerMove()
 			}
 			else if (target.getObject()->isItem())
 			{
-				
+
 
 				Item x = Item(target.getObject()->getName(), target.getObject()->getHealthMod(), target.getObject()->getDefenseMod(), target.getObject()->getAttackMod(), target.getObject()->getRegenMod(), target.getObject()->isWeapon(), target.getObject()->isArmor(), target.getObject()->isConsumable());
 				inventory.push_back(x);
@@ -936,64 +936,64 @@ void Game::playerMove()
 		}
 		else if (input.compare("A") == 0 || input.compare("a") == 0)
 		{
-			check = false;
-			int lengthX = 17 - player->getX();
-			int lengthY = 17 - player->getY();
+		check = false;
+		int lengthX = 17 - player->getX();
+		int lengthY = 17 - player->getY();
 
-			if (lengthY<=lengthX)
-			{
-				if (grid[player->getY()][player->getX()+1].getObject()->isEnemy())
-				{
-					Node target = grid[player->getY()][player->getX() + 1];
+		if (lengthY<=lengthX)
+		{
+		if (grid[player->getY()][player->getX() + 1].getObject()!=NULL&&grid[player->getY()][player->getX()+1].getObject()->isEnemy())
+		{
+		Node target = grid[player->getY()][player->getX() + 1];
 
-					target.getObject()->takeDamage(player->getAttack());
-					if (target.getObject()->getHealth() <= 0)
-					{
-						player->addExp(target.getObject()->getExperience());
-						grid[player->getY()][player->getX() + 1] = Node();
-					}
-				}
-				else
-				{
-					grid[player->getY()][player->getX()] = Node();
-					player->setX(player->getX() + 1);
-					grid[player->getY()][player->getX()].setObject(player);
-				}
-			}
-			else if (lengthY == 1)
-			{
-				floor++;
-				player->setX(15);
-				player->setY(15);
-				makeNextLevel();
-			}
-			else
-			{
-				if (lengthY <= lengthX)
-				{
-					if (grid[player->getY() + 1][player->getX()].getObject()->isEnemy())
-					{
-						Node target = grid[player->getY()][player->getX() + 1];
+		target.getObject()->takeDamage(player->getAttack());
+		if (target.getObject()->getHealth() <= 0)
+		{
+		player->addExp(target.getObject()->getExperience());
+		grid[player->getY()][player->getX() + 1] = Node();
+		}
+		}
+		else
+		{
+		grid[player->getY()][player->getX()] = Node();
+		player->setX(player->getX() + 1);
+		grid[player->getY()][player->getX()].setObject(player);
+		}
+		}
+		else if (lengthY == 1)
+		{
+		floor++;
+		player->setX(15);
+		player->setY(15);
+		makeNextLevel();
+		}
+		else
+		{
+		if (lengthY <= lengthX)
+		{
+		if (grid[player->getY()+1][player->getX()].getObject() != NULL && grid[player->getY() + 1][player->getX()].getObject()->isEnemy())
+		{
+		Node target = grid[player->getY()][player->getX() + 1];
 
-						target.getObject()->takeDamage(player->getAttack());
-						if (target.getObject()->getHealth() <= 0)
-						{
-							player->addExp(target.getObject()->getExperience());
-							grid[player->getY()][player->getX() + 1] = Node();
-						}
-					}
-					else
-					{
-						grid[player->getY()][player->getX()] = Node();
-						player->setY(player->getY() + 1);
-						grid[player->getY()][player->getX()].setObject(player);
-					}
-				}
-			}
+		target.getObject()->takeDamage(player->getAttack());
+		if (target.getObject()->getHealth() <= 0)
+		{
+		player->addExp(target.getObject()->getExperience());
+		grid[player->getY()][player->getX() + 1] = Node();
+		}
+		}
+		else
+		{
+		grid[player->getY()][player->getX()] = Node();
+		player->setY(player->getY() + 1);
+		grid[player->getY()][player->getX()].setObject(player);
+		}
+		}
+		}
 		}
 
 		else
-			cout << "Invalid Direction. \n";
+		cout << "Invalid Direction. \n";
 	}
 	updateGrid();
 
@@ -1027,8 +1027,8 @@ void Game::gameOver()
 	cout << "  $$$$$$$$$$\"\"\"\"           \"\"$$$$$$$$$$$\"\n";
 	cout << "   \"$$$$$\"                      \"\"$$$$\"\"\n";
 	cout << "     $$$\"                         $$$$\"\n\n";
-	
-	cout << "You were slain on floor "<< floor<< ".\n";
+
+	cout << "You were slain on floor " << floor << ".\n";
 	bool check = true;
 	while (check)
 	{
@@ -1050,7 +1050,7 @@ void Game::gameOver()
 			do
 			{
 				cout << "Choose your difficulty: \n 1. Easy\n 2. Normal\n 3. Hard\n";
-				
+
 				cin >> diff;
 				if (!cin || diff > 3 || diff < 1)
 				{
@@ -1060,7 +1060,7 @@ void Game::gameOver()
 				}
 				else
 					difficulty = diff;
-				
+
 			} while (!cin || diff > 3 || diff < 1);
 
 			check = false;
@@ -1071,7 +1071,7 @@ void Game::gameOver()
 				cout << "Normal Difficulty. Enter anything to continue: ";
 			else
 				cout << "Hard Difficulty. Enter anything to continue: ";
-			
+
 			string nothing;
 			cin >> nothing;
 
