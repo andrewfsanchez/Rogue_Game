@@ -40,6 +40,7 @@ private:
 	Dungeon level;
 
 	Object* player;
+	Object* x = new Exit;
 	Node grid[30][30];
 	int difficulty;
 	int floor;

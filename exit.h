@@ -7,6 +7,10 @@ class Exit : public Object
 {
 public:
 	Exit();
+	void setX(int x);
+	void setY(int y);
+	int getX();
+	int getY();
 	bool isExit();
 	string getSymbol();
 	bool isEnemy();
@@ -14,5 +18,7 @@ public:
 	bool isItem();
 	bool isDoor();
 	bool isPlayer();
+	int X;
+	int Y;
 };
 #endif

@@ -7,7 +7,7 @@ Player::Player()
 	maxHealth = 15;
 	currentHealth = maxHealth;
 	defense = 2;
-	attack = 4;
+	attack = 5;
 	regen = 1;
 	level = 1;
 	turnsToRegen = 2;

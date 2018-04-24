@@ -40,29 +40,30 @@ Game::Game(int diff)
 
 void Game::startGame()
 {
-	Exit* x = new Exit();
+	//Exit* x = new Exit();
 	clearGrid();
 
-	level.dungeonBuild(grid, player);
+	level.dungeonBuild(grid, player, x);
 
 	level.addEnemiesToMap(grid, difficulty, enemies, floor);
 
-	grid[17][17] = Node(x);
+
+	//grid[17][17]=Node(x);
 	printGrid();
 	playerAction();
 }
 
 void Game::makeNextLevel()
 {
-	Object* x = new Exit();
+	//Exit* x = new Exit();
 
 	clearGrid();
 
-	level.dungeonBuild(grid, player);
+	level.dungeonBuild(grid, player, x);
 
 	level.addEnemiesToMap(grid, difficulty, enemies, floor);
 
-	grid[17][17] = Node(x);
+	//grid[17][17] = Node(x);
 }
 
 
@@ -595,7 +596,7 @@ void Game::updateGrid()
 	for (std::vector<Enemy>::size_type i = 0; i != enemies.size(); i++)
 	{
 
-		if (enemies[i].getHealth() == 0)
+		if (enemies[i].getHealth() < 1)
 		{
 			// delete &enemies[i];  Unsure if this line is necessary based on how we implemented the Vector
 			enemies.erase(enemies.begin() + i);
@@ -755,6 +756,8 @@ void Game::playerMove()
 		string input = "";
 		cin >> input;
 
+		cout << endl;
+		
 
 		if (input.compare("U") == 0 || input.compare("u") == 0)
 		{
@@ -773,6 +776,10 @@ void Game::playerMove()
 			{
 
 				target.getObject()->takeDamage(player->getAttack());
+				if (target.getObject()->getHealth() < 1)
+					cout << "Enemy Health: " << 0 << endl;
+				else
+					cout << "Enemy Health: " << target.getObject()->getHealth() << endl;
 				if (target.getObject()->getHealth() <= 0)
 				{
 					player->addExp(target.getObject()->getExperience());
@@ -816,6 +823,10 @@ void Game::playerMove()
 			else if (target.getObject()->isEnemy())
 			{
 				target.getObject()->takeDamage(player->getAttack());
+				if (target.getObject()->getHealth() < 1)
+					cout << "Enemy Health: " << 0 << endl;
+				else
+					cout << "Enemy Health: " << target.getObject()->getHealth() << endl;
 				if (target.getObject()->getHealth() <= 0)
 				{
 					player->addExp(target.getObject()->getExperience());
@@ -861,6 +872,10 @@ void Game::playerMove()
 			{
 
 				target.getObject()->takeDamage(player->getAttack());
+				if (target.getObject()->getHealth() < 1)
+					cout << "Enemy Health: " << 0 << endl;
+				else
+					cout << "Enemy Health: " << target.getObject()->getHealth() << endl;
 				if (target.getObject()->getHealth() <= 0)
 				{
 					player->addExp(target.getObject()->getExperience());
@@ -904,6 +919,10 @@ void Game::playerMove()
 			{
 
 				target.getObject()->takeDamage(player->getAttack());
+				if (target.getObject()->getHealth() < 1)
+					cout << "Enemy Health: " << 0 << endl;
+				else
+					cout << "Enemy Health: " << target.getObject()->getHealth() << endl;
 				if (target.getObject()->getHealth() <= 0)
 				{
 					player->addExp(target.getObject()->getExperience());
@@ -936,60 +955,105 @@ void Game::playerMove()
 		}
 		else if (input.compare("A") == 0 || input.compare("a") == 0)
 		{
-		check = false;
-		int lengthX = 17 - player->getX();
-		int lengthY = 17 - player->getY();
+			check = false;
+			int lengthX = x->getX() - player->getX();
+			int lengthY = x->getY() - player->getY();
+			
 
-		if (lengthY<=lengthX)
-		{
-		if (grid[player->getY()][player->getX() + 1].getObject()!=NULL&&grid[player->getY()][player->getX()+1].getObject()->isEnemy())
-		{
-		Node target = grid[player->getY()][player->getX() + 1];
+			if (lengthY<=lengthX)
+			{
+				if (grid[player->getY()][player->getX() + 1].getObject() != NULL)
+				{
+					if (grid[player->getY()][player->getX() + 1].getObject()->isEnemy())
+					{  
+						Node target = grid[player->getY()][player->getX() + 1];
 
-		target.getObject()->takeDamage(player->getAttack());
-		if (target.getObject()->getHealth() <= 0)
-		{
-		player->addExp(target.getObject()->getExperience());
-		grid[player->getY()][player->getX() + 1] = Node();
-		}
-		}
-		else
-		{
-		grid[player->getY()][player->getX()] = Node();
-		player->setX(player->getX() + 1);
-		grid[player->getY()][player->getX()].setObject(player);
-		}
-		}
-		else if (lengthY == 1)
-		{
-		floor++;
-		player->setX(15);
-		player->setY(15);
-		makeNextLevel();
-		}
-		else
-		{
-		if (lengthY <= lengthX)
-		{
-		if (grid[player->getY()+1][player->getX()].getObject() != NULL && grid[player->getY() + 1][player->getX()].getObject()->isEnemy())
-		{
-		Node target = grid[player->getY()][player->getX() + 1];
+						target.getObject()->takeDamage(player->getAttack());
+						if (target.getObject()->getHealth() < 1)
+							cout << "Enemy Health: " << 0 << endl;
+						else
+							cout << "Enemy Health: " << target.getObject()->getHealth() << endl;
+						if (target.getObject()->getHealth() <= 0)
+						{
+							player->addExp(target.getObject()->getExperience());
+							grid[player->getY()][player->getX() + 1] = Node();
+						}
+					}
+					else if (grid[player->getY()][player->getX() + 1].getObject()->isWall())
+					{
+						grid[player->getY()][player->getX()] = Node();
+						player->setY(player->getY() + 1);
+						grid[player->getY()][player->getX()].setObject(player);
+					}						
+				}
+				else
+				{
+					/*if (lengthX < 0)
+					{
+						grid[player->getY()][player->getX()] = Node();
+						player->setX(player->getX() - 1);
+						grid[player->getY()][player->getX()].setObject(player);
+					}
+					else if (lengthX > 0)*/
+					//{
+						grid[player->getY()][player->getX()] = Node();
+						player->setX(player->getX() + 1);
+						grid[player->getY()][player->getX()].setObject(player);
+					//}
+				}
+			} 
+			else if (lengthX == 0 || lengthY == 0)
+			{
+				floor++;
+				player->setX(15);
+				player->setY(15);
+				makeNextLevel();
+			}
+			else
+			{
+				if (lengthX <= lengthY)
+				{
+					if (grid[player->getY() + 1][player->getX()].getObject() != NULL)
+					{
+						if (grid[player->getY() + 1][player->getX()].getObject()->isEnemy())
+						{
+							Node target = grid[player->getY() + 1][player->getX()];
 
-		target.getObject()->takeDamage(player->getAttack());
-		if (target.getObject()->getHealth() <= 0)
-		{
-		player->addExp(target.getObject()->getExperience());
-		grid[player->getY()][player->getX() + 1] = Node();
-		}
-		}
-		else
-		{
-		grid[player->getY()][player->getX()] = Node();
-		player->setY(player->getY() + 1);
-		grid[player->getY()][player->getX()].setObject(player);
-		}
-		}
-		}
+							target.getObject()->takeDamage(player->getAttack());
+							if (target.getObject()->getHealth() < 1)
+								cout << "Enemy Health: " << 0 << endl;
+							else
+								cout << "Enemy Health: " << target.getObject()->getHealth() << endl;
+							if (target.getObject()->getHealth() <= 0)
+							{
+								player->addExp(target.getObject()->getExperience());
+								grid[player->getY() + 1][player->getX()] = Node();
+							}
+						}
+						else if (grid[player->getY() + 1][player->getX()].getObject()->isWall())
+						{
+							grid[player->getY()][player->getX()] = Node();
+							player->setX(player->getX() + 1);
+							grid[player->getY()][player->getX()].setObject(player);
+						}
+					}
+					else
+					{
+						/*if (lengthY < 0)
+						{						
+							grid[player->getY()][player->getX()] = Node();
+							player->setY(player->getY() - 1);
+							grid[player->getY()][player->getX()].setObject(player);
+						}
+						else if (lengthY > 0)*/
+						//{
+							grid[player->getY()][player->getX()] = Node();
+							player->setY(player->getY() + 1);
+							grid[player->getY()][player->getX()].setObject(player);
+						//}
+					}
+				}
+			}
 		}
 
 		else
