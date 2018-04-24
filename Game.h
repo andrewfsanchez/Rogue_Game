@@ -20,6 +20,8 @@ public:
 	void useItem(Item, Object*);
 	void setWeapon(Item w, Object*);
 	void setArmor(Item a, Object*);
+	void setAI(bool ai);
+	
 	
 private:
 	//void makeNextFloor(int, int);
@@ -44,8 +46,8 @@ private:
 	Node grid[30][30];
 	int difficulty;
 	int floor;
-	
-	
+	bool AI;
+
 	vector<Item> items; //Vector for test items
 	vector<Enemy> enemies;
 	vector<Item> inventory;

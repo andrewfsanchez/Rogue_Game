@@ -29,6 +29,7 @@ class Player : public Object
 		void setY(int);
 		
 		void regeneration();
+		int getExp();
 		void levelUp();
 		int getLevel();
 		

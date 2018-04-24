@@ -40,6 +40,10 @@ public:
 	{
 		return 0;
 	}
+	virtual int getLevel()
+	{
+		return 0;
+	}
 	virtual void setDefense(int)
 	{
 		return;
@@ -129,10 +133,10 @@ public:
 	{
 		return;
 	}
-
-
-
-
+	virtual int getExp()
+	{
+		return 0;
+	}
 	
 };
 

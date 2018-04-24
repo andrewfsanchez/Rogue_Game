@@ -133,26 +133,23 @@ void Dungeon::dungeonBuild(Node grid[30][30], Object* p, Object* x)             
             if (grid[i][k].getObject() == NULL)
             {
             	int chance = randomNumberGenerator(100,0);
-            	//if (chance >= 99)
-            	//{
-            		if (i == 15 && k == 15)
-            			continue;
-            		else if (i > 15 && k > 15)
+            	if (i == 15 && k == 15)
+            		continue;
+            	else if (i > 15 && k > 15)
+            	{
+            		if (chance >= 95)
             		{
-            			if (chance >= 95)
-            			{
-            				grid[i][k] = Node(x);
-            				grid[i][k].setObject(x);
-            				x->setX(k);
-            				x->setY(i);
-            				cout << "NEW EXIT: " << x->getX() << "," << x->getY() << endl;
-   							i = 100;
-   							k = 100;
-   							exit = true;
-   							break;
-   						}
+            			grid[i][k] = Node(x);
+            			grid[i][k].setObject(x);
+            			x->setX(k);
+            			x->setY(i);
+   						i = 100;
+   						k = 100;
+   						exit = true;
+   						break;
    					}
-   				//}	
+   				}
+   					
    			}
    			if (i == 29 && exit == false)
    			{
@@ -208,7 +205,7 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty, vector<Enemy> &
                             Bat->setAttack(7*floor); //multiplied by floor
                             Bat->setDefense(0); //keep 0
                             Bat->setHealth(10*floor); //multiplied by floor
-                            Bat->setExp(1 + floor); //add by floor# multiplied by 1 
+                            Bat->setExp(5 + floor); //add by floor# multiplied by 1 
                             enemies.push_back (*Bat);
                         }
                         
@@ -223,7 +220,7 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty, vector<Enemy> &
                             Spider->setAttack(8*floor); //multiplied by floor
                             Spider->setDefense(5); //keep constant
                             Spider->setHealth(20*floor); //multiplied by floor
-                            Spider->setExp(2 + floor); //add by floor# multiplied by 1
+                            Spider->setExp(6 + floor); //add by floor# multiplied by 1
                             enemies.push_back (*Spider);
                         }
                         
@@ -237,7 +234,7 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty, vector<Enemy> &
                             Zombie->setAttack(15*floor); //multiplied by floor
                             Zombie->setDefense(10); //keep constant
                             Zombie->setHealth(25*floor); //multiplied by floor
-                            Zombie->setExp(3 + floor); //add by floor# multiplied by 1
+                            Zombie->setExp(7 + floor); //add by floor# multiplied by 1
                             enemies.push_back (*Zombie);
 						}
 

@@ -1,5 +1,6 @@
 #include "Game.h"
 
+bool AI = false;
 int main()
 {
     int diff;
@@ -18,11 +19,11 @@ int main()
 
 
     if (diff == 1)
-        cout << "Easy Difficulty. Enter \"go\" to continue: ";
+        cout << "Easy Difficulty. Enter \"go\" to continue or \"AI\" to watch the AI player do it: ";
     else if (diff == 2)
-        cout << "Normal Difficulty. Enter \"go\" to continue: ";
+        cout << "Normal Difficulty. Enter \"go\" to continue or \"AI\" to watch the AI player do it: ";
     else
-        cout << "Hard Difficulty. Enter \"go\" to continue: ";
+        cout << "Hard Difficulty. Enter \"go\" to continue or \"AI\" to watch the AI player do it: ";
 
     string nothing;
     
@@ -35,6 +36,12 @@ int main()
 		if (nothing.compare("go") == 0)
 		{
 			check = false;
+			AI = false;
+		}
+		else if (nothing.compare("AI") == 0 || nothing.compare("ai") == 0)
+		{
+			check = false;
+			AI = true;
 		}
 		else
 		{
@@ -46,6 +53,10 @@ int main()
 	}
 
     Game game = Game(diff);
+    if (AI == true)
+    	game.setAI(AI);
+    else if (AI == false)
+    	game.setAI(AI);
 
     game.startGame();
 

@@ -1,5 +1,5 @@
 #include "player.h"
-
+#include <iostream>
 
 Player::Player()
 {
@@ -106,12 +106,18 @@ void Player::addExp(int add)
 		levelUp();
 }
 
+int Player::getExp()
+{
+	return (levelUpExp - currentExp);
+}
+
 void Player::levelUp()
 {
-	//Haven't discussed how this will work yet, so just a test.
-	
+	cout << "Level Up!" << endl;
 	maxHealth = maxHealth + 8;
+	currentHealth = maxHealth;
 	attack = attack + 5;
+	defense = defense + 2;
 	level++;
 
 	levelUpExp = level*15;
