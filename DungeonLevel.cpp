@@ -84,7 +84,7 @@ void Dungeon::makeStartRoom(int width, int length, Node grid[30][30], Object* p)
 }
 
 
-void Dungeon::dungeonBuild(Node grid[30][30], Object* p)                     //We pass in the original grid created which is filled with Nodes that point to nothing. Here we will begin
+void Dungeon::dungeonBuild(Node grid[30][30], Object* p, Object* x)                     //We pass in the original grid created which is filled with Nodes that point to nothing. Here we will begin
 {                                                              //to populate the grid with rooms. I start by filling it with walls because it is easier to delete walls
 															   //delete walls to build a room and it will help with the algorithm later used to place more rooms.
 
@@ -124,6 +124,45 @@ void Dungeon::dungeonBuild(Node grid[30][30], Object* p)                     //W
     grid[15][16].setObject(NULL);
     grid[16][16].setObject(NULL);
     grid[16][17].setObject(NULL);
+    
+    bool exit = false;
+    for (int i = 0; i < 30; i++)
+    {
+        for (int k = 0; k < 30; k++)
+        {
+            if (grid[i][k].getObject() == NULL)
+            {
+            	int chance = randomNumberGenerator(100,0);
+            	//if (chance >= 99)
+            	//{
+            		if (i == 15 && k == 15)
+            			continue;
+            		else if (i > 15 && k > 15)
+            		{
+            			if (chance >= 95)
+            			{
+            				grid[i][k] = Node(x);
+            				grid[i][k].setObject(x);
+            				x->setX(k);
+            				x->setY(i);
+            				cout << "NEW EXIT: " << x->getX() << "," << x->getY() << endl;
+   							i = 100;
+   							k = 100;
+   							exit = true;
+   							break;
+   						}
+   					}
+   				//}	
+   			}
+   			if (i == 29 && exit == false)
+   			{
+   				grid[17][17] = Node(x);
+   				x->setX(17);
+   				x->setY(17);
+   				break;
+   			}
+   		}
+   	}
 }
 
 void Dungeon::addOneItem(int length, int width, Node grid[30][30])

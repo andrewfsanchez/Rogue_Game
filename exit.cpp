@@ -8,6 +8,22 @@ string Exit::getSymbol()
 {
 	return " > ";
 }
+void Exit::setX(int x)
+{
+	X = x;
+}
+void Exit::setY(int x)
+{
+	Y = x;
+}
+int Exit::getX()
+{
+	return X;
+}
+int Exit::getY()
+{
+	return Y;
+}
 bool Exit::isEnemy()
 {
 	return false;

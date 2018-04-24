@@ -29,7 +29,7 @@ public:
 	bool isValidDirection(int direction, int width, int length, int row, int col, Node grid[30][30]);
 	bool isEdge(Node grid[30][30], int i, int k);
 	bool roomMadeHere();
-	void dungeonBuild(Node grid[30][30], Object*);
+	void dungeonBuild(Node grid[30][30], Object*, Object*);
 	void addEnemiesToMap(Node grid[30][30], int difficulty, vector<Enemy>&, int floor);
 	void checkerify(Node grid[30][30], int numWalls, int width, int length);
 	void addOneItem(int length, int width, Node grid[30][30]);

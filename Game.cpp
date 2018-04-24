@@ -40,29 +40,29 @@ Game::Game(int diff)
 
 void Game::startGame()
 {
-	Exit* x = new Exit();
+	//Exit* x = new Exit();
 	clearGrid();
 
-	level.dungeonBuild(grid, player);
+	level.dungeonBuild(grid, player, x);
 
 	level.addEnemiesToMap(grid, difficulty, enemies, floor);
 
-	grid[17][17]=Node(x);
+	//grid[17][17]=Node(x);
 	printGrid();
 	playerAction();
 }
 
 void Game::makeNextLevel()
 {
-	Object* x = new Exit();
+	//Exit* x = new Exit();
 
 	clearGrid();
 
-	level.dungeonBuild(grid, player);
+	level.dungeonBuild(grid, player, x);
 
 	level.addEnemiesToMap(grid, difficulty, enemies, floor);
 
-	grid[17][17] = Node(x);
+	//grid[17][17] = Node(x);
 }
 
 
@@ -954,8 +954,9 @@ void Game::playerMove()
 		else if (input.compare("A") == 0 || input.compare("a") == 0)
 		{
 			check = false;
-			int lengthX = 17 - player->getX();
-			int lengthY = 17 - player->getY();
+			int lengthX = x->getX() - player->getX();
+			int lengthY = x->getY() - player->getY();
+			
 
 			if (lengthY<=lengthX)
 			{
@@ -976,15 +977,30 @@ void Game::playerMove()
 							grid[player->getY()][player->getX() + 1] = Node();
 						}
 					}
+					else if (grid[player->getY()][player->getX() + 1].getObject()->isWall())
+					{
+						grid[player->getY()][player->getX()] = Node();
+						player->setY(player->getY() + 1);
+						grid[player->getY()][player->getX()].setObject(player);
+					}						
 				}
 				else
 				{
-					grid[player->getY()][player->getX()] = Node();
-					player->setX(player->getX() + 1);
-					grid[player->getY()][player->getX()].setObject(player);
+					/*if (lengthX < 0)
+					{
+						grid[player->getY()][player->getX()] = Node();
+						player->setX(player->getX() - 1);
+						grid[player->getY()][player->getX()].setObject(player);
+					}
+					else if (lengthX > 0)*/
+					//{
+						grid[player->getY()][player->getX()] = Node();
+						player->setX(player->getX() + 1);
+						grid[player->getY()][player->getX()].setObject(player);
+					//}
 				}
-			}
-			else if (lengthY == 1)
+			} 
+			else if (lengthX == 0 || lengthY == 0)
 			{
 				floor++;
 				player->setX(15);
@@ -1012,12 +1028,27 @@ void Game::playerMove()
 								grid[player->getY() + 1][player->getX()] = Node();
 							}
 						}
+						else if (grid[player->getY() + 1][player->getX()].getObject()->isWall())
+						{
+							grid[player->getY()][player->getX()] = Node();
+							player->setX(player->getX() + 1);
+							grid[player->getY()][player->getX()].setObject(player);
+						}
 					}
 					else
 					{
-						grid[player->getY()][player->getX()] = Node();
-						player->setY(player->getY() + 1);
-						grid[player->getY()][player->getX()].setObject(player);
+						/*if (lengthY < 0)
+						{						
+							grid[player->getY()][player->getX()] = Node();
+							player->setY(player->getY() - 1);
+							grid[player->getY()][player->getX()].setObject(player);
+						}
+						else if (lengthY > 0)*/
+						//{
+							grid[player->getY()][player->getX()] = Node();
+							player->setY(player->getY() + 1);
+							grid[player->getY()][player->getX()].setObject(player);
+						//}
 					}
 				}
 			}
