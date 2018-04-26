@@ -44,7 +44,7 @@ void Game::startGame()
 
 	level.dungeonBuild(grid, player, x);
 
-	level.addEnemiesToMap(grid, difficulty, enemies, floor);
+	level.addEnemiesToMap(grid, difficulty, enemies, floor, Object* x);
 
 	printGrid();
 	playerAction();

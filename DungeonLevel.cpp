@@ -180,13 +180,13 @@ void Dungeon::addOneItem(int length, int width, Node grid[30][30])
 }
 
 
-void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty, vector<Enemy> &enemies, int floor)
+void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty, vector<Enemy> &enemies, int floor, Object* x)
 {
     for (int i = 0; i < 30; i++)
     {
         for (int k = 0; k < 30; k++)
         {
-            if (grid[i][k].getObject() == NULL)
+            if (grid[i][k].getObject() == NULL && grid[i][k]!=grid[x->getY][x->getX] )
             {
                 int chance = randomNumberGenerator(100,0);
                 int whatEnemy = randomNumberGenerator(100,0);

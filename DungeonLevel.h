@@ -30,7 +30,7 @@ public:
 	bool isEdge(Node grid[30][30], int i, int k);
 	bool roomMadeHere();
 	void dungeonBuild(Node grid[30][30], Object*, Object*);
-	void addEnemiesToMap(Node grid[30][30], int difficulty, vector<Enemy>&, int floor);
+	void addEnemiesToMap(Node grid[30][30], int difficulty, vector<Enemy>&, int floor, Object* x);
 	void checkerify(Node grid[30][30], int numWalls, int width, int length);
 	void addOneItem(int length, int width, Node grid[30][30]);
 
