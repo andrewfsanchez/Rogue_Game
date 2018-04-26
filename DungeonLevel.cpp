@@ -186,7 +186,7 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty, vector<Enemy> &
     {
         for (int k = 0; k < 30; k++)
         {
-            if (grid[i][k].getObject() == NULL && grid[i][k]!=grid[x->getY][x->getX] )
+            if (grid[i][k].getObject() == NULL && i!= x->getY() && k != x->getX() )
             {
                 int chance = randomNumberGenerator(100,0);
                 int whatEnemy = randomNumberGenerator(100,0);
