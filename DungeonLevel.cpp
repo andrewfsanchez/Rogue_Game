@@ -140,7 +140,7 @@ void Dungeon::dungeonBuild(Node grid[30][30], Object* p, Object* x)             
             		if (chance >= 95)
             		{
             			grid[i][k] = Node(x);
-            			grid[i][k].setObject(x);
+            			//grid[i][k].setObject(x);
             			x->setX(k);
             			x->setY(i);
    						i = 100;
@@ -197,7 +197,7 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty, vector<Enemy> &
 
                         if (whatEnemy <= 40)
                         {
-                            Enemy* Bat = new Enemy(i,k,direction);
+                            Enemy* Bat = new Enemy(i,k,direction,2);
 							Bat->setType(1);
                             grid[i][k].setObject(Bat);
                             Bat->setX(i);
@@ -212,7 +212,7 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty, vector<Enemy> &
                         
                         else if (whatEnemy <=86 && whatEnemy >= 66) 
                         {
-                            Enemy* Spider = new Enemy(i,k,direction);
+                            Enemy* Spider = new Enemy(i,k,direction, 3);
                             Spider->setType(2);
                             grid[i][k].setObject(Spider);
                             Spider->setX(i);
@@ -226,7 +226,7 @@ void Dungeon::addEnemiesToMap(Node grid[30][30], int difficulty, vector<Enemy> &
                         
                         else if (whatEnemy <=100 && whatEnemy >= 87)
 						{
-                            Enemy* Zombie = new Enemy(i,k,direction);
+                            Enemy* Zombie = new Enemy(i,k,direction,4);
                             Zombie->setType(3);
                             grid[i][k].setObject(Zombie);
                             Zombie->setX(i);

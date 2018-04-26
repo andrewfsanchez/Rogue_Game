@@ -516,7 +516,7 @@ void Game::updateGrid()
 
 	//deletes dead enemies from vector<enemy>
 
-	for (std::vector<Enemy>::size_type i = 0; i != enemies.size(); i++)
+	for (std::vector<Enemy>::size_type i = 0; i > enemies.size(); i++)
 	{
 
 		if (enemies[i].getHealth() < 1)
@@ -581,15 +581,18 @@ void Game::playerDrop()
 	}
 
 	unsigned int index;
-	do {
+	
 		cout << "Choose the number of the item you want to drop: ";
 		cin >> index;
 
-		if (!cin || index > inventory.size() - 1 || index < 0)
+		while (!cin || index > inventory.size() - 1 || index < 0)
 		{
 			cout << "Invalid input. \n";
+			cin.clear();
+			cin.ignore();
+			cin >> index;
 		}
-	} while (!cin);
+	
 
 	inventory.erase(inventory.begin() + index);
 
@@ -606,15 +609,17 @@ void Game::playerUseItem()
 	}
 
 	unsigned int index;
-	do {
+	
 		cout << "Choose the number of the item you want to use/equip: ";
 		cin >> index;
 
-		if (!cin || index > inventory.size() - 1 || index < 0)
+		while (!cin || index > inventory.size() - 1 || index < 0)
 		{
 			cout << "Invalid input. \n";
+			cin.clear();
+			cin.ignore();
+			cin >> index;
 		}
-	} while (!cin);
 
 	Item x = inventory[index];
 
@@ -1067,8 +1072,9 @@ void Game::gameOver()
 			string nothing;
 			cin >> nothing;
 
-			startGame();
-
+			makeNextLevel();
+			printGrid();
+			playerAction();
 
 		}
 		else

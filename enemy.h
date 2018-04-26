@@ -11,7 +11,7 @@ class Enemy: public Object
 {
 	public:
 	
-		Enemy(int, int, int);
+		Enemy(int, int, int, int);
 		
 		int getHealth();
 		void setHealth(int x);

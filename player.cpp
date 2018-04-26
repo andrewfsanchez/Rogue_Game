@@ -10,7 +10,7 @@ Player::Player()
 	attack = 5;
 	regen = 1;
 	level = 1;
-	turnsToRegen = 2;
+	turnsToRegen = 3;
 
 	x = 15;
 	y = 15;
@@ -89,12 +89,12 @@ void Player::regeneration()
 	if (turnsToRegen == 0)
 	{
 		if(currentHealth == maxHealth)
-			turnsToRegen = 2; 
+			turnsToRegen = 3; 
 		
 		else 
 		{
 			currentHealth = currentHealth + regen;
-			turnsToRegen = 2;
+			turnsToRegen = 3;
 		}
 	}
 }

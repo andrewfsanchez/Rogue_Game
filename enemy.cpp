@@ -1,10 +1,10 @@
 #include "enemy.h"
 
-Enemy::Enemy(int x, int y, int z)
+Enemy::Enemy(int x, int y, int z, int a)
 {
 	//Test values again
 	health = 15;
-	attack = 0;
+	attack = a;
 	defense = 0;
 	type = 0;
 	exp = 0;
