@@ -53,7 +53,7 @@ void Game::startGame()
 void Game::makeNextLevel()
 {
 
-	clearGrid();
+	deleteGrid();
 
 	level.dungeonBuild(grid, player, x);
 
