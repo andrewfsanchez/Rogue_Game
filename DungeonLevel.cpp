@@ -88,9 +88,9 @@ void Dungeon::dungeonBuild(Node grid[30][30], Object* p, Object* x)             
 {                                                              //to populate the grid with rooms. I start by filling it with walls because it is easier to delete walls
 															   //delete walls to build a room and it will help with the algorithm later used to place more rooms.
 
-	int numRooms = numRoomsGenerator();                       //Here we will randomly decide how many rooms this dungeon level will have
-	int *roomLength = new int[numRooms];
-	int *roomWidth = new int[numRooms];
+    int numRooms = 1;
+	int roomLength;
+	int roomWidth;
 	Object* wall = new Wall();
 
 	for (int i = 0; i < 30; i++)
@@ -101,24 +101,24 @@ void Dungeon::dungeonBuild(Node grid[30][30], Object* p, Object* x)             
 		}
 	}
 
-	for (int i = 0; i <= numRooms; i++)                          //In this loop we generate a random length and width for each room stored in a 1d array so we can retrieve
+	                                                             //In this loop we generate a random length and width for each room stored in a 1d array so we can retrieve
 																 //them later while building the rooms.
-	{
 
-		roomLength[i] = randRoomLength(numRooms);              //It is important for these functions to have the number of rooms passed in as the general sized of the
-		roomWidth[i] = randRoomWidth(numRooms);               //rooms will change based on whether or not there are a lot of rooms or a few.
 
-	}
+		roomLength = randRoomLength(numRooms);                    //It is important for these functions to have the number of rooms passed in as the general sized of the
+		roomWidth = randRoomWidth(numRooms);                     //rooms will change based on whether or not there are a lot of rooms or a few.
 
-	makeStartRoom(roomWidth[0], roomLength[0], grid, p);           //First room is made so others can build off it. The center is always chosen but size is random
+
+
+	makeStartRoom(roomWidth, roomLength, grid, p);           //First room is made so others can build off it. The center is always chosen but size is random
 	numRooms = numRooms - 1;
 
 	                                                              //starting from 1 because the 0th room has already been made.
    // makeRoom(numRooms, roomWidth[i], roomLength[i], grid);
     int numWalls = randWallGenerator();
-    checkerify(grid,numWalls,roomWidth[0],roomLength[0]);
+    checkerify(grid,numWalls,roomWidth,roomLength);
 
-    addOneItem(roomLength[0],roomWidth[0],grid);
+    addOneItem(roomLength,roomWidth,grid);
 
     grid[15][15].setObject(p);
     grid[15][16].setObject(NULL);

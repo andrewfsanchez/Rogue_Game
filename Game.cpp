@@ -889,7 +889,7 @@ void Game::playerMove()
 			check = false;
 			int lengthX = x->getX() - player->getX();
 			int lengthY = x->getY() - player->getY();
-			cout << "LengthX: " << lengthX << "LengthY: " << lengthY << endl;
+			//cout << "LengthX: " << lengthX << "LengthY: " << lengthY << endl;
 			
 			if (lengthY < 0 && player->getX() - x->getX() == -1)
 			{
