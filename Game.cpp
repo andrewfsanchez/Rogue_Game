@@ -57,6 +57,12 @@ void Game::makeNextLevel()
 
 	level.dungeonBuild(grid, player, x);
 
+	for (int i = 0; i<enemies.size(); i++)
+	{
+		enemies.erase(enemies.begin() + i);
+	}
+
+
 	level.addEnemiesToMap(grid, difficulty, enemies, floor, x);
 
 }
@@ -1071,6 +1077,15 @@ void Game::gameOver()
 			
 			string nothing;
 			cin >> nothing;
+
+			for (int i=0; i<inventory.size(); i++)
+			{
+				inventory.erase(inventory.begin()+i);
+			}
+
+			inventory.push_back(Item("Potion", 5, 0, 0, 0, false, false, true));
+			inventory.push_back(Item("Katana", 0, 0, 7, 0, true, false, false));
+			inventory.push_back(Item("Old Shirt", 0, 2, 0, 0, false, true, false));
 
 			makeNextLevel();
 			printGrid();
