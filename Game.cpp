@@ -509,7 +509,7 @@ void Game::playerAction()
 			if (a.compare("Y")==0||a.compare("y")==0)
 			{
 				check = false;
-				cout << "Successfully quit game.\n";
+				gameOver();
 			}
 		}
 		else
