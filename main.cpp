@@ -1,4 +1,4 @@
-#include "Game.cpp"
+#include "Game.h"
 
 bool AI = false;
 int main()
